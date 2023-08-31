@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>project-Creators2023</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <section>
+        <div class="container shopping-container">
+          <div class="support">support</div>
+          <div class="shopping-list">
+            <h1>Shopping <span class="shopping-span">List</span></h1>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <include src="./partials/header.html"></include>
+    <include src="./partials/support.html"></include>
+    <include src="./partials/modal.html"></include>
+    <include src="./partials/theme.html"></include>
+
+    <script type="module" src="./js/modal.js"></script>
+    <script type="module" src="./js/theme.js"></script>
+    <script type="module" src="./js/support.js"></script>
+    <script type="module" src="./shopping.js"></script>
+  </body>
+</html>
