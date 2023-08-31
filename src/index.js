@@ -1,4 +1,4 @@
-import './js/categories';
+import './js/categorie';
 import './js/gallery';
 import './js/header';
 import './js/modal';
