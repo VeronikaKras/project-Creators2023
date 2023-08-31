@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://books-backend.p.goit.global/books';
+axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
 
 const categoriesList = document.querySelector('.categories-list');
 
 async function fetchCategories() {
-  const response = await axios.get(`${BASE_URL}/category-list`);
+  const response = await axios.get('/category-list');
 
-  return renderCategoriesList(response.data);
+  try {
+    renderCategoriesList(response.data);
+  } catch (error) {
+    console.log('Something went wrong');
+  }
 }
 
 function createCategoriesMarkup(array) {
