@@ -1,0 +1,28 @@
+.categories {
+  width: 356px;
+  max-height: 472px;
+  overflow-y: auto;
+}
+
+.categories-title,
+.category-link {
+  color: rgba(17, 17, 17, 0.6);
+  font-size: 18px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+}
+
+.categories-title {
+  font-weight: 400;
+}
+
+.category-link {
+  display: block;
+  padding-top: 32px;
+}
+
+.category-link:active {
+  text-transform: uppercase;
+  color: var(--violet-color);
+  font-weight: 700;
+}
