@@ -44,3 +44,24 @@
   border-radius: 20px;
   border: none;
 }
+
+/* !!! dark-theme */
+/* .categories {
+  background-color: var(--black-body-color);
+  scrollbar-color: var(--grey-categories-color);
+}
+
+.categories-title,
+.category-item {
+  color: rgba(255, 255, 255, 0.6);
+} */
+
+/* стилізація обраної категорії */
+/* .is-chosen {
+  color: #eac645;
+} */
+
+/* стилізація для скрола */
+/* .categories::-webkit-scrollbar-thumb {
+  background-color: rgba(17, 17, 17, 0.6);
+} */
