@@ -1,8 +1,9 @@
 /* !!! light-theme */
 
 .categories {
-  width: 356px;
-  max-height: 472px;
+  max-width: 335px;
+  max-height: 228px;
+  margin: 0 auto;
   overflow-y: scroll;
   scrollbar-width: 8px;
   scrollbar-color: var(--grey-categories-color);
@@ -11,8 +12,8 @@
 .categories-title,
 .category-item {
   color: rgba(17, 17, 17, 0.6);
-  font-size: 18px;
-  line-height: 1.33;
+  font-size: 16px;
+  line-height: 1.13;
   letter-spacing: -0.02em;
 }
 
@@ -22,14 +23,7 @@
 
 .category-item {
   display: block;
-  padding-top: 32px;
-}
-
-/* стилізація обраної категорії */
-.is-chosen {
-  text-transform: uppercase;
-  color: var(--violet-color);
-  font-weight: 700;
+  padding-top: 24px;
 }
 
 /* стилізація для скрола */
@@ -45,6 +39,43 @@
   border: none;
 }
 
+@media screen and (min-width: 768px) {
+  .categories {
+    min-width: 337px;
+    max-height: 472px;
+    margin: 0;
+  }
+
+  .categories-title,
+  .category-item {
+    color: rgba(17, 17, 17, 0.6);
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .category-item {
+    padding-top: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .categories {
+    width: 356px;
+    margin: 0;
+  }
+
+  .category-item {
+    padding-top: 32px;
+  }
+}
+
+/* стилізація обраної категорії */
+.is-chosen {
+  text-transform: uppercase;
+  color: var(--violet-color);
+  font-weight: 700;
+}
+
 /* !!! dark-theme */
 /* .categories {
   background-color: var(--black-body-color);
@@ -56,12 +87,10 @@
   color: rgba(255, 255, 255, 0.6);
 } */
 
-/* стилізація обраної категорії */
 /* .is-chosen {
   color: #eac645;
 } */
 
-/* стилізація для скрола */
 /* .categories::-webkit-scrollbar-thumb {
   background-color: rgba(17, 17, 17, 0.6);
 } */
