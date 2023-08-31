@@ -1,11 +1,15 @@
+/* !!! light-theme */
+
 .categories {
   width: 356px;
   max-height: 472px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  scrollbar-width: 8px;
+  scrollbar-color: var(--grey-categories-color);
 }
 
 .categories-title,
-.category-link {
+.category-item {
   color: rgba(17, 17, 17, 0.6);
   font-size: 18px;
   line-height: 1.33;
@@ -16,13 +20,27 @@
   font-weight: 400;
 }
 
-.category-link {
+.category-item {
   display: block;
   padding-top: 32px;
 }
 
-.category-link:active {
+/* стилізація обраної категорії */
+.is-chosen {
   text-transform: uppercase;
   color: var(--violet-color);
   font-weight: 700;
+}
+
+/* стилізація для скрола */
+.categories::-webkit-scrollbar {
+  width: 8px;
+}
+.categories::-webkit-scrollbar-track {
+  background: transparent;
+}
+.categories::-webkit-scrollbar-thumb {
+  background-color: var(--grey-categories-color);
+  border-radius: 20px;
+  border: none;
 }

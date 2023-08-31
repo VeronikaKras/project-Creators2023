@@ -12,10 +12,7 @@ async function fetchCategories() {
 
 function createCategoriesMarkup(array) {
   return array
-    .map(
-      ({ list_name }) =>
-        `<li class="category-item"><a class="category-link">${list_name}</a></li>`
-    )
+    .map(({ list_name }) => `<li class="category-item">${list_name}</li>`)
     .join('');
 }
 
