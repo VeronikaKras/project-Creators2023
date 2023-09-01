@@ -1,0 +1,96 @@
+/* !!! light-theme */
+
+.categories {
+  max-width: 335px;
+  max-height: 228px;
+  margin: 0 auto;
+  overflow-y: scroll;
+  scrollbar-width: 8px;
+  scrollbar-color: var(--grey-categories-color);
+}
+
+.categories-title,
+.category-item {
+  color: rgba(17, 17, 17, 0.6);
+  font-size: 16px;
+  line-height: 1.13;
+  letter-spacing: -0.02em;
+}
+
+.categories-title {
+  font-weight: 400;
+}
+
+.category-item {
+  display: block;
+  padding-top: 24px;
+}
+
+/* стилізація для скрола */
+.categories::-webkit-scrollbar {
+  width: 8px;
+}
+.categories::-webkit-scrollbar-track {
+  background: transparent;
+}
+.categories::-webkit-scrollbar-thumb {
+  background-color: var(--grey-categories-color);
+  border-radius: 20px;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .categories {
+    min-width: 337px;
+    max-height: 472px;
+    margin: 0;
+  }
+
+  .categories-title,
+  .category-item {
+    color: rgba(17, 17, 17, 0.6);
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .category-item {
+    padding-top: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .categories {
+    width: 356px;
+    margin: 0;
+  }
+
+  .category-item {
+    padding-top: 32px;
+  }
+}
+
+/* стилізація обраної категорії */
+.is-chosen {
+  text-transform: uppercase;
+  color: var(--violet-color);
+  font-weight: 700;
+}
+
+/* !!! dark-theme */
+/* .categories {
+  background-color: var(--black-body-color);
+  scrollbar-color: var(--grey-categories-color);
+}
+
+.categories-title,
+.category-item {
+  color: rgba(255, 255, 255, 0.6);
+} */
+
+/* .is-chosen {
+  color: #eac645;
+} */
+
+/* .categories::-webkit-scrollbar-thumb {
+  background-color: rgba(17, 17, 17, 0.6);
+} */
