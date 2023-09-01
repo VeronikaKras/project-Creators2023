@@ -1,110 +1,114 @@
-// const shoppingList = document.querySelector('.shopping-list');
-
-// const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
-
-
-// if (savedData) {
-//     //відмальовуємо розмітку збереженних книг
-// }
- 
+import svgIconTrash from '../img/sprite.svg';
+import amazon1x from '../img/shopping/amazon_1x.jpg'
+import amazon2x from '../img/shopping/amazon_2x.jpg'
+import apple1x from '../img/shopping/apple-1x.jpg'
+import apple2x from '../img/shopping/apple-2x.jpg'
+import bookshop1x from '../img/shopping/bookshop-1x.jpg'
+import bookshop2x from '../img/shopping/bookshop-2x.jpg'
 
 
-// якщо породне локал сторидж, виводимо це
-// if (!savedData) { 
-    // const text = document.createElement('p');
-    // text.textContent = 'This page is empty, add some books and proceed to order.'
 
-    // const img = document.createElement('img');
-    // img.src = './img/shopping/shop-desc.png';
-    // img.alt = 'books';
-
-    // shoppingList.append(text, img);
-// }
+const shoppingList = document.querySelector('.shopping-list');
 
 
-// function emptyLocaleMarkup() { 
-//     const markup = `<div class="empty-shop-list">
-//   <p>This page is empty, add some books and proceed to order.</p>
-//   <img src="./img/shopping/shop-desc.png" alt="books" />
-// </div>`;
+const savedData = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+
+
+
+// якщо порожне локал сторидж, виводимо це
+if (!savedData) { 
+  emptyLocaleMarkup()
+} 
+
+function emptyLocaleMarkup() { 
+    const markup = `<div class="empty-shop-list">
+  <p class="empty-shop-list-text">This page is empty, add some books and proceed to order.</p>
+  <img  class="empty-shop-list-img" src="" alt="books illustration" />
+</div>`;
     
-//     shoppingList.insertAdjacentElement("beforeend", markup); 
-// }
+    shoppingList.insertAdjacentHTML("beforeend", markup); 
+}
+
+if (savedData) {
+    CreateMarkup(savedData)
+}
 
 
-//Малюємо розмітку для книг
+//перевіряємо чи є опис книги. Якщо нема, виводимо повідомлення
 
-// function CreateMarkup(arr) {
-//     const markup = arr.map(({ id, book_image, title, list_name, description, author },
-//         buy_links: { name, url }) => 
-//     `<li data-id="${id}">
-//   <img src="${book_image}" alt="" />
-//   <div class="card-description">
-//     <h2>${title}</h2>
-//     <p class="category">${list_name}</p>
-//     <p class="description">${description}</p>
-//     <p class="author">${author}</p>
-//     <button class="basket"><svg class="" width="" height="">
-//   <use href=""></use>
-// </svg></button>
-//     <li class="buy_links">
-//       <li></li>
-//       <li></li>
-//       <li></li>
-//     </li>
-//   </div>
-// </li>`)
-// .join('');
-// }
+function isAvaliableDescription(description) { 
+    if (description === '') { 
+        return "Sorry, we couldn't find description"
+    }
+    return description
+}
 
-//  "Зверстати шаблон картки однієї книги. Картка з книгою включає
-//   зображення обгортки цієї книги
-//   назву книги
-//   категорія книги
-//   короткий опис змісту книги
-//   її автора 
-//   перелік посилань на торгівельні майданчики, де цю книгу можна придбати
-//   та кнопку видалення з Shopping list "
+//Рендеримо розмітку для книг
+
+function CreateMarkup(arr) {
+    const markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => 
+    `<li class="shop-card" data-id="${id}">
+  <img src="${book_image}" alt="book cover" />
+  <div class="shop-card-details">
+    <h2 class="shop-card-title">${title}</h2>
+    <p class="shop-card-category">${list_name}</p>
+    <p class="shop-card-description">${isAvaliableDescription(description)}</p>
+    <p class="shop-card-author">${author}</p>
+    <button class="basket">
+    <svg class="trash-btn" width="18" height="18">
+  <use href="${svgIconTrash}"></use>
+</svg>
+</button>
+    <li class="shop-card-buy-links">
+        <a
+            href="${buy_links[0].url}"
+            class="shop-card-link"
+            target="blank"
+          >
+            <img
+              class="buy-links-icon"
+              src="${amazon2x}" srcset="${amazon1x} 1x, ${amazon2x} 2x" 
+              width="48"
+              alt="platform-icon"
+            />
+          </a>
+      </li>
+      <li class="shop-card-buy-links">
+          <a
+            href="${buy_links[1].url}"
+            class="shop-card-link"
+            target="blank"
+          >
+            <img
+              class="buy-links-icon"
+              src="${apple2x}" srcset="${apple1x} 1x, ${apple2x} 2x" 
+              width="28"
+              alt="platform-icon"
+            />
+          </a>
+        </li>
+     <li class="shop-card-buy-links">
+          <a
+            href="${buy_links[4].url}"
+            class="shop-card-link"
+            target="blank"
+          >
+            <img
+              class="buy-links-icon"
+             src="${bookshop2x}" srcset="${bookshop1x} 1x, ${bookshop2x} 2x" 
+              width="32"
+              alt="platform-icon"
+            />
+          </a>
+        </li>
+    </li>
+  </div>
+</li>`)
+        .join('');
+    
+      shoppingList.insertAdjacentHTML("beforeend", markup); 
+}
 
 
 
-// function CreateMarkup(arr) {
-//   const markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => {
-//     const limitedBuyLinks = buy_links.slice(0, 3); // Обмежуємо масив лінків до 3 елементів 
 
-//     // Робимо масив з іконками логотипів
-//     const logoUrls = {
-//       URL_1: 'шлях до лого1.svg',
-//       URL_2: 'шлях до лого2.svg',
-//       URL_3: 'шлях до лого3.svg',
-//     };
-
-//     return `
-//       <li data-id="${id}">
-//         <img src="${book_image}" alt="" />
-//         <div class="card-description">
-//           <h2>${title}</h2>
-//           <p class="category">${list_name}</p>
-//           <p class="description">${description}</p>
-//           <p class="author">${author}</p>
-//           <button class="basket"><svg class="" width="" height="">
-//             <use href=""></use>
-//           </svg></button>
-//           <ul class="buy_links">
-//             ${limitedBuyLinks.map(({ url }) => `
-//               <li>
-//                 <a href="${url}">
-//                   <svg class="logo" width="50" height="50">
-//                     <use href="${logoUrls[url]}"></use>
-//                   </svg>
-//                 </a>
-//               </li>
-//             `).join('')}
-//           </ul>
-//         </div>
-//       </li>
-//     `;
-//   }).join('');
-
-//   return markup;
-// }
