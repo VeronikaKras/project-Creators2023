@@ -1,6 +1,6 @@
-const shoppingList = document.querySelector('.shopping-list');
+// const shoppingList = document.querySelector('.shopping-list');
 
-const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
+// const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
 
 
 // if (savedData) {
@@ -68,43 +68,43 @@ const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
 
 
 
-function CreateMarkup(arr) {
-  const markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => {
-    const limitedBuyLinks = buy_links.slice(0, 3); // Обмежуємо масив лінків до 3 елементів 
+// function CreateMarkup(arr) {
+//   const markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => {
+//     const limitedBuyLinks = buy_links.slice(0, 3); // Обмежуємо масив лінків до 3 елементів 
 
-    // Робимо масив з іконками логотипів
-    const logoUrls = {
-      URL_1: 'шлях до лого1.svg',
-      URL_2: 'шлях до лого2.svg',
-      URL_3: 'шлях до лого3.svg',
-    };
+//     // Робимо масив з іконками логотипів
+//     const logoUrls = {
+//       URL_1: 'шлях до лого1.svg',
+//       URL_2: 'шлях до лого2.svg',
+//       URL_3: 'шлях до лого3.svg',
+//     };
 
-    return `
-      <li data-id="${id}">
-        <img src="${book_image}" alt="" />
-        <div class="card-description">
-          <h2>${title}</h2>
-          <p class="category">${list_name}</p>
-          <p class="description">${description}</p>
-          <p class="author">${author}</p>
-          <button class="basket"><svg class="" width="" height="">
-            <use href=""></use>
-          </svg></button>
-          <ul class="buy_links">
-            ${limitedBuyLinks.map(({ url }) => `
-              <li>
-                <a href="${url}">
-                  <svg class="logo" width="50" height="50">
-                    <use href="${logoUrls[url]}"></use>
-                  </svg>
-                </a>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-      </li>
-    `;
-  }).join('');
+//     return `
+//       <li data-id="${id}">
+//         <img src="${book_image}" alt="" />
+//         <div class="card-description">
+//           <h2>${title}</h2>
+//           <p class="category">${list_name}</p>
+//           <p class="description">${description}</p>
+//           <p class="author">${author}</p>
+//           <button class="basket"><svg class="" width="" height="">
+//             <use href=""></use>
+//           </svg></button>
+//           <ul class="buy_links">
+//             ${limitedBuyLinks.map(({ url }) => `
+//               <li>
+//                 <a href="${url}">
+//                   <svg class="logo" width="50" height="50">
+//                     <use href="${logoUrls[url]}"></use>
+//                   </svg>
+//                 </a>
+//               </li>
+//             `).join('')}
+//           </ul>
+//         </div>
+//       </li>
+//     `;
+//   }).join('');
 
-  return markup;
-}
+//   return markup;
+// }
