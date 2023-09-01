@@ -6,3 +6,5 @@ import './js/onecategory';
 import './js/shopping';
 import './js/support';
 import './js/theme';
+import './js/pagination';
+
