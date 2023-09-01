@@ -8,46 +8,26 @@ import bookshop2x from '../img/shopping/bookshop-2x.jpg'
 
 
 
-const shoppingList = document.querySelector('.shopping-list');
+const cardList = document.querySelector('.card-list');
 
 
-const savedData = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
 
 
 
-// якщо порожне локал сторидж, виводимо це
-if (!savedData) { 
-  emptyLocaleMarkup()
-} 
-
-function emptyLocaleMarkup() { 
-    const markup = `<div class="empty-shop-list">
-  <p class="empty-shop-list-text">This page is empty, add some books and proceed to order.</p>
-  <img  class="empty-shop-list-img" src="" alt="books illustration" />
-</div>`;
-    
-    shoppingList.insertAdjacentHTML("beforeend", markup); 
-}
-
-if (savedData) {
-    CreateMarkup(savedData)
-}
-
-
-//перевіряємо чи є опис книги. Якщо нема, виводимо повідомлення
-
-function isAvaliableDescription(description) { 
-    if (description === '') { 
-        return "Sorry, we couldn't find description"
-    }
-    return description
-}
+CreateMarkup(savedBooks);
 
 //Рендеримо розмітку для книг
 
 function CreateMarkup(arr) {
-    const markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => 
-    `<li class="shop-card" data-id="${id}">
+    let markup;
+
+    // перевіряємо, чи є щось у localStotrage - рендеримо розмітку
+    // якщо порожньо - інша розмітка в блоці else
+
+    if (arr.length) {
+        markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) =>
+            `<li class="shop-card" data-id="${id}">
   <img src="${book_image}" alt="book cover" />
   <div class="shop-card-details">
     <h2 class="shop-card-title">${title}</h2>
@@ -104,11 +84,31 @@ function CreateMarkup(arr) {
     </li>
   </div>
 </li>`)
-        .join('');
-    
-      shoppingList.insertAdjacentHTML("beforeend", markup); 
+     .join('');
+    } else { 
+        emptyLocaleMarkup();
+    }
+      cardList.innerHTML = markup; 
 }
 
+//перевіряємо чи є опис книги. Якщо не має, виводимо повідомлення
 
+function isAvaliableDescription(description) { 
+    if (description === '') { 
+        return "Sorry, we couldn't find description"
+    }
+    return description;
+}
+
+// рендеримо розмітку у випадку порожнього localStorage
+
+function emptyLocaleMarkup() { 
+    const markup = `<div class="empty-shop-list">
+  <p class="empty-shop-list-text">This page is empty, add some books and proceed to order.</p>
+  <img  class="empty-shop-list-img" src="" alt="books illustration" />
+</div>`;
+    
+    cardList.innerHTML = markup; 
+}
 
 
