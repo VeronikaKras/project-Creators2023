@@ -1,0 +1,57 @@
+.header-page {
+  border-radius: 0px 0px 8px 8px;
+  border: 1.5px solid #111;
+  background-color: #f6f6f6;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+
+  height: 64px;
+}
+
+/* Logo Bookshelf */
+.header-logo {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+.header-nav-list {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .header-container {
+    height: 72px;
+  }
+  .header-logo {
+    padding-top: 22px;
+    padding-bottom: 22px;
+    margin-right: 40px;
+  }
+  .header-nav-list {
+    display: flex;
+    gap: 24px;
+    font-weight: 700;
+    line-height: 1.28;
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+  }
+  .header-item {
+    padding: 8px 16px;
+    border-radius: 36px;
+  }
+  .active-link {
+    background-color: #eac645;
+  }
+
+  .header-item-link-shoping-list {
+    margin-right: 8px;
+  }
+}
