@@ -1,10 +1,12 @@
 @import url('./reset.css');
 @import url('./header.css');
 @import url('./categories.css');
+@import url('./onecategory.css');
 @import url('./gallery.css');
 @import url('./modal.css');
 @import url('./shopping.css');
 @import url('./support.css');
+@import url('./theme.css');
 
 
 :root {
@@ -35,7 +37,6 @@ body {
     font-family: 'DM Sans', sans-serif;
     color: var(--black-header-color);
     font-size: 14px;
-    /* line-height: 1.29; */
     font-weight: 400;
     letter-spacing: -0.04em;
     background-color: #F6F6F6;
