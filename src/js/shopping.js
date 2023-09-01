@@ -1,6 +1,6 @@
-const shoppingList = document.querySelector('.shopping-list');
+//const shoppingList = document.querySelector('.shopping-list');
 
-const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
+//const savedData = JSON.parse(localeStorage.getItem('saved-books-in-modal'))
 
 
 // if (savedData) {
