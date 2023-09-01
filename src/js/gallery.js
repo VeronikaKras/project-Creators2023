@@ -26,7 +26,7 @@ async function fetchBooks() {
 }
    
 function renderList(data) {
-
+    
     return data.map(({ list_name, books }) => {
         return (
             `<li class="main-gallery-item">
@@ -34,7 +34,7 @@ function renderList(data) {
         <ul class="gallery-category">
         ${renderCategories(books)}
         </ul>
-        <button type="button" class="gallery-button">SEE MORE</button></li>
+        <button type="button" class="gallery-button" id="${list_name}">SEE MORE</button></li>
         </li>`
         )
     }
@@ -54,64 +54,5 @@ function renderCategories(books) {
         </li>
            `)
     }).join('');
-    
-}
-
-const mainGallery = document.querySelector('.gallery');
-const container = document.querySelector('.home-container');
-console.log(container)
-mainGallery.addEventListener('click', openModal)
-document.body.addEventListener('click', closeModal)
-document.body.addEventListener('keydown', closeModal)
-function closeModal(e) {
-    console.log(e.target)
-    console.log(e.currentTarget)
-    if (e.target !== e.currentTarget) {
-        return
     }
-      
-        modal.classList.add('visually-hidden');
-    
-    
-}
 
-function onEscClose(e) {
-        if (modal.classList.contains("is-hidden")) {
-      return;
-    };
-    if (e.key !== 'Escape') {
-            return;
-    }
-    modal.classList.add('visually-hidden');
-  
-}
-
-function removeListeners() {
-    document.body.removeEventListener('click', closeModal)
-   document.body.removeEventListener('keydown', closeModal)
-}
-   
-
-function openModal(e) {
-    e.preventDefault()
-    console.log(e)
-    console.log(e.target.closest('li').id)
-    fetchBooksById(e.target.closest('li').id)
-    modal.classList.toggle('visually-hidden')
-}
-
-async function fetchBooksById(id) {
-    const { data } = await axios.get(`/${id}`);
-    const markup = modalRender(data);
-    modal.innerHTML = markup;
-    console.log(data)     
-}
-
-function modalRender(data) {
-    const { author, publisher } = data;
-    return (
-        `<h2>${author}</h2>
-        <h3>${publisher}</h3>
-        `
-    )
-}
