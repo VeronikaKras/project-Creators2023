@@ -53,7 +53,7 @@ body.dark-theme {
   height: 100%;
   color: transparent;
   user-select: none;
-  background-color: #333;
+  background: linear-gradient(#4f2ee8, #dcdcdc);
   border-radius: inherit;
   z-index: 1;
   cursor: pointer;
@@ -71,7 +71,7 @@ body.dark-theme {
   transition: transform 250ms var(--timing-function);
 }
 .theme-switch__toggle:checked + .theme-switch__track {
-  background-color: #d3d3d4;
+  background: linear-gradient(#4f2ee8, #686868);
 }
 .theme-switch__toggle:checked ~ .theme-switch__marker {
   transform: translateX(21px);
