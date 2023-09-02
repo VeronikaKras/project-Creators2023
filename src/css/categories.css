@@ -9,20 +9,12 @@
   scrollbar-color: var(--grey-categories-color);
 }
 
-.categories-list {
-  cursor: pointer;
-}
-
 .categories-title,
 .category-item {
   color: rgba(17, 17, 17, 0.6);
   font-size: 16px;
   line-height: 1.13;
   letter-spacing: -0.02em;
-}
-
-.categories-title {
-  cursor: pointer;
 }
 
 .category-item {

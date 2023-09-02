@@ -7,12 +7,10 @@ const categoriesList = document.querySelector('.categories-list');
 const booksSection = document.querySelector('.gallery');
 const categoryTitle = document.querySelector('.category-title');
 const oneCategoryGallery = document.querySelector('.one-category-gallery');
-const oneCategoryContainer = document.querySelector('.one-category-container');
 const homeContainer = document.querySelector('.home-container');
 const categorySection = document.querySelector('.category-gallery');
 const mainTitle = document.querySelector('.home-main-span');
 const mainTitleLastWtord = document.querySelector('.home-main-span-lastword');
-const categoriesTitle = document.querySelector('.categories-title');
 
 categoriesList.addEventListener('click', onChooseCategory);
 
@@ -26,7 +24,7 @@ function onChooseCategory(evt) {
 
       if (
         evt.target.textContent.toLowerCase() ===
-        categoriesTitle.textContent.toLowerCase()
+        categoriesList.firstElementChild.textContent.toLowerCase()
       ) {
         location.reload();
       }
