@@ -12,18 +12,20 @@
 
 
 // const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
+// const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
 
 
 
 // CreateMarkup(savedBooks);
+// CreateMarkup(savedBooks);
 
-//Рендеримо розмітку для книг
+// //Рендеримо розмітку для книг
 
 // function CreateMarkup(arr) {
 //     let markup;
 
-    // перевіряємо, чи є щось у localStotrage - рендеримо розмітку
-    // якщо порожньо - інша розмітка в блоці else
+//     // перевіряємо, чи є щось у localStotrage - рендеримо розмітку
+//     // якщо порожньо - інша розмітка в блоці else
 
 //     if (arr.length) {
 //         markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) =>
@@ -103,7 +105,7 @@
 //     return description;
 // }
 
-// рендеримо розмітку у випадку порожнього localStorage
+// // рендеримо розмітку у випадку порожнього localStorage
 
 // function emptyLocaleMarkup() { 
 //     const markup = `<div class="empty-shop-list">
