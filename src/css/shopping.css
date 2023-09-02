@@ -22,27 +22,25 @@
   max-width: 375px;
 }
 
+.shopping-list {
+  display: flex;
+  flex-direction: column;
+
+  /* align-items: center; */
+}
+
 h1 {
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
+
+  /* align-items: flex-start; */
 
   margin-bottom: 40px;
 }
 
 .shopping-span {
   color: var(--violet-color);
-}
-
-/* для рендеру коли пустий локал сторідж */
-.empty-shop-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.empty-shop-list-text {
-  color: rgba(0, 0, 0, 0.6);
 }
 
 .shop-card {
@@ -68,7 +66,7 @@ h1 {
   margin-left: 14px;
 }
 
-.basket {
+.basket-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,8 +83,8 @@ h1 {
   border: none;
 }
 
-.basket:hover,
-.basket:focus {
+.basket-btn:hover,
+.basket-btn:focus {
   transform: scale(1.1);
 }
 
@@ -151,6 +149,25 @@ h1 {
 
 /* коли немає доданих книг */
 .empty-shop-list {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-shop-list-text {
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.empty-shop-list {
+  /* padding-left: 35px; */
+  margin-top: 80px;
+  width: 265px;
+}
+
+.empty-shop-list-img {
+  width: 265px;
+  height: 198px;
 }
 
 @media screen and (min-width: 768px) {
@@ -189,6 +206,22 @@ h1 {
   .icon-bookstore {
     width: 30px;
     height: 30px;
+  }
+  .empty-shop-list {
+    margin-top: 100px;
+    /* margin-left: 200px; */
+
+    width: 349px;
+  }
+  .empty-shop-list-img {
+    width: 322;
+    height: 241;
+
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .empty-shop-list-text {
+    margin-bottom: 20px;
   }
 }
 
