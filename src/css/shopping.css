@@ -1,16 +1,25 @@
-.shopping-container {
+/* .shopping-container {
   display: flex;
 
   margin-top: 40px;
-}
+} */
 /* це просто блок артура, щоб зафіксувати мій збоку */
-.support {
+/* .support {
   margin-right: 40px;
   width: 356px;
-}
+} */
 
-.shopping-list {
-  width: 996px;
+/* .home-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 320px;
+} */
+.container {
+  min-width: 320px;
+  max-width: 375px;
 }
 
 h1 {
@@ -38,20 +47,153 @@ h1 {
 
 .shop-card {
   display: flex;
+  position: relative;
+  padding: 14px;
+  margin-bottom: 20px;
+
+  min-width: 330px;
+  max-width: 1440px;
+  height: 170px;
 
   border-radius: 16px;
   border: 2px solid rgba(79, 46, 232, 0.4);
-
-  padding: 24px;
 }
 
 .card-img {
   width: 100px;
   height: 142px;
 }
+
+.shop-card-details {
+  margin-left: 14px;
+}
+
+.basket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 34px;
+  height: 34px;
+  background-color: var(--violet-color);
+
+  border-radius: 50%;
+  border: none;
+}
+
+.basket:hover,
+.basket:focus {
+  transform: scale(1.1);
+}
+
+.buy-links-list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+}
+.icon-amazon {
+  width: 32px;
+  height: 11px;
+}
+.icon-apple,
+.icon-bookstore {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-amazon:hover,
+.icon-amazon:focus,
+.icon-apple:hover,
+.icon-apple:focus,
+.icon-bookstore:hover,
+.icon-bookstore:focus {
+  transform: scale(1.1);
+}
+
+.shop-card-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+
+  margin-bottom: 4px;
+}
+
+.shop-card-category {
+  color: var(--grey-text-color);
+  font-size: 12px;
+  font-style: normal;
+
+  margin-bottom: 4px;
+}
+
+.shop-card-description {
+  margin-bottom: 16px;
+
+  width: 193px;
+  height: 68px;
+
+  overflow: scroll;
+}
+
+.shop-card-author {
+  color: var(--grey-text-color);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* коли немає доданих книг */
+.empty-shop-list {
+}
+
 @media screen and (min-width: 768px) {
   .card-img {
     width: 116px;
     height: 165px;
+  }
+  .shop-card {
+    height: 213px;
+
+    padding: 24px;
+  }
+  .shop-card-category {
+    margin-bottom: 16px;
+  }
+  .shop-card-details {
+    margin-left: 24px;
+  }
+  .shop-card-description {
+    margin-bottom: 48px;
+
+    width: 508px;
+    height: 53px;
+  }
+  .buy-links-list {
+    gap: 16px;
+
+    right: 24px;
+    bottom: 24px;
+  }
+  .icon-amazon {
+    width: 48px;
+    height: 15px;
+  }
+  .icon-apple,
+  .icon-bookstore {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .shop-card-description {
+    width: 808px;
   }
 }
