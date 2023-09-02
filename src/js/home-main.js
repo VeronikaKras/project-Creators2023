@@ -204,6 +204,7 @@ function onSeeMoreClick(e) {
     category.classList.remove('is-chosen');
     if (categoryQuery.toLowerCase() === category.textContent.toLowerCase()) {
       category.classList.add('is-chosen');
+      category.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
   }
   fetchByCategory(categoryQuery);
