@@ -3,12 +3,10 @@
 
   margin-top: 40px;
 }
-
+/* це просто блок артура, щоб зафіксувати мій збоку */
 .support {
   margin-right: 40px;
   width: 356px;
-
-  background-color: var(--violet-color);
 }
 
 .shopping-list {
@@ -20,13 +18,14 @@ h1 {
   font-style: normal;
   font-weight: 700;
 
-  margin-bottom: 140px;
+  margin-bottom: 40px;
 }
 
 .shopping-span {
   color: var(--violet-color);
 }
 
+/* для рендеру коли пустий локал сторідж */
 .empty-shop-list {
   display: flex;
   flex-wrap: wrap;
@@ -35,4 +34,24 @@ h1 {
 
 .empty-shop-list-text {
   color: rgba(0, 0, 0, 0.6);
+}
+
+.shop-card {
+  display: flex;
+
+  border-radius: 16px;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+
+  padding: 24px;
+}
+
+.card-img {
+  width: 100px;
+  height: 142px;
+}
+@media screen and (min-width: 768px) {
+  .card-img {
+    width: 116px;
+    height: 165px;
+  }
 }
