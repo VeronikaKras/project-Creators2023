@@ -25,6 +25,14 @@ async function fetchCategories() {
       category.addEventListener('click', async () => {
         const categoryName = category.textContent;
         categoryTitle.textContent = categoryName;
+        categoryTitle.innerHTML = categoryName.split(' ').map((word, index, wordsArray) => {
+    if (index === wordsArray.length - 1) {
+      return `<span class="last-word">${word}</span>`;
+    } else {
+      return word;
+    }
+  }).join(' ');
+
 
           try {
           homeContainer.innerHTML = '';
