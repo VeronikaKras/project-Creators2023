@@ -8,9 +8,13 @@
         line-height: 38px;
         letter-spacing: -0.04em;
 }
-/* .one-category-gallery{
+.one-category-gallery{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
 
-} */
+gap: 8px;
+}
 
 .one-category-item{
 display: block;

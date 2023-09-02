@@ -24,6 +24,12 @@
 .category-item {
   display: block;
   padding-top: 24px;
+  
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
 }
 
 /* стилізація для скрола */
