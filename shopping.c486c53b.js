@@ -1,0 +1,2 @@
+const e="light-theme",t="dark-theme",s=document.getElementById("theme-switch-toggle"),c=document.body;s.addEventListener("change",(function(s){s.currentTarget.checked?(c.classList.add(t),c.classList.remove(e),localStorage.setItem("Theme",t)):(c.classList.add(e),c.classList.remove(t),localStorage.setItem("Theme",e))}));const a=localStorage.getItem("Theme");console.log(a),a?(c.classList.add(a),a===t&&(s.checked=!0)):c.classList.add(e);
+//# sourceMappingURL=shopping.c486c53b.js.map
