@@ -12,11 +12,8 @@
 
 
 // const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
-// const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
 
 
-
-// CreateMarkup(savedBooks);
 // CreateMarkup(savedBooks);
 
 // //Рендеримо розмітку для книг
@@ -81,8 +78,8 @@
 //         </ul>
 //     </li>
 //   </div>
-//   <button class="basket">
-//     <svg class="basket-btn" width="18" height="18">
+//   <button class="basket-btn">
+//     <svg class="basket-icon" width="18" height="18">
 //   <use href="${svgIconTrash}"></use>
 // </svg>
 // </button>
@@ -119,4 +116,11 @@
 
 // логіка видалення книги при натисканні на корзину
 
+  // Обработчик события клика на родительском элементе (делегирование)
+//   cardList.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("basket-btn")) {
+//       // Удаление родительского элемента (карточки) при клике на кнопку "крестик"
+//       event.target.parentNode.remove();
+//     }
+//   });
 
