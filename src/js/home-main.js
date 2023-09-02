@@ -22,7 +22,8 @@ async function fetchCategories() {
     // Додавання обробника подій до кожної кнопки категорії
     const categories = document.querySelectorAll('.category-item');
     categories.forEach(category => {
-      category.addEventListener('click', async () => {
+      category.addEventListener('click', async (e) => {
+       
         const categoryName = category.textContent;
         categoryTitle.textContent = categoryName;
         categoryTitle.innerHTML = categoryName.split(' ').map((word, index, wordsArray) => {
@@ -132,26 +133,27 @@ function renderCategories(books) {
   return books
     .map(({ book_image, title, author, _id }) => {
       return `<li class="gallery-item" id="${_id}">
-        <div class="gallery-item-thumb">
-        <img class="gallery-item-image" loading="lazy" src="${book_image}">
-        </div>
-        <p class="gallery-item-title">${title}</p>
-        <p class="gallery-item-author">${author}</p>
-        </li>
-           `;
+              <div class="gallery-item-thumb">
+              <img class="gallery-item-image" loading="lazy" src="${book_image}">
+              <div class="gallery-item-hover"><p class="gallery-item-p-hover">quick view</p></div>
+              </div>
+              <p class="gallery-item-title">${title}</p>
+              <p class="gallery-item-author">${author}</p>
+              </li>
+              `;
     })
     .join('');
 }
 
 function renderOneCategory(data) {
-    return data.map(({ book_image, title, author }) => {
-      return `<li class="gallery-item">
-        <div class="gallery-item-thumb">
-        <img class="gallery-item-image" loading="lazy" src="${book_image}">
-        </div>
-        <p class="gallery-item-title">${title}</p>
-        <p class="gallery-item-author">${author}</p>
-        </li>
+    return data.map(({ book_image, title, author, _id }) => {
+      return `<li class="gallery-item" id="${_id}">
+              <div class="gallery-item-thumb">
+              <img class="gallery-item-image" loading="lazy" src="${book_image}">
+              </div>
+              <p class="gallery-item-title">${title}</p>
+              <p class="gallery-item-author">${author}</p>
+              </li>
            `;
     })
     .join('');
@@ -169,7 +171,8 @@ function onSeeMoreClick(e) {
     for (const category of categoriesList.children) {
         category.classList.remove('category-list-item-active')
         if (categoryQuery.toLowerCase() === category.textContent.toLowerCase()) {
-            category.classList.add('category-list-item-active')
+          category.classList.add('category-list-item-active')
+          category.scrollIntoView({ block: "center", behavior: "smooth" });
                    }
     }
     fetchByCategory(categoryQuery)

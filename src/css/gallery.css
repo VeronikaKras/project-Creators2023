@@ -288,3 +288,37 @@ img {
     margin-bottom: 54px;
   }
 }
+
+.gallery-item-thumb {
+  position: relative;
+}
+.gallery-item-p-hover {
+  color: var(--black-header-color);
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.29;
+  letter-spacing: -0.56px;
+  text-transform: uppercase;
+}
+.gallery-item-hover {
+  position: absolute;
+  padding: 26px 70px;
+  width: 218px;
+  height: 70px;
+  background-color: #eac645;
+  transition: transform var(--transition-dur-and-func);
+}
+
+.gallery-item:hover .gallery-item-hover,
+.gallery-item:focus .gallery-item-hover {
+  transform: translateY(-100%);
+}
+
+@media screen and (min-width: 1440px) {
+  .gallery-item-hover {
+    width: 180px;
+    padding: 26px 52px;
+  }
+}
