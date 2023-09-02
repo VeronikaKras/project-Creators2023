@@ -8,7 +8,11 @@ const booksSection = document.querySelector('.gallery');
 const categoryTitle = document.querySelector('.category-title');
 const oneCategoryGallery = document.querySelector('.one-category-gallery');
 const homeContainer = document.querySelector('.home-container')
+const categorySection = document.querySelector('.category-gallery');
+const mainTitle = document.querySelector('.home-main-span')
+const mainTitleLastWtord = document.querySelector('.home-main-span-lastword')
 
+booksSection.addEventListener('click', onSeeMoreClick);
 
 async function fetchCategories() {
   try {
@@ -23,7 +27,7 @@ async function fetchCategories() {
         categoryTitle.textContent = categoryName;
 
           try {
-            homeContainer.innerHTML = '';
+          homeContainer.innerHTML = '';
           booksSection.innerHTML = '';
           const response = await axios.get(`/category?category=${categoryName}`);
           const books = response.data;
@@ -72,12 +76,13 @@ function renderCategoriesList(data) {
 export { fetchCategories };
 
 async function fetchBooks() {
+   mainTitle.textContent = 'BEST SELLERS';
+    mainTitleLastWtord.textContent = ' BOOKS';
   try {
     const { data } = await axios.get('/top-books');
     const markup = renderList(data);
     booksSection.innerHTML = markup;
   } catch (error) {
-    console.error(error.message);
     Notiflix.Notify.failure('Something went wrong');
   }
 }
@@ -95,23 +100,70 @@ function renderList(data) {
     );
   }).join('');
 }
-
-function renderCategories(books) {
-  return books.map(({ book_image, title, author }) => {
-    return (
-      `<li class="gallery-item">
-        <a href="">
-          <div class="gallery-item-thumb">
-            <img class="gallery-item-image" loading="lazy" src="${book_image}">
-          </div>
-          <p class="gallery-item-title">${title}</p>
-          <p class="gallery-item-author">${author}</p>
-        </a>
-      </li>`
-    );
-  }).join('');
-}
-
 fetchCategories();
 
 fetchBooks()
+
+
+async function fetchByCategory(category) {
+  try {
+     const { data } = await axios.get(`/category?category=${category}`);
+     if (data.length === 0) {
+      return Notiflix.Notify.info('Книги закінчились')
+    }
+    const markup = renderOneCategory(data);
+    booksSection.style.display = 'none';
+    categorySection.innerHTML = markup;
+  } catch (error) {
+    Notiflix.Notify.failure('Помилка: ', error.message)
+  }
+   
+}
+
+function renderCategories(books) {
+  return books
+    .map(({ book_image, title, author, _id }) => {
+      return `<li class="gallery-item" id="${_id}">
+        <div class="gallery-item-thumb">
+        <img class="gallery-item-image" loading="lazy" src="${book_image}">
+        </div>
+        <p class="gallery-item-title">${title}</p>
+        <p class="gallery-item-author">${author}</p>
+        </li>
+           `;
+    })
+    .join('');
+}
+
+function renderOneCategory(data) {
+    return data.map(({ book_image, title, author }) => {
+      return `<li class="gallery-item">
+        <div class="gallery-item-thumb">
+        <img class="gallery-item-image" loading="lazy" src="${book_image}">
+        </div>
+        <p class="gallery-item-title">${title}</p>
+        <p class="gallery-item-author">${author}</p>
+        </li>
+           `;
+    })
+    .join('');
+}
+
+function onSeeMoreClick(e) {
+    if (!e.target.classList.contains('gallery-button')) {
+        return
+    }
+  console.log(oneCategoryGallery.children);
+    const categoryQuery = e.target.parentNode.children[0].textContent;
+    const categoryQueryArray = categoryQuery.split(' ');
+    mainTitle.textContent = categoryQueryArray.slice(0, categoryQueryArray.length - 1).join(' ');
+    mainTitleLastWtord.textContent = categoryQueryArray[categoryQueryArray.length - 1];
+    for (const category of oneCategoryGallery.children) {
+        category.classList.remove('category-list-item-active')
+        if (categoryQuery.toLowerCase() === category.textContent.toLowerCase()) {
+            category.classList.add('category-list-item-active')
+                   }
+    }
+    fetchByCategory(categoryQuery)
+}
+
