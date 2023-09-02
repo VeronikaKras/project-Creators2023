@@ -150,6 +150,7 @@ function renderOneCategory(data) {
       return `<li class="gallery-item" id="${_id}">
               <div class="gallery-item-thumb">
               <img class="gallery-item-image" loading="lazy" src="${book_image}">
+              <div class="gallery-item-hover"><p class="gallery-item-p-hover">quick view</p></div>
               </div>
               <p class="gallery-item-title">${title}</p>
               <p class="gallery-item-author">${author}</p>
