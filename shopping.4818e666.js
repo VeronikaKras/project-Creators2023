@@ -1,2 +1,0 @@
-!function(){var e="light-theme",t="dark-theme",s=document.getElementById("theme-switch-toggle"),a=document.body;s.addEventListener("change",(function(s){s.currentTarget.checked?(a.classList.add(t),a.classList.remove(e),localStorage.setItem("Theme",t)):(a.classList.add(e),a.classList.remove(t),localStorage.setItem("Theme",e))}));var c=localStorage.getItem("Theme");console.log(c),c?(a.classList.add(c),c===t&&(s.checked=!0)):a.classList.add(e)}();
-//# sourceMappingURL=shopping.4818e666.js.map
