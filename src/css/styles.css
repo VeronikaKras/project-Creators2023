@@ -7,6 +7,7 @@
 @import url('./shopping.css');
 @import url('./support.css');
 @import url('./theme.css');
+@import url('./pagination.css');
 
 
 :root {
@@ -16,6 +17,8 @@
     --violet-color: #4F2EE8;
     --white-color: #fff;
     --grey-text-color: #B4AFAF;
+    --yellow-color: #EAC645;
+    --light-theme-color: #F6F6F6;
     --grey-categories-color: #E0E0E0;
     --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
