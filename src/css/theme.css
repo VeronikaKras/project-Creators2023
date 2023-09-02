@@ -8,7 +8,7 @@ body.dark-theme {
 }
 .toolbar {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   width: 65px;
   padding: 10px 10px;
 }
@@ -75,7 +75,7 @@ body.dark-theme {
   pointer-events: none;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateX(1px);
-  transition: transform 250ms var(--timing-function);
+  transition: var(--transition-dur-and-func);
 }
 .theme-switch__toggle:checked + .theme-switch__track {
   background: linear-gradient(#4f2ee8, #686868);
