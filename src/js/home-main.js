@@ -158,7 +158,7 @@ function onSeeMoreClick(e) {
     const categoryQueryArray = categoryQuery.split(' ');
     mainTitle.textContent = categoryQueryArray.slice(0, categoryQueryArray.length - 1).join(' ');
     mainTitleLastWtord.textContent = categoryQueryArray[categoryQueryArray.length - 1];
-    for (const category of oneCategoryGallery.children) {
+    for (const category of categoriesList.children) {
         category.classList.remove('category-list-item-active')
         if (categoryQuery.toLowerCase() === category.textContent.toLowerCase()) {
             category.classList.add('category-list-item-active')
