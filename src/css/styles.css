@@ -83,15 +83,14 @@ html {
         padding-left: 24px;
         padding-right: 24px;
 
-    
-
     }
     .main-container{
            display: flex; 
-           gap: 86px;
+           
     }
     .sidebar{
         flex-direction: column;
         gap: 86px;
+        margin-right: 40px;
     }
 }
