@@ -1,17 +1,20 @@
 // import svgIconTrash from '../img/icons.svg';
-// import amazon1x from '../img/shopping/amazon1x.png'
-// import amazon2x from '../img/shopping/amazon2x.png'
-// import apple1x from '../img/shopping/apple1x.png'
-// import apple2x from '../img/shopping/apple2x.png'
-// import bookshop1x from '../img/shopping/boockshop1x.png'
-// import bookshop2x from '../img/shopping/boockshop1x.png'
-// import emptybook from '../img/shopping/IMG_9606 1.png'
+// import amazon from '../img/shopping/amazon.png'
+// import amazon1 from '../img/shopping/amazon1x.png'
+// import apple from '../img/shopping/apple.png'
+// import apple1 from '../img/shopping/apple1x.png'
+// import bookshop from '../img/shopping/boockshop.png'
+// import emptybook1x from '../img/shopping/books1x.png'
+// import emptybook2x from '../img/shopping/books2x.png'
+
+
+// const KEY_MODAL = 'add-books';
 
 
 // const cardList = document.querySelector('.card-list');
 
 
-// const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
+// const savedBooks = JSON.parse(localStorage.getItem('KEY_MODAL')) ?? [];
 
 
 // CreateMarkup(savedBooks);
@@ -35,31 +38,42 @@
 //     <p class="shop-card-author">${author}</p>
 //     <ul>
 //     <li class="shop-card-buy-links">
-//         <a
-//             href="${buy_links[0].url}"
-//             class="shop-card-link"
-//             target="blank"
-//           >
-//             <img
-//               class="buy-links-icon icon-amazon"
-//               src="${amazon2x}" srcset="${amazon1x} 1x, ${amazon2x} 2x" 
-//               alt="amazon-icon"
-//             />
-//           </a>
+//       <a
+        //      href="${buy_links[0].url}"
+        //     class="shop-card-link"
+        //     target="blank"
+        //   >
+        //     <img
+        //       class="buy-links-icon icon-amazon-dark"
+        //       src="${amazon}"
+        //       alt="amazon-icon"
+        //     />
+        //      <img
+        //       class="buy-links-icon icon-amazon-color"
+        //       src="${amazon1}"
+        //       alt="amazon-icon"
+        //     />
+        //   </a>
 //       </li>
 //       <li class="shop-card-buy-links">
-//           <a
-//             href="${buy_links[1].url}"
-//             class="shop-card-link"
-//             target="blank"
-//           >
-//             <img
-//               class="buy-links-icon icon-apple"
-//               src="${apple2x}" srcset="${apple1x} 1x, ${apple2x} 2x" 
+//          <a
+        //     href="${buy_links[1].url}"
+        //     class="shop-card-link"
+        //     target="blank"
+        //   >
+        //     <img
+        //       class="buy-links-icon icon-apple-dark"
+        //       src="${apple}" 
               
-//               alt="apple-icon"
-//             />
-//           </a>
+        //       alt="apple-icon"
+        //     />
+        //     <img
+        //       class="buy-links-icon icon-apple-color"
+        //       src="${apple1}" 
+              
+        //       alt="apple-icon"
+        //     />
+        //   </a>
 //         </li>
 //      <li class="shop-card-buy-links">
 //           <a
@@ -69,7 +83,7 @@
 //           >
 //             <img
 //               class="buy-links-icon icon-bookstore"
-//              src="${bookshop2x}" srcset="${bookshop1x} 1x, ${bookshop2x} 2x" 
+//              src="${bookshop}"  
              
 //               alt="bookstore-icon"
 //             />
@@ -107,7 +121,11 @@
 // function emptyLocaleMarkup() { 
 //     const markup = `<div class="empty-shop-list">
 //   <p class="empty-shop-list-text">This page is empty, add some books and proceed to order.</p>
-//   <img  class="empty-shop-list-img" src="${emptybook}" alt="books illustration" />
+//<img
+  //          class="empty-shop-list-img"
+    //        src="${emptybook2x}" srcset="${emptybook1x} 1x, ${emptybook2x} 2x"
+      //      alt="books illustration"
+        //  />
 // </div>`;
     
 //     cardList.innerHTML = markup; 
@@ -123,4 +141,5 @@
 //       event.target.parentNode.remove();
 //     }
 //   });
+
 

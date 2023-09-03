@@ -9,89 +9,84 @@
 @import url('./theme.css');
 @import url('./pagination.css');
 
-
 :root {
-   
-    --black-header-color: #111111;
-    --black-body-color: #202024;
-    --violet-color: #4F2EE8;
-    --white-color: #fff;
-    --grey-text-color: #B4AFAF;
-    --yellow-color: #EAC645;
-    --light-theme-color: #F6F6F6;
-    --grey-categories-color: #E0E0E0;
-    --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --black-header-color: #111111;
+  --black-body-color: #202024;
+  --violet-color: #4f2ee8;
+  --white-color: #fff;
+  --grey-text-color: #b4afaf;
+  --yellow-color: #eac645;
+  --light-theme-color: #f6f6f6;
+  --grey-categories-color: #e0e0e0;
+  --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
-    font-style: normal;
-    color: var(--black-header-color);
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: -0.04em;
-    background-color: #F6F6F6;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  color: var(--black-header-color);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  background-color: #f6f6f6;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 375px;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 320px;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .no-scroll {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-    .sidebar{
-        display: flex;
-        flex-direction: row;
-        gap: 32px;    
-    }
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .container {
-        max-width: 1440px;
-        padding-left: 24px;
-        padding-right: 24px;
-
-    
-
-    }
-    .main-container{
-           display: flex; 
-           gap: 86px;
-    }
-    .sidebar{
-        flex-direction: column;
-        gap: 86px;
-    }
+  .container {
+    max-width: 1440px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .main-container {
+    display: flex;
+    gap: 86px;
+  }
+  .sidebar {
+    flex-direction: column;
+    gap: 86px;
+  }
 }
