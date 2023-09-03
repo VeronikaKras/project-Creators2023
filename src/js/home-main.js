@@ -6,6 +6,7 @@ axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
 const categoriesList = document.querySelector('.categories-list');
 const booksSection = document.querySelector('.gallery');
 const categoryTitle = document.querySelector('.category-title');
+const oneCategoryContainer = document.querySelector('.one-category-container')
 const oneCategoryGallery = document.querySelector('.one-category-gallery');
 const homeContainer = document.querySelector('.home-container');
 const categorySection = document.querySelector('.category-gallery');
@@ -62,6 +63,7 @@ async function fetchCategories() {
           );
           const books = response.data;
           const markup = renderOneCategoryBooks(books);
+          oneCategoryContainer.classList.remove("visually-hidden")
           oneCategoryGallery.innerHTML = markup;
 
           if (books.length === 0) {
@@ -86,7 +88,7 @@ function renderOneCategoryBooks(books) {
   return books
     .map(({ book_image, title, author, _id }) => {
       return `<li class="one-category-item" id="${_id}">
-        <div class="one-category-item-card">
+        <div class="one-category-item-card gallery-item-thumb">
         <img class="one-category-item-img" src="${book_image}">
         <div class="one-category-item-hover"><p class="one-category-item-p-hover">quick view</p></div>
         </div>
