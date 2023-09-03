@@ -1,18 +1,17 @@
-// import svgIconTrash from '../img/sprite.svg';
-// import amazon1x from '../img/shopping/amazon_1x.jpg'
-// import amazon2x from '../img/shopping/amazon_2x.jpg'
-// import apple1x from '../img/shopping/apple-1x.jpg'
-// import apple2x from '../img/shopping/apple-2x.jpg'
-// import bookshop1x from '../img/shopping/bookshop-1x.jpg'
-// import bookshop2x from '../img/shopping/bookshop-2x.jpg'
-
+// import svgIconTrash from '../img/icons.svg';
+// import amazon1x from '../img/shopping/amazon1x.png'
+// import amazon2x from '../img/shopping/amazon2x.png'
+// import apple1x from '../img/shopping/apple1x.png'
+// import apple2x from '../img/shopping/apple2x.png'
+// import bookshop1x from '../img/shopping/boockshop1x.png'
+// import bookshop2x from '../img/shopping/boockshop1x.png'
+// import emptybook from '../img/shopping/IMG_9606 1.png'
 
 
 // const cardList = document.querySelector('.card-list');
 
 
 // const savedBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) ?? [];
-
 
 
 // CreateMarkup(savedBooks);
@@ -34,11 +33,7 @@
 //     <p class="shop-card-category">${list_name}</p>
 //     <p class="shop-card-description">${isAvaliableDescription(description)}</p>
 //     <p class="shop-card-author">${author}</p>
-//     <button class="basket">
-//     <svg class="trash-btn" width="18" height="18">
-//   <use href="${svgIconTrash}"></use>
-// </svg>
-// </button>
+//     <ul>
 //     <li class="shop-card-buy-links">
 //         <a
 //             href="${buy_links[0].url}"
@@ -46,10 +41,9 @@
 //             target="blank"
 //           >
 //             <img
-//               class="buy-links-icon"
+//               class="buy-links-icon icon-amazon"
 //               src="${amazon2x}" srcset="${amazon1x} 1x, ${amazon2x} 2x" 
-//               width="48"
-//               alt="platform-icon"
+//               alt="amazon-icon"
 //             />
 //           </a>
 //       </li>
@@ -60,10 +54,10 @@
 //             target="blank"
 //           >
 //             <img
-//               class="buy-links-icon"
+//               class="buy-links-icon icon-apple"
 //               src="${apple2x}" srcset="${apple1x} 1x, ${apple2x} 2x" 
-//               width="28"
-//               alt="platform-icon"
+              
+//               alt="apple-icon"
 //             />
 //           </a>
 //         </li>
@@ -74,15 +68,21 @@
 //             target="blank"
 //           >
 //             <img
-//               class="buy-links-icon"
+//               class="buy-links-icon icon-bookstore"
 //              src="${bookshop2x}" srcset="${bookshop1x} 1x, ${bookshop2x} 2x" 
-//               width="32"
-//               alt="platform-icon"
+             
+//               alt="bookstore-icon"
 //             />
 //           </a>
 //         </li>
+//         </ul>
 //     </li>
 //   </div>
+//   <button class="basket-btn">
+//     <svg class="basket-icon" width="18" height="18">
+//   <use href="${svgIconTrash}"></use>
+// </svg>
+// </button>
 // </li>`)
 //      .join('');
 //     } else { 
@@ -90,6 +90,8 @@
 //     }
 //       cardList.innerHTML = markup; 
 // }
+
+
 
 // //перевіряємо чи є опис книги. Якщо не має, виводимо повідомлення
 
@@ -105,10 +107,20 @@
 // function emptyLocaleMarkup() { 
 //     const markup = `<div class="empty-shop-list">
 //   <p class="empty-shop-list-text">This page is empty, add some books and proceed to order.</p>
-//   <img  class="empty-shop-list-img" src="" alt="books illustration" />
+//   <img  class="empty-shop-list-img" src="${emptybook}" alt="books illustration" />
 // </div>`;
     
 //     cardList.innerHTML = markup; 
 // }
 
+
+// логіка видалення книги при натисканні на корзину
+
+  // Обработчик события клика на родительском элементе (делегирование)
+//   cardList.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("basket-btn")) {
+//       // Удаление родительского элемента (карточки) при клике на кнопку "крестик"
+//       event.target.parentNode.remove();
+//     }
+//   });
 
