@@ -59,6 +59,10 @@ ul .category-item:not(:first-child) {
     line-height: 1.33;
   }
 
+  .category-item:hover {
+    font-size: 20px;
+  }
+
   .category-item:not(:first-child) {
     padding-top: 32px;
   }
@@ -68,9 +72,6 @@ ul .category-item:not(:first-child) {
   .categories {
     width: 356px;
     margin: 0;
-  }
-  .category-item:hover {
-    font-size: 20px;
   }
 
   .category-item:active,
