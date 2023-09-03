@@ -9,37 +9,80 @@
       <!-- Navigation -->
       <ul class="header-nav-list list">
         <li class="header-item">
-          <a class="header-item-link link" href="./index.html"
-            >Home</a
-          >
+          <a class="header-item-link link" href="./index.html">Home</a>
         </li>
         <li class="header-item">
           <a class="header-item-link link" href="./shopping.html">
-            <span class="header-item-link-shoping-list">Shopping List</span>
-            <!-- <svg class="mobile-button-menu-icon" width="20" height="20">
+            <p class="header-item-link-shoping-list">Shopping List</p>
+            <svg
+              class="header-icon-shoping-list icon-shoping-list"
+              width="20"
+              height="20"
+            >
               <use href="./img/icons.svg#icon-shopping-list"></use>
-            </svg> -->
+            </svg>
           </a>
         </li>
       </ul>
     </nav>
 
-    <!-- Rounded switch -->
+    <div class="header-wrap">
+      <!-- Rounded switch -->
+      <div class="toolbar">
+        <div class="theme-switch__control">
+          <input
+            class="theme-switch__toggle"
+            type="checkbox"
+            name="theme"
+            id="theme-switch-toggle"
+            aria-label="Переключити між темною та світлою темою"
+          />
+          <label
+            aria-hidden="true"
+            class="theme-switch__track"
+            for="theme-switch-toggle"
+          >
+          </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
+        </div>
+      </div>
 
-    <!-- Mobile button -->
-    <!-- <button>
-      <svg class="mobile-button-menu-icon" width="28" height="28">
-        <use href="./img/icons.svg#icons-align-left"></use>
-      </svg>
-    </button> -->
-
-    <!-- Mobile menu -->
-    <!-- <div>
-      <button">
-        <svg class="modal-icon" width="20" height="20">
+      <!-- Mobile button -->
+      <button
+        class="mobile-button-menu js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="mobile-button-menu-icon-togle" width="28" height="28">
+          <use href="./img/icons.svg#icon-align-left"></use>
+        </svg>
+        <svg class="mobile-button-menu-icon-close-menu" width="20" height="20">
           <use href="./img/icons.svg#icon-x-close"></use>
         </svg>
       </button>
-    </div> -->
+    </div>
   </div>
 </header>
+
+<!-- Mobile menu -->
+<div class="menu-container js-menu-container" id="mobile-menu">
+  <div class="menu-user-login">
+    <p class="menu-user-login-name">Hello</p>
+  </div>
+  <ul class="mobile-menu-nav-list list">
+    <li class="mobile-menu-nav-item header-item">
+      <a href="./index.html" class="mobile-menu-link link">Home</a>
+    </li>
+    <li class="mobile-menu-nav-item header-item">
+      <a href="./shopping.html" class="mobile-menu-link link"
+        >Shopping List
+        <svg
+          class="mobile-icon-shoping-list icon-shoping-list"
+          width="20"
+          height="20"
+        >
+          <use href="./img/icons.svg#icon-shopping-list"></use></svg
+      ></a>
+    </li>
+  </ul>
+</div>

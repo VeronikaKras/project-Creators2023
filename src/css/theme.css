@@ -1,5 +1,5 @@
 body.light-theme {
-  background-color: #f6f6f6;
+  background-color: var(--light-theme-color);
   color: var(--black-header-color);
 }
 body.dark-theme {
@@ -8,7 +8,7 @@ body.dark-theme {
 }
 .toolbar {
   display: flex;
-  /* justify-content: flex-end; */
+  justify-content: flex-end;
   width: 65px;
   padding: 10px 10px;
 }
@@ -84,7 +84,3 @@ body.dark-theme {
 .theme-switch__toggle:checked ~ .theme-switch__marker {
   transform: translateX(21px);
 }
-/* .theme-switch__toggle:focus + .theme-switch__track,
-.theme-switch__toggle:active + .theme-switch__track {
-  box-shadow: 0 0 0 3px #2196f3;
-} */
