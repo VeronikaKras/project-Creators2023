@@ -25,8 +25,8 @@
 .category-item:hover,
 .category-item:active,
 .category-item:focus {
-  transform: scale(0.98);
-  transition: transform var(--transition-dur-and-func);
+  transform: scale(0.99);
+  transition: transform 350ms ease-in;
 }
 
 ul .category-item:not(:first-child) {
