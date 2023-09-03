@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
-
+import {Spinner} from 'spin.js';
 axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
 
 
@@ -16,8 +16,29 @@ const mainTitleLastWtord = document.querySelector('.home-main-span-lastword');
 
 categoriesList.addEventListener('click', onChooseCategory);
 
-
-
+const opts = {
+  lines: 13, // The number of lines to draw
+  length: 38, // The length of each line
+  width: 17, // The line thickness
+  radius: 45, // The radius of the inner circle
+  scale: 1, // Scales overall size of the spinner
+  corners: 1, // Corner roundness (0..1)
+  speed: 1, // Rounds per second
+  rotate: 0, // The rotation offset
+  animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#4f2ee8', // CSS color or array of colors
+  fadeColor: 'transparent', // CSS color or array of colors
+  top: '50%', // Top position relative to parent
+  left: '50%', // Left position relative to parent
+  shadow: '0 0 1px transparent', // Box-shadow for the lines
+  zIndex: 2000000000, // The z-index (defaults to 2e9)
+  className: 'spinner', // The CSS class to assign to the spinner
+  position: 'absolute', // Element positioning
+};
+let target = document.getElementById('spinjs');
+let spinner = new Spinner(opts).spin(target);
+console.log(target)
 function onChooseCategory(evt) {
   for (const cat of categoriesList.children) {
     cat.classList.remove('is-chosen');
@@ -61,12 +82,14 @@ async function fetchCategories() {
         try {
           homeContainer.innerHTML = '';
           booksSection.innerHTML = '';
+          target.style.display = 'block';
           const response = await axios.get(
             `/category?category=${categoryName}`
           );
           const books = response.data;
           const markup = renderOneCategoryBooks(books);
           oneCategoryContainer.classList.remove("visually-hidden")
+          target.style.display = 'none';
           oneCategoryGallery.innerHTML = markup;
 
           if (books.length === 0) {
@@ -116,9 +139,11 @@ function renderCategoriesList(data) {
 async function fetchBooks() {
   mainTitle.textContent = 'Best Sellers';
   mainTitleLastWtord.textContent = ' Books';
+ 
   try {
     const { data } = await axios.get('/top-books');
     const markup = renderList(data);
+    target.style.display = 'none';
     booksSection.innerHTML = markup;
   } catch (error) {
     Notiflix.Notify.failure('Something went wrong');
@@ -144,13 +169,18 @@ fetchCategories();
 fetchBooks();
 
 async function fetchByCategory(category) {
+  booksSection.style.display = 'none';
+ target.style.display = 'block';
   try {
+    
     const { data } = await axios.get(`/category?category=${category}`);
     if (data.length === 0) {
       return Notiflix.Notify.info('Книги закінчились');
     }
+   
     const markup = renderOneCategory(data);
-    booksSection.style.display = 'none';
+    
+    target.style.display = 'none';
     categorySection.innerHTML = markup;
   } catch (error) {
     Notiflix.Notify.failure('Помилка: ', error.message);

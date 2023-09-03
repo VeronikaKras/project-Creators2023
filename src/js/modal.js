@@ -52,14 +52,16 @@ function onEscKey(event) {
 } 
 
 function modalRender(data) {
-    const { book_image, author, publisher, list_name, title, _id} = data;
+    const { book_image, author, publisher, list_name, title, _id, description, buy_links} = data;
     const book = {
         book_image,
         author,
         publisher,
         list_name,
         title,
-        _id ,     
+        _id,  
+        description,
+        buy_links
     }
         localStorage.setItem('new-book', JSON.stringify(book))
     
