@@ -84,15 +84,14 @@ async function fetchCategories() {
 
 function renderOneCategoryBooks(books) {
   return books
-    .map(({ book_image, title, author }) => {
-      return `<li class="one-category-item">
-        <a href="">
+    .map(({ book_image, title, author, _id }) => {
+      return `<li class="one-category-item" id="${_id}">
         <div class="one-category-item-card">
         <img class="one-category-item-img" src="${book_image}">
+        <div class="one-category-item-hover"><p class="one-category-item-p-hover">quick view</p></div>
         </div>
         <p class="one-category-item-title">${title}</p>
         <p class="one-category-item-author">${author}</p>
-        </a>
         </li>
            `;
     })
@@ -110,8 +109,8 @@ function renderCategoriesList(data) {
 }
 
 async function fetchBooks() {
-  mainTitle.textContent = 'BEST SELLERS';
-  mainTitleLastWtord.textContent = ' BOOKS';
+  mainTitle.textContent = 'Best Sellers';
+  mainTitleLastWtord.textContent = ' Books';
   try {
     const { data } = await axios.get('/top-books');
     const markup = renderList(data);

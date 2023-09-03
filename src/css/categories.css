@@ -18,15 +18,15 @@
   cursor: pointer;
 }
 
-.category-item:hover {
-  font-size: 18px;
-  transition: font-size var(--transition-dur-and-func);
-}
-
+/* .category-item:hover {
+  letter-spacing: -0.03em;
+  transition: letter-spacing var(--transition-dur-and-func);
+} */
+.category-item:hover,
 .category-item:active,
 .category-item:focus {
-  transform: scale(0.98);
-  transition: transform var(--transition-dur-and-func);
+  transform: scale(0.99);
+  transition: transform 350ms ease-in;
 }
 
 ul .category-item:not(:first-child) {
@@ -57,10 +57,6 @@ ul .category-item:not(:first-child) {
     color: rgba(17, 17, 17, 0.6);
     font-size: 18px;
     line-height: 1.33;
-  }
-
-  .category-item:hover {
-    font-size: 20px;
   }
 
   .category-item:not(:first-child) {
