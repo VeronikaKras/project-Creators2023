@@ -30,6 +30,21 @@
 .header-nav-list {
   display: none;
 }
+.header-item {
+  padding: 8px 16px;
+  border-radius: 36px;
+}
+.header-item-link {
+  display: flex;
+  align-items: center;
+}
+.header-wrap {
+  display: flex;
+  gap: 14px;
+}
+.icon-shoping-list {
+  fill: currentColor;
+}
 
 /* MOBILE MENU */
 .mobile-button-menu {
@@ -52,11 +67,6 @@
   .mobile-button-menu {
     display: none;
   }
-}
-
-.mobile-button-menu:hover,
-.mobile-button-menu:focus {
-  background-color: #4f2ee8;
 }
 
 .menu-container {
@@ -102,7 +112,7 @@
 }
 
 .mobile-button-menu-icon {
-  fill: currentColor;
+  /* fill: var(--black-body-color); */
 }
 /* Your existing CSS styles */
 
@@ -113,8 +123,12 @@
   display: block;
 }
 .mobile-button-menu-icon-togle {
-  fill: #111;
   display: block;
+  stroke: var(--black-body-color);
+}
+.mobile-button-menu-icon-togle:hover,
+.mobile-button-menu-icon-togle:focus {
+  stroke: var(--violet-color);
 }
 .mobile-button-menu-icon-close-menu {
   display: none;
@@ -143,10 +157,6 @@
   letter-spacing: -0.56px;
   text-transform: uppercase;
 }
-/* .header-item {
-  padding: 8px 16px;
-  border-radius: 36px;
-} */
 
 @media screen and (min-width: 768px) {
   .header-container {
@@ -184,4 +194,3 @@
     margin-right: 72px;
   }
 }
-
