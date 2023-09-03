@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 
 axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
 
+
 const categoriesList = document.querySelector('.categories-list');
 const booksSection = document.querySelector('.gallery');
 const categoryTitle = document.querySelector('.category-title');
@@ -14,6 +15,8 @@ const mainTitle = document.querySelector('.home-main-span');
 const mainTitleLastWtord = document.querySelector('.home-main-span-lastword');
 
 categoriesList.addEventListener('click', onChooseCategory);
+
+
 
 function onChooseCategory(evt) {
   for (const cat of categoriesList.children) {

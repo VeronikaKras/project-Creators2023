@@ -13,8 +13,7 @@ async function fetchBooksById(id) {
     const { data } = await axios.get(`/${id}`);
     const markup = modalRender(data);
     refs.modal.innerHTML = markup;
-    console.log(data)
-}
+    }
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
 // refs.closeModalBtn.addEventListener('click', onCloseModal);
@@ -53,7 +52,18 @@ function onEscKey(event) {
 } 
 
 function modalRender(data) {
-   const { book_image, author, publisher, list_name, title, _id} = data;
+    const { book_image, author, publisher, list_name, title, _id} = data;
+    const book = {
+        book_image,
+        author,
+        publisher,
+        list_name,
+        title,
+        _id ,     
+    }
+        localStorage.setItem('new-book', JSON.stringify(book))
+    
+    console.log(book)
     return ( 
         ` 
         img src="${book_image}">
@@ -63,7 +73,7 @@ function modalRender(data) {
          <p>${title}</p>
          
          <button type = "button" class = "close-modal">x</button>
-         <button type = "button" class = "js-addButton" id="${_id}">Add to shopping list</button>
+         <button type = "button" class = "js-addButton" id="${book}">Add to shopping list</button>
         
         `
 )
@@ -72,17 +82,15 @@ function modalRender(data) {
 
 
 refs.modal.addEventListener('click', onModalClick)
-const itemBooks = [];
+let itemBooks = [];
 
 function onModalClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
 }
-const data = {
-    id: e.target.id
-}
-
-  itemBooks.push(e.target.id);
+const newBook = JSON.parse(localStorage.getItem('new-book'))
+console.log(newBook)
+   itemBooks.push(newBook);
    localStorage.setItem("saved-books-in-modal", JSON.stringify(itemBooks));
    
 }
