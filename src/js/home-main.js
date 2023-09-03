@@ -12,8 +12,11 @@ const homeContainer = document.querySelector('.home-container');
 const categorySection = document.querySelector('.category-gallery');
 const mainTitle = document.querySelector('.home-main-span');
 const mainTitleLastWtord = document.querySelector('.home-main-span-lastword');
+const loader = document.querySelector('.loader-container');
+const loaderCategory = document.querySelector('.category-loader');
 
 categoriesList.addEventListener('click', onChooseCategory);
+
 
 function onChooseCategory(evt) {
   for (const cat of categoriesList.children) {
@@ -37,9 +40,9 @@ async function fetchCategories() {
   try {
     const response = await axios.get('/category-list');
     renderCategoriesList(response.data);
-
     // Додавання обробника подій до кожної кнопки категорії
     const categories = document.querySelectorAll('.category-item');
+   
     categories.forEach(category => {
       category.addEventListener('click', async e => {
         const categoryName = category.textContent;
@@ -56,16 +59,19 @@ async function fetchCategories() {
           .join(' ');
 
         try {
+          loaderCategory.style.display = 'block';
           homeContainer.innerHTML = '';
           booksSection.innerHTML = '';
           const response = await axios.get(
             `/category?category=${categoryName}`
-          );
-          const books = response.data;
-          const markup = renderOneCategoryBooks(books);
-          oneCategoryContainer.classList.remove("visually-hidden")
-          oneCategoryGallery.innerHTML = markup;
-
+            );
+            
+            const books = response.data;
+            const markup = renderOneCategoryBooks(books);
+            oneCategoryContainer.classList.remove("visually-hidden");
+            oneCategoryGallery.innerHTML = markup;
+            loaderCategory.style.display = 'none';
+           
           if (books.length === 0) {
             Notiflix.Notify.warning(
               `No books found in the "${categoryName}" category.`
@@ -76,7 +82,8 @@ async function fetchCategories() {
           Notiflix.Notify.failure(
             'Failed to fetch books. Please try again later.'
           );
-        }
+        } 
+       
       });
     });
   } catch (error) {
@@ -85,6 +92,7 @@ async function fetchCategories() {
 }
 
 function renderOneCategoryBooks(books) {
+  
   return books
     .map(({ book_image, title, author, _id }) => {
       return `<li class="one-category-item" id="${_id}">
@@ -98,6 +106,7 @@ function renderOneCategoryBooks(books) {
            `;
     })
     .join('');
+  
 }
 
 function createCategoriesMarkup(array) {
@@ -117,8 +126,10 @@ async function fetchBooks() {
     const { data } = await axios.get('/top-books');
     const markup = renderList(data);
     booksSection.innerHTML = markup;
+    loader.style.display = 'none';
   } catch (error) {
     Notiflix.Notify.failure('Something went wrong');
+    loader.style.display = 'none';
   }
 }
 
@@ -142,6 +153,7 @@ fetchBooks();
 
 async function fetchByCategory(category) {
   try {
+    loader.style.display = 'block';
     const { data } = await axios.get(`/category?category=${category}`);
     if (data.length === 0) {
       return Notiflix.Notify.info('Книги закінчились');
@@ -149,6 +161,8 @@ async function fetchByCategory(category) {
     const markup = renderOneCategory(data);
     booksSection.style.display = 'none';
     categorySection.innerHTML = markup;
+  loader.style.display = 'none';
+    
   } catch (error) {
     Notiflix.Notify.failure('Помилка: ', error.message);
   }
