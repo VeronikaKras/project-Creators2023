@@ -214,7 +214,10 @@ padding-bottom: 15px;
       padding: 26px 52px;
   }
 }
-
+.gallery-item{
+    margin: 0;
+    width: 100%;
+}
 /* //!dark theme */
 
 body.dark-theme .category-title,

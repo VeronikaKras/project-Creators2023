@@ -58,6 +58,10 @@ body {
   min-width: 320px;
 }
 
+.main-container{
+  margin-top: 40px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -90,10 +94,11 @@ html {
   }
   .main-container {
     display: flex;
-    gap: 86px;
+    
   }
   .sidebar {
     flex-direction: column;
     gap: 86px;
+    margin-right: 40px;
   }
 }
