@@ -119,7 +119,7 @@ function modalRender(data) {
 )
 }
 refs.modal.addEventListener('click', onModalClick)
-let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal') || []);
+let itemBooks = [];
 function onModalClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
