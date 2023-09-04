@@ -25,7 +25,7 @@ async function fetchBooksById(id) {
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
 refs.oneCategoryGallery.addEventListener('click', onOpenModal);
-// refs.closeModalBtn.addEventListener('click', onCloseModal);
+refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 function onOpenModal(e) {
     e.preventDefault();
@@ -55,27 +55,31 @@ function onEscKey(event) {
     }
 }
 function modalRender(data) {
-    const { book_image, author, publisher, list_name, title, _id, buy_links, description} = data;
+    const { book_image, title, author, description, _id, buy_links, } = data;
     const book = {
         book_image,
-        author,
-        publisher,
-        list_name,
         title,
-        _id,
+        author,
+        description,
+         _id,
         buy_links,
-        description
+        
     }
         localStorage.setItem('new-book', JSON.stringify(book))
     console.log(book)
     return (
-        `
+        `<div class="modal-container">
         <img class="modal-img" src="${book_image}"/>
-        <h2>${author}</h2>
-         <h3>${publisher}</h3>
-         <p>${list_name}</p>
-         <p>${title}</p>
-          <ul class="buy-links">
+        <div class="modal-text">
+        <h2 class="title">${title}</h2>
+        <p class="author">${author}</p>
+         <p class="description">${description}</p>
+        
+         </div>
+        
+        <div class="link-card">
+
+          <ul class="buy-link-card">
     <li class="buy-links">
       <a
              href="${buy_links[0].url}"
@@ -83,34 +87,34 @@ function modalRender(data) {
             target="blank"
           >
             <img
-              class="buy-links-icon amazon"
+              class="links-icon amazon"
               src="${amazon2}" srcset="${amazon1} 1x, ${amazon2} 2x"
               alt="amazon-icon"
             />
           </a>
       </li>
-      <li class="shop-card-buy-links">
+      <li class="buy-links">
          <a
             href="${buy_links[1].url}"
             class="shop-card-link"
             target="blank"
           >
             <img
-              class="buy-links-icon apple"
+              class="links-icon apple"
               src="${apple2}" srcset="${apple1} 1x, ${apple2} 2x"
               
               alt="apple-icon"
             />
           </a>
         </li>
-     <li class="shop-card-buy-links">
+     <li class="buy-links">
           <a
             href="${buy_links[4].url}"
             class="shop-card-link"
             target="blank"
           >
             <img
-              class="buy-links-icon bookstore"
+              class="links-icon bookstore"
              src="${bookshop2}" srcset="${bookshop1} 1x, ${bookshop2} 2x"  
              
               alt="bookstore-icon"
@@ -118,8 +122,13 @@ function modalRender(data) {
           </a>
         </li>
         </ul>
+        </div>
+        </div>
+        <div class="button">
          <button type = "button" class = "js-addButton" id="${book}">Add to shopping list</button>
-        `
+         </div>
+        
+         `
 )
 }
 refs.modal.addEventListener('click', onModalClick)
