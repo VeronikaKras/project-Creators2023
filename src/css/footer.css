@@ -28,7 +28,7 @@ body.dark-theme .footer {
 .footer-icon {
   width: 14px;
   height: 14px;
-  align-self: first baseline;
+  align-items: baseline;
   margin: 0 5px;
   animation: heartbeat 1.5s infinite;
 }
