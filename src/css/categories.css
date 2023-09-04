@@ -1,0 +1,102 @@
+/* !!! light-theme */
+
+.categories {
+  width: 335px;
+  max-height: 228px;
+  margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: 8px;
+  scrollbar-color: var(--grey-categories-color);
+}
+
+.category-item {
+  color: rgba(17, 17, 17, 0.6);
+  font-size: 16px;
+  line-height: 1.13;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+}
+
+/* .category-item:hover {
+  letter-spacing: -0.03em;
+  transition: letter-spacing var(--transition-dur-and-func);
+} */
+.category-item:hover,
+.category-item:active,
+.category-item:focus {
+  transform: scale(0.99);
+  transition: transform 350ms ease-in;
+}
+
+ul .category-item:not(:first-child) {
+  padding-top: 24px;
+}
+
+/* стилізація для скрола */
+.categories::-webkit-scrollbar {
+  width: 8px;
+}
+.categories::-webkit-scrollbar-track {
+  background: transparent;
+}
+.categories::-webkit-scrollbar-thumb {
+  background-color: var(--grey-categories-color);
+  border-radius: 20px;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .categories {
+    min-width: 337px;
+    max-height: 472px;
+    margin: 0;
+  }
+
+  .category-item {
+    color: rgba(17, 17, 17, 0.6);
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .category-item:not(:first-child) {
+    padding-top: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .categories {
+    width: 356px;
+    margin: 0;
+  }
+
+  .category-item:active,
+  .category-item:focus {
+    transform: none;
+  }
+}
+
+/* стилізація обраної категорії */
+.is-chosen {
+  text-transform: uppercase;
+  color: var(--violet-color);
+  font-weight: 700;
+
+  transition: color var(--transition-dur-and-func);
+}
+
+/* !!! dark-theme */
+body.dark-theme .categories {
+  scrollbar-color: var(--grey-categories-color);
+}
+
+body.dark-theme .category-item {
+  color: rgba(255, 255, 255, 0.6);
+}
+body.dark-theme .is-chosen {
+  color: var(--yellow-color);
+}
+
+body.dark-theme .categories::-webkit-scrollbar-thumb {
+  background-color: rgba(17, 17, 17, 0.6);
+}

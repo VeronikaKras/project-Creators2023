@@ -1,0 +1,127 @@
+<header class="header-page" id="header">
+  <div class="header-container container">
+    <nav class="header-nav">
+      <a class="header-logo" href="./index.html">
+        <svg class="header-logo-icon" width="24" height="24">
+          <use href="./img/icons.svg#icon-logo"></use>
+        </svg> Bookshelf </a>
+
+
+      <!-- Navigation -->
+      <ul class="header-nav-list list">
+        <li class="header-item" id="header-home-link">
+          <a class="header-item-link link" href="./index.html">Home</a>
+        </li>
+        <li class="header-item" id="header-shopping-link">
+          <a class="header-item-link link" href="./shopping.html">
+            <p class="header-item-link-shoping-list">Shopping List</p>
+            <svg
+              class="header-icon-shoping-list icon-shoping-list"
+              width="20"
+              height="20"
+            >
+              <use href="./img/icons.svg#icon-shopping-list"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+    <div class="header-wrap">
+      <!-- Rounded switch -->
+      <div class="toolbar">
+        <div class="theme-switch__control">
+          <input
+            class="theme-switch__toggle"
+            type="checkbox"
+            name="theme"
+            id="theme-switch-toggle"
+            aria-label="Переключити між темною та світлою темою"
+          />
+          <label
+            aria-hidden="true"
+            class="theme-switch__track"
+            for="theme-switch-toggle"
+          >
+          </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
+        </div>
+      </div>
+
+
+      <!-- Athorization -->
+      <div class="user-authorization">
+        <img
+          src="./img/header/user-photo@1x.png"
+          alt="User photo"
+          width="37"
+          height="37"
+        />
+        <p class="user-authorization-title">Hello</p>
+        <svg class="user-authorization-triangle" width="23" height="26">
+          <use href="./img/icons.svg#icon-user-authorization-triangle"></use>
+        </svg>
+      </div>
+
+
+      <!-- Mobile button -->
+      <button
+        class="mobile-button-menu js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="mobile-button-menu-icon-togle" width="28" height="28">
+          <use href="./img/icons.svg#icon-align-left"></use>
+        </svg>
+      </button>
+      <button class="mobile-button-menu-close js-close-menu">
+        <svg
+          class="mobile-button-menu-icon-close-menu"
+          width="28"
+          height="28"
+        >
+          <use href="./img/icons.svg#icon-x-close"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<!-- Mobile menu -->
+<div class="menu-container js-menu-container" id="mobile-menu">
+  <div class="menu-user-login">
+    <img
+      src="./img/header/user-photo@1x.png"
+      alt="User photo"
+      width="37"
+      height="37"
+    />
+    <p class="menu-user-login-name">Hello</p>
+  </div>
+  <ul class="mobile-menu-nav-list list">
+    <li class="mobile-menu-nav-item header-item" id="header-home-link">
+      <a href="./index.html" class="mobile-menu-link link">Home</a>
+    </li>
+    <li class="mobile-menu-nav-item header-item" id="header-shopping-link">
+      <a href="./shopping.html" class="mobile-menu-link link"
+        >
+        <p>Shopping List</p>
+        <svg
+          class="mobile-icon-shoping-list icon-shoping-list"
+          width="20"
+          height="20"
+        >
+          <use href="./img/icons.svg#icon-shopping-list"></use></svg
+      ></a>
+    </li>
+  </ul>
+  <button class="mobile-menu-btn-down">
+    <a class="mobile-menu-btn-down-link link" href="./index.html">
+      <p class="mobile-menu-btn-down-item">Bookshelf</p>
+      <svg class="mobile-menu-btn-down-icon" width="20" height="20">
+        <use href="./img/icons.svg#icon-arrow-narrow-right"></use></svg
+    ></a>
+  </button>
+</div>

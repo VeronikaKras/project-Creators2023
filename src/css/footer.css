@@ -1,0 +1,50 @@
+body.dark-theme .footer {
+  background-color: var(--black-header-color);
+  color: var(--light-theme-color);
+  box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.2);
+}
+
+.footer {
+  background-color: var(--white-color);
+  box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px 8px 0 0;
+}
+
+.footer-container {
+  display: flex;
+  height: 62px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 14px;
+}
+.goit-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.footer-icon {
+  width: 14px;
+  height: 14px;
+  align-items: baseline;
+  margin: 0 6px 0 5px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.8);
+  }
+  10% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  30% {
+    transform: scale(1.15) translateX(2%) translateY(2%);
+  }
+  50% {
+    transform: scale(1.5) translateX(8%) translateY(8%);
+  }
+}

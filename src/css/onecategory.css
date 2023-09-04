@@ -1,0 +1,226 @@
+/* Reset styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.one-category-container{
+margin-left: auto;
+    margin-right: auto;
+    max-width: 375px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    min-width: 320px;
+}
+
+.category-title{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 38px;
+        letter-spacing: -0.04em;
+
+        margin-bottom: 40px;
+        padding-top: 40px;
+}
+
+
+.one-category-item{
+display: block;
+padding-bottom: 40px;
+
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.one-category-item:nth-child(n + 8) {
+    display: none;
+}
+.one-category-item-card{
+    margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+}
+
+.one-category-item-img{
+display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.one-category-item-title{
+    color: var(--black-header-color);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+
+    margin-top: 14px;
+        margin-bottom: 4px;
+}
+
+.last-word{
+    color: var(--violet-color);
+}
+
+.one-category-item-author{
+color: var(--grey-text-color);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 14px;
+}
+
+.one-category-item-card {
+    position: relative;
+}
+
+.one-category-item-p-hover {
+    color: var(--black-header-color);
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.29;
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+}
+
+.one-category-item-hover {
+    position: absolute;
+    padding: 26px 70px;
+    width: 218px;
+    height: 70px;
+    background-color: var(--yellow-color);
+    transition: transform var(--transition-dur-and-func);
+}
+
+
+@media screen and (min-width: 768px) {
+    .one-category-container{
+        max-width: 768px;
+    }
+.one-category-gallery {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        width: 704px;
+        gap: 25px;
+    }
+
+.category-title{
+        font-size: 48px;
+        line-height: 52px;
+}
+.one-category-item{
+width: calc((100% - 50px) / 3);
+padding-bottom: 15px;
+}
+
+.one-category-item:nth-child(n + 8) {
+    display: block;
+}
+.one-category-item:nth-child(n + 13) {
+    display: none;
+}
+.one-category-item-img {
+    height: 316px;
+}
+.one-category-item-title{
+    max-width: 219px;
+    max-height: 18px;
+    overflow: hidden;
+}
+.one-category-item:hover .one-category-item-hover,
+.one-category-item:focus .one-category-item-hover {
+    transform: translateY(-100%);
+}
+
+}
+@media screen and (min-width: 1440px){
+    .one-category-container {
+        max-width: 1440px;
+        padding-left: 0;
+            padding-right: 0;
+        }
+    
+        .one-category-gallery {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+    
+            width: 996px;
+            gap: 24px;
+    
+        }
+        .category-title{
+            padding-top: 0;
+        }
+        .one-category-item-card{
+            width: 180px;
+                height: 256px;
+
+                position: relative;
+        }
+.one-category-item-img{
+    width: 180px;
+        height: 256px;
+}
+.one-category-item {
+        width: calc((100% - 96px) / 5);
+        padding-bottom: 16px;
+    
+    }
+    .one-category-item:nth-child(n + 8) {
+    display: block;
+}
+
+.one-category-item:nth-child(n + 21) {
+    display: none;
+}
+  .one-category-item-hover {
+      width: 180px;
+      padding: 26px 52px;
+  }
+}
+.gallery-item{
+    margin: 0;
+    width: 100%;
+}
+/* //!dark theme */
+
+body.dark-theme .category-title,
+body.dark-theme .one-category-item-title{
+    color: var(----white-color);
+}
