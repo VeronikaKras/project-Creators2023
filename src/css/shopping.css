@@ -25,16 +25,12 @@
 .shopping-list {
   display: flex;
   flex-direction: column;
-
-  /* align-items: center; */
 }
 
 h1 {
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
-
-  /* align-items: flex-start; */
 
   margin-bottom: 40px;
 }
@@ -60,6 +56,8 @@ h1 {
 .card-img {
   width: 100px;
   height: 142px;
+
+  border-radius: 8px;
 }
 
 .shop-card-details {
@@ -75,12 +73,15 @@ h1 {
   top: 14px;
   right: 14px;
 
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   background-color: var(--violet-color);
 
   border-radius: 50%;
   border: none;
+}
+.basket {
+  z-index: 20;
 }
 
 .basket-btn:hover,
@@ -97,59 +98,19 @@ h1 {
   right: 14px;
   bottom: 14px;
 }
-/* .icon-amazon {
-  width: 32px;
-  height: 11px;
-} */
 
-.icon-amazon-dark {
+.icon-amazon {
   width: 32px;
   height: 11px;
 }
 
-.icon-amazon-color {
-  position: absolute;
-  top: 32%;
-  width: 32px;
-  height: 11px;
-
-  opacity: 0;
-
-  transition: opacity 0.2s ease;
-}
-
-.icon-amazon-color:hover {
-  opacity: 1;
-}
-
-/* .icon-apple,
-.icon-bookstore {
-  width: 16px;
-  height: 16px;
-} */
-
-.icon-apple-dark,
-.icon-apple-color,
+.icon-apple,
 .icon-bookstore {
   width: 16px;
   height: 16px;
 }
 
-.icon-apple-color {
-  position: absolute;
-  top: 0%;
-  left: 45.8%;
-
-  opacity: 0;
-
-  transition: opacity 0.2s ease;
-}
-
-.icon-apple-color:hover {
-  opacity: 1;
-}
-
-/* .icon-amazon:hover,
+.icon-amazon:hover,
 .icon-amazon:focus,
 .icon-apple:hover,
 .icon-apple:focus,
@@ -157,11 +118,20 @@ h1 {
 .icon-bookstore:focus {
   transform: scale(1.1);
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
-} */
+}
 
 .icon-bookstore:hover {
   transform: scale(1.02);
   transition: 0.2s ease;
+}
+.shop-card-buy-links {
+  filter: grayscale();
+}
+
+.shop-card-buy-links:hover,
+.shop-card-buy-links:focus {
+  filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
+  transform: scale(1.2);
 }
 
 .shop-card-title {
@@ -240,6 +210,10 @@ h1 {
     width: 508px;
     height: 53px;
   }
+  .basket-btn {
+    width: 34px;
+    height: 34px;
+  }
   .buy-links-list {
     gap: 16px;
 
@@ -251,14 +225,11 @@ h1 {
     height: 15px;
   } */
 
-  .icon-amazon-dark,
-  .icon-amazon-color {
+  .icon-amazon {
     width: 48px;
     height: 15px;
   }
-  .icon-amazon-color {
-    top: 26%;
-  }
+
   /* .icon-apple,
   .icon-bookstore {
     width: 30px;
