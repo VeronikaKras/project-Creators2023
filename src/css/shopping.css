@@ -266,3 +266,17 @@ body.dark-theme .shop-card-description {
 body.dark-theme .shopping-span {
   color: var(--violet-color);
 }
+
+/* MAIN shopping list */
+.donate-container {
+  display: none;
+}
+.shopping-list-container {
+  display: flex;
+  padding-top: 40px;
+}
+@media screen and (min-width: 1440px) {
+  .shopping-list-container .donate-container {
+    display: block;
+  }
+}
