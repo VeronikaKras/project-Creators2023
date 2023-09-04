@@ -45,8 +45,31 @@
 .icon-shoping-list {
   fill: currentColor;
 }
+.user-authorization {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+
+  padding: 4px 12px;
+  width: 182px;
+
+  border-radius: 36px;
+  background: var(--violet-color);
+}
+.user-authorization-title {
+  color: var(--white-color);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.44px;
+}
 
 /* MOBILE MENU */
+.mobile-icon-hidden {
+  display: none;
+}
+
 .mobile-button-menu {
   min-height: 28px;
   min-width: 28px;
@@ -64,7 +87,8 @@
 }
 
 @media (min-width: 768px) {
-  .mobile-button-menu {
+  .mobile-button-menu,
+  .menu-togle {
     display: none;
   }
 }
@@ -117,10 +141,11 @@
 /* Your existing CSS styles */
 
 .mobile-button-menu.is-open .mobile-button-menu-icon-togle {
-  display: none;
+  /* display: none; */
 }
 .mobile-button-menu.is-open .mobile-button-menu-icon-close-menu {
   display: block;
+  stroke: var(--black-body-color);
 }
 .mobile-button-menu-icon-togle {
   display: block;
@@ -131,9 +156,13 @@
   stroke: var(--violet-color);
 }
 .mobile-button-menu-icon-close-menu {
-  display: none;
+  /* display: none; */
 }
 .menu-user-login {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
   margin-bottom: 126px;
 }
 .menu-user-login-name {
@@ -149,13 +178,36 @@
   flex-direction: column;
 
   gap: 16px;
-  width: 118px;
 
   color: #fff;
   font-weight: 500;
   line-height: 1.28;
   letter-spacing: -0.56px;
   text-transform: uppercase;
+}
+.mobile-menu-btn-down {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+
+  padding: 15px 20px;
+  border-radius: 18px;
+  border: 1.5px solid var(--black-body-color);
+  background: var(--white-color);
+}
+.mobile-menu-btn-down-icon {
+  stroke: var(--yellow-color);
+}
+.mobile-menu-btn-down-link {
+  display: flex;
+  align-items: center;
+}
+.mobile-menu-btn-down-item {
+  margin-right: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.56px;
 }
 
 @media screen and (min-width: 768px) {
@@ -186,6 +238,9 @@
   .header-item-link-shoping-list {
     margin-right: 8px;
   }
+  .user-authorization {
+    display: flex;
+  }
 }
 
 /* Desktop */
@@ -193,4 +248,14 @@
   .header-logo {
     margin-right: 72px;
   }
+}
+
+/* !!! dark-theme */
+body.dark-theme .header-page {
+  background-color: var(--black-header-color);
+  border: 1.5px solid var(--white-color);
+}
+
+body.dark-theme .mobile-button-menu-icon-togle {
+  stroke: var(--white-color);
 }
