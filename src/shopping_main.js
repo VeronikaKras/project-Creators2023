@@ -1,6 +1,5 @@
 import './js/header';
-import './js/modal';
-import './js/shopping';
+import './js/shopping-list';
 import './js/support';
 import './js/theme';
 import './js/pagination';
