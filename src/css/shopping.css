@@ -268,7 +268,7 @@ body.dark-theme .shopping-span {
 }
 
 /* MAIN shopping list */
-.donate-container {
+.donate-shopping-container {
   display: none;
 }
 .shopping-list-container {
@@ -276,7 +276,7 @@ body.dark-theme .shopping-span {
   padding-top: 40px;
 }
 @media screen and (min-width: 1440px) {
-  .shopping-list-container .donate-container {
+  .shopping-list-container .donate-shopping-container {
     display: block;
   }
 }

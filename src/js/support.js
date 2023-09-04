@@ -48,10 +48,16 @@ const donateFunds = [
     retinaImg: found1x,
   },
   {
-    title: 'UNITED24',
-    url: 'https://u24.gov.ua/uk',
-    img: found3,
-    retinaImg: found3x,
+    title: 'Project HOPE',
+    url: 'https://www.projecthope.org/country/ukraine/',
+    img: found2,
+    retinaImg: found2x,
+  },
+  {
+    title: 'International Medical Corps',
+    url: 'https://internationalmedicalcorps.org/country/ukraine/',
+    img: found4,
+    retinaImg: found4x,
   },
   {
     title: 'RAZOM',
@@ -60,30 +66,24 @@ const donateFunds = [
     retinaImg: found6x,
   },
   {
-    title: 'Medicins Sans   Frontieres',
-    url: 'https://www.msf.org/ukraine',
-    img: found5,
-    retinaImg: found5x,
-  },
-  {
-    title: 'Project HOPE',
-    url: 'https://www.projecthope.org/country/ukraine/',
-    img: found2,
-    retinaImg: found2x,
-  },
-
-  {
-    title: 'International Medical   Corps',
-    url: 'https://internationalmedicalcorps.org/country/ukraine/',
-    img: found4,
-    retinaImg: found4x,
-  },
-
-  {
     title: 'Action against   hunger',
     url: 'https://www.actionagainsthunger.org/location/europe/ukraine/',
     img: found7,
     retinaImg: found7x,
+  },
+
+  {
+    title: 'Serhiy Prytula Charity   Foundation',
+    url: 'https://prytulafoundation.org/en',
+    img: found9,
+    retinaImg: found9x,
+  },
+
+  {
+    title: 'UNITED24',
+    url: 'https://u24.gov.ua/uk',
+    img: found3,
+    retinaImg: found3x,
   },
   {
     title: 'World vision',
@@ -92,10 +92,10 @@ const donateFunds = [
     retinaImg: found8x,
   },
   {
-    title: 'Serhiy Prytula Charity   Foundation',
-    url: 'https://prytulafoundation.org/en',
-    img: found9,
-    retinaImg: found9x,
+    title: 'Medicins Sans Frontieres',
+    url: 'https://www.msf.org/ukraine',
+    img: found5,
+    retinaImg: found5x,
   },
 ];
 
@@ -112,7 +112,7 @@ const donateFound = document.querySelector('.donate-funds-visible');
 
 const swiper = new Swiper('.my-swiper', {
   direction: 'vertical',
-  spaceBetween: 20,
+  spaceBetween: 8,
   slidesPerView: 'auto',
 
   navigation: {

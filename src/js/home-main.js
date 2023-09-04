@@ -96,7 +96,8 @@ function renderOneCategoryBooks(books) {
   return books
     .map(({ book_image, title, author, _id }) => {
       return `<li class="one-category-item" id="${_id}">
-        <div class="one-category-item-card gallery-item-thumb">
+        <div class="one-category-item-card gallery-item-thumb" id="${_id}">
+
         <img class="one-category-item-img" src="${book_image}">
         <div class="one-category-item-hover"><p class="one-category-item-p-hover">quick view</p></div>
         </div>
@@ -172,7 +173,7 @@ function renderCategories(books) {
   return books
     .map(({ book_image, title, author, _id }) => {
       return `<li class="gallery-item" id="${_id}">
-              <div class="gallery-item-thumb">
+              <div class="gallery-item-thumb" id="${_id}">
               <img class="gallery-item-image" loading="lazy" src="${book_image}">
               <div class="gallery-item-hover"><p class="gallery-item-p-hover">quick view</p></div>
               </div>
@@ -188,7 +189,7 @@ function renderOneCategory(data) {
   return data
     .map(({ book_image, title, author, _id }) => {
       return `<li class="gallery-item" id="${_id}">
-              <div class="gallery-item-thumb">
+              <div class="gallery-item-thumb" id="${_id}">
               <img class="gallery-item-image" loading="lazy" src="${book_image}">
               <div class="gallery-item-hover"><p class="gallery-item-p-hover">quick view</p></div>
               </div>

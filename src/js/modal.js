@@ -1,32 +1,40 @@
 import axios from 'axios';
-
 import amazon1 from '../img/shopping/amazon1.png'
 import amazon2 from '../img/shopping/amazon2.png'
 import apple1 from '../img/shopping/apple1.png'
 import apple2 from '../img/shopping/apple2.png'
 import bookshop1 from '../img/shopping/bookshop1.png'
 import bookshop2 from '../img/shopping/bookshop2.png'
-
 axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
   const refs = {
-      gallery: document.querySelector('.gallery'),
-      galleryContainer: document.querySelector('.category-gallery'),
-      oneCategoryGallery: document.querySelector('.one-category-container'),
-    closeModalBtn: document.querySelector('[data-action = "close-modal"]'),
+    gallery: document.querySelector('.gallery'),
+    galleryContainer: document.querySelector('.category-gallery'),
+    oneCategoryGallery: document.querySelector('.one-category-container'),
+    removeBtn: document.querySelector('.js-removeButton'),
+    addBtn: document.querySelector('.js-addButton'),
     backdrop: document.querySelector('.js-backdrop'),
-    modal: document.querySelector('.modal'),
-};
+      modal: document.querySelector('.modal'),
+      modalContainer: document.querySelector('.modal-container')
+    };
 async function fetchBooksById(id) {
     const { data } = await axios.get(`/${id}`);
     const markup = modalRender(data);
-    refs.modal.innerHTML = markup;
+    refs.modalContainer.innerHTML = markup ;
    
-    }
+}
+    
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
 refs.oneCategoryGallery.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
+refs.addBtn.addEventListener('click', onAddClick)
+refs.removeBtn.addEventListener('click', onRemoveClick)
+
+
+let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
+let itemIds = JSON.parse(localStorage.getItem('saved-ids')) || [];
+
 function onOpenModal(e) {
     e.preventDefault();
     const myTargetClassList = e.target.parentNode.classList;
@@ -34,14 +42,38 @@ function onOpenModal(e) {
     && (!myTargetClassList.contains('one-category-item') && !myTargetClassList.contains('one-category-item-card'))) {
         return
     }
+    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
+    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
     window.addEventListener('keydown', onEscKey);
     document.body.classList.add('show-modal');
     fetchBooksById(e.target.closest('li').id)
+    refs.addBtn.disabled = false;
+        refs.removeBtn.disabled = true;
+
+    console.log(localBooks)
+    if (localBooks.length === 0) {
+        refs.addBtn.disabled = false;
+        refs.removeBtn.disabled = true;
+        return
+    }
+   
+    if (localBooks && localBooks.find(t => {
+        
+
+    
+        if (t._id === e.target.parentNode.id)
+        {refs.addBtn.disabled = true;
+        refs.removeBtn.disabled = false;}        
+         })) {
+        console.log('є збіг ')
+   
+            }
+  
 }
 function onCloseModal(e) {
     window.removeEventListener('keydown', onEscKey);
     document.body.classList.remove('show-modal');
-  e.target.classList.contains('close-modal')
+//   e.target.classList.contains('close-modal') 
 };
 function onBackdropClick(event) {
 if(event.currentTarget === event.target){
@@ -65,8 +97,8 @@ function modalRender(data) {
         buy_links,
         
     }
-        localStorage.setItem('new-book', JSON.stringify(book))
-    console.log(book)
+    localStorage.setItem('new-book', JSON.stringify(book))
+   
     return (
         `<div class="modal-container">
         <img class="modal-img" src="${book_image}"/>
@@ -131,16 +163,56 @@ function modalRender(data) {
          `
 )
 }
-refs.modal.addEventListener('click', onModalClick)
-let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
-function onModalClick(e) {
+
+function onAddClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
+    }
+
+    const newBook = JSON.parse(localStorage.getItem('new-book'));
+    
+   itemIds.push(newBook._id)
+    itemBooks.push(newBook);
+    localStorage.setItem("saved-ids", JSON.stringify(itemIds));
+    localStorage.setItem("saved-books-in-modal", JSON.stringify(itemBooks));
+    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
+    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+    if (localBooks && localIds.find(t => t === newBook._id)) {
+        console.log('є збіг ')
+         refs.addBtn.disabled = true;
+        refs.removeBtn.disabled = false;
+        return
+    }
+    refs.addBtn.disabled = false;
+    refs.removeBtn.disabled = true;
 }
-const newBook = JSON.parse(localStorage.getItem('new-book'))
-console.log(newBook)
-   itemBooks.push(newBook);
-   localStorage.setItem("saved-books-in-modal", JSON.stringify(itemBooks));
+
+function onRemoveClick() {
+    const newBook = JSON.parse(localStorage.getItem('new-book'));
+    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
+    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+  console.log(localBooks)
+    if (localBooks && localBooks.map((t, index, array) => {
+        console.log(t._id)
+        console.log(newBook._id)
+        if (t._id === newBook._id) {
+            console.log(index)
+            console.log('є збіг ')
+            refs.addBtn.disabled = false;
+            refs.removeBtn.disabled = true;
+            return localBooks.splice(index, 1)
+           
+        }
+    //    return true
+    })) {
+        
+        console.log(localBooks)
+        localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
+        
+        //  refs.addBtn.disabled = false;
+        // refs.removeBtn.disabled = true;
+        return
+    }
 }
 
 
