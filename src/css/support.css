@@ -23,28 +23,24 @@
     background-size: 400%;
 }
 
-@keyframes gradient {
+@keyframes colorChange {
     0% {
-        background-position: 80% 0%;
+        color: #ffd700; /* Начальный цвет (желтый) */
     }
-
-    50% {
-        background-position: 20% 100%;
-    }
-
     100% {
-        background-position: 80% 0%;
+        color: #0053a0; /* Конечный цвет (синий) */
     }
 }
 
 .donate-paragraph {
-    color: var(--header-color-ligth);
     font-family: var(--main-font);
     font-style: normal;
     font-weight: 700;
     font-size: 28px;
     line-height: 32px;
     letter-spacing: -0.04em;
+    position: relative; /* Добавляем позиционирование для текста */
+    animation: colorChange 1.5s linear infinite alternate; /* Анимация для текста */
 }
 
 .donate-header {
