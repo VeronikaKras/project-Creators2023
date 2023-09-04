@@ -23,6 +23,20 @@
     background-size: 400%;
 }
 
+@keyframes gradient {
+    0% {
+        background-position: 80% 0%;
+    }
+
+    50% {
+        background-position: 20% 100%;
+    }
+
+    100% {
+        background-position: 80% 0%;
+    }
+}
+
 @keyframes colorChange {
     0% {
         color: #ffd700; /* Начальный цвет (желтый) */
@@ -40,7 +54,7 @@
     line-height: 32px;
     letter-spacing: -0.04em;
     position: relative; /* Добавляем позиционирование для текста */
-    animation: colorChange 1.5s linear infinite alternate; /* Анимация для текста */
+    animation: colorChange 4s linear infinite alternate; /* Анимация для текста */
 }
 
 .donate-header {
