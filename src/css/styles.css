@@ -144,7 +144,6 @@ body.dark-theme .loader::before {
   }
   .main-container {
     display: flex;
-    gap: 86px;
   }
   .sidebar {
     flex-direction: column;

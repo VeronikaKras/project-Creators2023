@@ -5,8 +5,8 @@
   width: 100%;
   z-index: 1000;
   border-radius: 0px 0px 8px 8px;
-  border: 1.5px solid #111;
-  background-color: #f6f6f6;
+  border: 1.5px solid var(--black-body-color);
+  background-color: var(--white-color);
 }
 
 .header-container {
@@ -20,8 +20,17 @@
 
 /* Logo Bookshelf */
 .header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding-top: 18px;
   padding-bottom: 18px;
+
+  color: var(--black-header-color);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.28;
+  letter-spacing: -0.56px;
 }
 .header-nav {
   display: flex;
@@ -39,7 +48,9 @@
   align-items: center;
 }
 .header-wrap {
+  align-items: center;
   display: flex;
+  align-items: center;
   gap: 14px;
 }
 .icon-shoping-list {
@@ -64,13 +75,16 @@
   line-height: normal;
   letter-spacing: -0.44px;
 }
-
-/* MOBILE MENU */
-.mobile-icon-hidden {
-  display: none;
+.header-active {
+  background-color: var(--yellow-color);
+}
+.header-active .header-item-link {
+  color: var(--black-header-color);
 }
 
-.mobile-button-menu {
+/* MOBILE MENU */
+.mobile-button-menu,
+.mobile-button-menu-close {
   min-height: 28px;
   min-width: 28px;
   display: flex;
@@ -94,6 +108,8 @@
 }
 
 .menu-container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
@@ -131,33 +147,38 @@
 .mobile-menu .link {
   display: block;
   padding: 10px;
-  color: #fff;
+  color: var(--white-color);
   text-decoration: none;
 }
 
-.mobile-button-menu-icon {
-  /* fill: var(--black-body-color); */
-}
-/* Your existing CSS styles */
-
-.mobile-button-menu.is-open .mobile-button-menu-icon-togle {
-  /* display: none; */
-}
-.mobile-button-menu.is-open .mobile-button-menu-icon-close-menu {
-  display: block;
-  stroke: var(--black-body-color);
-}
-.mobile-button-menu-icon-togle {
-  display: block;
+.mobile-button-menu-icon-togle,
+.mobile-button-menu-icon-close-menu {
   stroke: var(--black-body-color);
 }
 .mobile-button-menu-icon-togle:hover,
-.mobile-button-menu-icon-togle:focus {
+.mobile-button-menu-icon-togle:focus,
+.mobile-button-menu-icon-close-menu:hover,
+.mobile-button-menu-icon-close-menu:focus {
   stroke: var(--violet-color);
 }
-.mobile-button-menu-icon-close-menu {
-  /* display: none; */
+/* Спочатку обидві кнопки приховані */
+.mobile-button-menu,
+.mobile-button-menu-close {
+  display: none;
 }
+
+.mobile-button-menu {
+  display: block;
+}
+
+.mobile-button-menu-close.is-open {
+  display: block;
+}
+
+.mobile-button-menu.is-open {
+  display: none;
+}
+
 .menu-user-login {
   display: flex;
   align-items: center;
@@ -166,7 +187,7 @@
   margin-bottom: 126px;
 }
 .menu-user-login-name {
-  color: #fff;
+  color: var(--white-color);
 
   font-size: 22px;
   font-weight: 700;
@@ -176,14 +197,19 @@
 .mobile-menu-nav-list {
   display: flex;
   flex-direction: column;
+  align-self: center;
 
   gap: 16px;
 
-  color: #fff;
+  color: var(--white-color);
   font-weight: 500;
   line-height: 1.28;
   letter-spacing: -0.56px;
   text-transform: uppercase;
+}
+.mobile-menu-link {
+  display: flex;
+  gap: 4px;
 }
 .mobile-menu-btn-down {
   position: fixed;
@@ -221,6 +247,8 @@
   }
   .header-nav-list {
     display: flex;
+    align-items: baseline;
+
     gap: 24px;
     font-weight: 700;
     line-height: 1.28;
@@ -231,15 +259,16 @@
     padding: 8px 16px;
     border-radius: 36px;
   }
-  .active-link {
-    background-color: #eac645;
-  }
 
   .header-item-link-shoping-list {
     margin-right: 8px;
   }
   .user-authorization {
     display: flex;
+  }
+  .mobile-button-menu,
+  .mobile-button-menu-close {
+    display: none;
   }
 }
 
@@ -255,7 +284,11 @@ body.dark-theme .header-page {
   background-color: var(--black-header-color);
   border: 1.5px solid var(--white-color);
 }
+body.dark-theme .header-logo {
+  color: #f3f3f3;
+}
 
-body.dark-theme .mobile-button-menu-icon-togle {
+body.dark-theme .mobile-button-menu-icon-togle,
+body.dark-theme .mobile-button-menu-icon-close-menu {
   stroke: var(--white-color);
 }
