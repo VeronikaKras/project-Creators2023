@@ -1,5 +1,5 @@
-// import axios from 'axios';
-// axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
+import axios from 'axios';
+axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
 
   const refs = {
       gallery: document.querySelector('.gallery'),
@@ -21,16 +21,16 @@ refs.galleryContainer.addEventListener('click', onOpenModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
 
-// function onOpenModal(e) {
-//     e.preventDefault();
+function onOpenModal(e) {
+    e.preventDefault();
   
-//     if (!e.target.parentNode.classList.contains('gallery-item-thumb') && !e.target.parentNode.classList.contains('gallery-item')) {
-//         return
-//     }
-//     window.addEventListener('keydown', onEscKey);
-//     document.body.classList.add('show-modal');
-//     fetchBooksById(e.target.closest('li').id)
-// }
+    if (!e.target.parentNode.classList.contains('gallery-item-thumb') && !e.target.parentNode.classList.contains('gallery-item')) {
+        return
+    }
+    window.addEventListener('keydown', onEscKey);
+    document.body.classList.add('show-modal');
+    fetchBooksById(e.target.closest('li').id)
+}
 
 
 function onCloseModal(e) {
@@ -44,13 +44,13 @@ if(event.currentTarget === event.target){
 };
 }
 
-// function onEscKey(event) {
-//     const ESC_KEY_CODE = 'Escape';
-//     if(event.code === ESC_KEY_CODE) {
-//         onCloseModal()
+function onEscKey(event) {
+    const ESC_KEY_CODE = 'Escape';
+    if(event.code === ESC_KEY_CODE) {
+        onCloseModal()
         
-//     }
-// } 
+    }
+} 
 
 function modalRender(data) {
    const { book_image, author, publisher, list_name, title, _id} = data;
