@@ -49,7 +49,7 @@ function onOpenModal(e) {
     fetchBooksById(e.target.closest('li').id)
     refs.addBtn.disabled = false;
         refs.removeBtn.disabled = true;
-    console.log(e.target.parentNode)
+
     console.log(localBooks)
     if (localBooks.length === 0) {
         refs.addBtn.disabled = false;
@@ -59,13 +59,14 @@ function onOpenModal(e) {
    
     if (localBooks && localBooks.find(t => {
         
+
+    
         if (t._id === e.target.parentNode.id)
         {refs.addBtn.disabled = true;
         refs.removeBtn.disabled = false;}        
          })) {
         console.log('є збіг ')
-    //    refs.addBtn.disabled = false;
-    //    refs.removeBtn.disabled = true;
+   
             }
   
 }
@@ -159,7 +160,7 @@ function onAddClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
     }
-   
+
     const newBook = JSON.parse(localStorage.getItem('new-book'));
     
    itemIds.push(newBook._id)
