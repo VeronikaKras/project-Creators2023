@@ -19,7 +19,7 @@ body.dark-theme {
   |============================
 */
 
-.theme-switch__control {
+/* .theme-switch__control {
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -28,10 +28,11 @@ body.dark-theme {
   height: 20px;
   border-radius: 50%;
   padding: 0;
-}
+} */
 
 .theme-switch__control {
   display: flex;
+
   align-items: center;
   flex-shrink: 0;
   position: relative;
@@ -53,6 +54,7 @@ body.dark-theme {
 }
 .theme-switch__track {
   position: absolute;
+  align-items: baseline;
   left: 0;
   top: 0;
   width: 100%;
