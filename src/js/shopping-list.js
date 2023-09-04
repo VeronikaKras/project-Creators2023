@@ -122,47 +122,7 @@ function emptyLocaleMarkup() {
   
 }
 
-
-// логіка видалення книги при натисканні на корзину
-
-//  Слухач на батьківському елементі (делегування)
-  // cardList.addEventListener("click", (event) => {
-  //   if (event.target.classList.contains("basket-btn")) {
-  //     // Видалення батьківського елемента (карточки) при кліку на "корзинку"
-  //     event.target.parentNode.remove();
-  //   }
-  // });
-
-
-//   cardList.addEventListener("click", (event) => {
-//   if (event.target.classList.contains("basket-btn")) {
-//     // Найдем родительский элемент (карточку) для определения, какую книгу удалять
-//     const cardElement = event.target.closest(".shop-card");
-//     if (cardElement) {
-//       // Получаем идентификатор книги из атрибута data-id
-//       const bookId = cardElement.dataset.id;
-
-//       // Удаляем книгу из локального хранилища по идентификатору
-//       removeBookFromLocalStorage(bookId);
-
-//       // Удаляем саму карточку книги из разметки
-//       cardElement.remove();
-//     }
-//   }
-// });
-
-// // Функция для удаления книги из локального хранилища
-// function removeBookFromLocalStorage(bookId) {
-//   // Получаем текущий список книг из локального хранилища
-//   const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) || [];
-
-//   // Фильтруем список, исключая книгу с заданным идентификатором
-//   const updatedBooks = savedBooks.filter((book) => book.id !== bookId);
-
-//   // Сохраняем обновленный список в локальное хранилище
-//   localStorage.setItem("saved-books-in-modal", JSON.stringify(updatedBooks));
-// }
-
+// Функція видалення карточки 
 
 cardList.addEventListener('click', deleteBook)
 

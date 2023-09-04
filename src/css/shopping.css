@@ -1,31 +1,12 @@
-/* .shopping-container {
-  display: flex;
-
-  margin-top: 40px;
-} */
-/* це просто блок артура, щоб зафіксувати мій збоку */
-/* .support {
-  margin-right: 40px;
-  width: 356px;
-} */
-
-/* .home-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 375px;
-  padding-left: 20px;
-  padding-right: 20px;
-  min-width: 320px;
-} */
-.container {
+/* .container {
   min-width: 320px;
   max-width: 375px;
-}
+} */
 
-.shopping-list {
+/* .shopping-list {
   display: flex;
   flex-direction: column;
-}
+} */
 
 h1 {
   font-size: 48px;
@@ -45,7 +26,7 @@ h1 {
   padding: 14px;
   margin-bottom: 20px;
 
-  min-width: 330px;
+  /* min-width: 330px; */
   max-width: 1440px;
   height: 170px;
 
@@ -79,9 +60,6 @@ h1 {
 
   border-radius: 50%;
   border: none;
-}
-.basket {
-  z-index: 20;
 }
 
 .basket-btn:hover,
@@ -122,8 +100,12 @@ h1 {
 
 .shop-card-title {
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
+  width: 100px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   margin-bottom: 4px;
 }
@@ -131,7 +113,10 @@ h1 {
 .shop-card-category {
   color: var(--grey-text-color);
   font-size: 12px;
-  font-style: normal;
+  width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   margin-bottom: 4px;
 }
@@ -139,23 +124,24 @@ h1 {
 .shop-card-description {
   margin-bottom: 16px;
 
-  width: 193px;
+  width: 140px;
   height: 68px;
-
-  overflow: scroll;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .shop-card-author {
   color: var(--grey-text-color);
   font-size: 12px;
   font-style: italic;
+
+  width: 53px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* коли немає доданих книг */
-.empty-shop-list {
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .empty-shop-list-text {
   color: rgba(0, 0, 0, 0.6);
@@ -164,14 +150,32 @@ h1 {
 }
 
 .empty-shop-list {
-  /* padding-left: 35px; */
-  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: 35px;
+  margin-top: 120px;
   width: 265px;
 }
 
 .empty-shop-list-img {
   width: 265px;
   height: 198px;
+}
+
+@media screen and (min-width: 375px) {
+  .shop-card-title {
+    width: 114px;
+  }
+  .shop-card-category {
+    width: 165px;
+  }
+  .shop-card-description {
+    width: 193px;
+  }
+  .shop-card-author {
+    width: 100px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -184,7 +188,11 @@ h1 {
 
     padding: 24px;
   }
+  .shop-card-title {
+    width: 450px;
+  }
   .shop-card-category {
+    width: 450px;
     margin-bottom: 16px;
   }
   .shop-card-details {
@@ -196,6 +204,9 @@ h1 {
     width: 508px;
     height: 53px;
   }
+  .shop-card-author {
+    width: 350px;
+  }
   .basket-btn {
     width: 34px;
     height: 34px;
@@ -206,10 +217,6 @@ h1 {
     right: 24px;
     bottom: 24px;
   }
-  /* .icon-amazon {
-    width: 48px;
-    height: 15px;
-  } */
 
   .icon-amazon {
     width: 48px;
@@ -230,8 +237,8 @@ h1 {
   }
 
   .empty-shop-list {
-    margin-top: 100px;
-    /* margin-left: 200px; */
+    margin-top: 120px;
+    margin-left: 186px;
 
     width: 349px;
   }
@@ -244,6 +251,7 @@ h1 {
   }
   .empty-shop-list-text {
     margin-bottom: 20px;
+    font-size: 18px;
   }
 }
 
@@ -251,17 +259,34 @@ h1 {
   .shop-card-description {
     width: 808px;
   }
+  .shopping-list {
+    margin-left: 40px;
+  }
+  .empty-shop-list {
+    margin-top: 140px;
+    margin-left: 346px;
+  }
 }
 
 /* dark theme */
 
 body.dark-theme h1,
 body.dark-theme .shop-card-title,
-body.dark-theme .shop-card-description {
+body.dark-theme .shop-card-description,
+body.dark-theme .empty-shop-list-text {
   color: var(--white-color);
 }
 body.dark-theme .shopping-span {
   color: var(--violet-color);
+}
+body.dark-theme .icon-amazon {
+  filter: grayscale() invert();
+}
+body.dark-theme .shop-card-buy-links:hover,
+body.dark-theme .shop-card-buy-links:focus,
+body.dark-theme .icon-amazon:hover,
+body.dark-theme .icon-amazon:focus {
+  filter: invert(0) grayscale(0) drop-shadow(2px 0 6px #fff);
 }
 
 /* MAIN shopping list */
@@ -277,3 +302,5 @@ body.dark-theme .shopping-span {
     display: block;
   }
 }
+
+/*     filter: grayscale()invert(); */
