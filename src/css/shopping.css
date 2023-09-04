@@ -110,20 +110,6 @@ h1 {
   height: 16px;
 }
 
-.icon-amazon:hover,
-.icon-amazon:focus,
-.icon-apple:hover,
-.icon-apple:focus,
-.icon-bookstore:hover,
-.icon-bookstore:focus {
-  transform: scale(1.1);
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.15);
-}
-
-.icon-bookstore:hover {
-  transform: scale(1.02);
-  transition: 0.2s ease;
-}
 .shop-card-buy-links {
   filter: grayscale();
 }
