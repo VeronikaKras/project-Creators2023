@@ -11,6 +11,7 @@ axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
   const refs = {
       gallery: document.querySelector('.gallery'),
       galleryContainer: document.querySelector('.category-gallery'),
+      oneCategoryGallery: document.querySelector('.one-category-container'),
     closeModalBtn: document.querySelector('[data-action = "close-modal"]'),
     backdrop: document.querySelector('.js-backdrop'),
     modal: document.querySelector('.modal'),
@@ -23,11 +24,14 @@ async function fetchBooksById(id) {
     }
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
+refs.oneCategoryGallery.addEventListener('click', onOpenModal);
 // refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 function onOpenModal(e) {
     e.preventDefault();
-    if (!e.target.parentNode.classList.contains('gallery-item-thumb') && !e.target.parentNode.classList.contains('gallery-item')) {
+    const myTargetClassList = e.target.parentNode.classList;
+    if ((!myTargetClassList.contains('gallery-item-thumb') && !myTargetClassList.contains('gallery-item'))
+    && (!myTargetClassList.contains('one-category-item') && !myTargetClassList.contains('one-category-item-card'))) {
         return
     }
     window.addEventListener('keydown', onEscKey);
@@ -119,7 +123,7 @@ function modalRender(data) {
 )
 }
 refs.modal.addEventListener('click', onModalClick)
-let itemBooks = [];
+let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
 function onModalClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
