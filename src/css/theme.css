@@ -6,12 +6,12 @@ body.dark-theme {
   background-color: var(--black-body-color);
   color: var(--white-color);
 }
-.toolbar {
+/* .toolbar {
   display: flex;
   justify-content: flex-end;
-  width: 65px;
-  padding: 10px 10px;
-}
+  width: 40px;
+  padding: 0;
+} */
 
 /**
   |============================
