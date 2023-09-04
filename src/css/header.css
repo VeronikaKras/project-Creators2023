@@ -39,6 +39,7 @@
   align-items: center;
 }
 .header-wrap {
+  align-items: center;
   display: flex;
   gap: 14px;
 }
