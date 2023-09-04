@@ -26,9 +26,9 @@ function CreateMarkup(arr) {
 
   if (arr.length) {
       
-        markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => {
+        markup = arr.map(({ _id, book_image, title, list_name, description, author, buy_links }) => {
 
-        return `<li class="shop-card" data-id="${id}"> 
+        return `<li class="shop-card" data-id="${_id}"> 
   <img  class="card-img" src="${book_image}" alt="book cover" />
   <div class="shop-card-details">
     <h2 class="shop-card-title">${title}</h2>
@@ -78,11 +78,10 @@ function CreateMarkup(arr) {
           </a>
         </li>
         </ul>
-        <button class="basket-btn">
-          <svg class="basket" width="18" height="18">
-        <use href="${svgIconTrash}"></use>
-      </svg>
-      </button>
+       <button type="button" class="basket-btn" id="${_id}">
+          <svg width="18" height="18" class="basket" id="${_id}">
+            <use href="${svgIconTrash}"></use>
+          </svg>
     </li>
   </div>
 </li>`})
@@ -93,6 +92,7 @@ function CreateMarkup(arr) {
         emptyLocaleMarkup();
   }
 }
+
 
 
 
@@ -162,3 +162,22 @@ function emptyLocaleMarkup() {
 //   // Сохраняем обновленный список в локальное хранилище
 //   localStorage.setItem("saved-books-in-modal", JSON.stringify(updatedBooks));
 // }
+
+
+cardList.addEventListener('click', deleteBook)
+
+function deleteBook(e) {
+     if (!e.target.classList.contains('basket')) {
+    return;
+  }
+  const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+  console.log(localBooks)
+  localBooks.map((t, index) => {
+    if (t._id === e.target.id) {
+      console.log(t.id)
+      return localBooks.splice(index, 1)
+    }
+  })
+  localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
+CreateMarkup(localBooks);
+  }
