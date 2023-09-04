@@ -49,29 +49,24 @@ function onOpenModal(e) {
     fetchBooksById(e.target.closest('li').id)
     refs.addBtn.disabled = false;
         refs.removeBtn.disabled = true;
-    console.log(e.target.parentNode.id)
+
     console.log(localBooks)
     if (localBooks.length === 0) {
         refs.addBtn.disabled = false;
         refs.removeBtn.disabled = true;
         return
     }
-    console.log(localBooks.find(t => {
-        console.log(e.target.parentNode.id)
-        console.log(t._id)
-        return t._id === e.target.parentNode.id
-        
-         }))
+   
     if (localBooks && localBooks.find(t => {
-        console.log(e.target.parentNode.id)
-        console.log(t._id)
+        
+
+    
         if (t._id === e.target.parentNode.id)
         {refs.addBtn.disabled = true;
         refs.removeBtn.disabled = false;}        
          })) {
-    //     console.log('є збіг ')
-    //    refs.addBtn.disabled = true;
-    //    refs.removeBtn.disabled = false;
+        console.log('є збіг ')
+   
             }
   
 }
@@ -165,7 +160,7 @@ function onAddClick(e) {
     if (!e.target.classList.contains('js-addButton')) {
     return
     }
-    // refs.modal.setAttribute(name, value)
+
     const newBook = JSON.parse(localStorage.getItem('new-book'));
     
    itemIds.push(newBook._id)
