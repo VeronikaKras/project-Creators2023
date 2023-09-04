@@ -7,6 +7,8 @@ import './js/support';
 import './js/theme';
 import './js/pagination';
 import './js/btntotop';
+import './js/footer';
+
 
 
 

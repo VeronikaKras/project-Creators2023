@@ -5,6 +5,7 @@
         <svg class="header-logo-icon" width="109" height="28">
           <use href="./img/icons.svg#icon-logo"></use>
         </svg>
+        <!-- >Bookshelf -->
       </a>
       <!-- Navigation -->
       <ul class="header-nav-list list">
@@ -47,6 +48,20 @@
         </div>
       </div>
 
+      <!-- Athorization -->
+      <div class="user-authorization">
+        <img
+          src="./img/header/user-photo@1x.png"
+          alt="User photo"
+          width="37"
+          height="37"
+        />
+        <p class="user-authorization-title">Hello</p>
+        <svg class="user-authorization-triangle" width="23" height="26">
+          <use href="./img/icons.svg#icon-user-authorization-triangle"></use>
+        </svg>
+      </div>
+
       <!-- Mobile button -->
       <button
         class="mobile-button-menu js-open-menu"
@@ -56,7 +71,13 @@
         <svg class="mobile-button-menu-icon-togle" width="28" height="28">
           <use href="./img/icons.svg#icon-align-left"></use>
         </svg>
-        <svg class="mobile-button-menu-icon-close-menu" width="20" height="20">
+      </button>
+      <button class="menu-togle js-close-menu">
+        <svg
+          class="mobile-button-menu-icon-close-menu mobile-icon-hidden"
+          width="28"
+          height="28"
+        >
           <use href="./img/icons.svg#icon-x-close"></use>
         </svg>
       </button>
@@ -67,6 +88,12 @@
 <!-- Mobile menu -->
 <div class="menu-container js-menu-container" id="mobile-menu">
   <div class="menu-user-login">
+    <img
+      src="./img/header/user-photo@1x.png"
+      alt="User photo"
+      width="37"
+      height="37"
+    />
     <p class="menu-user-login-name">Hello</p>
   </div>
   <ul class="mobile-menu-nav-list list">
@@ -85,4 +112,11 @@
       ></a>
     </li>
   </ul>
+  <button class="mobile-menu-btn-down">
+    <a class="mobile-menu-btn-down-link link" href="./index.html">
+      <p class="mobile-menu-btn-down-item">Bookshelf</p>
+      <svg class="mobile-menu-btn-down-icon" width="20" height="20">
+        <use href="./img/icons.svg#icon-arrow-narrow-right"></use></svg
+    ></a>
+  </button>
 </div>
