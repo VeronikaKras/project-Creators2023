@@ -37,6 +37,8 @@
 }
 
 body {
+  padding-top: 64px;
+
   font-family: 'DM Sans', sans-serif;
   font-style: normal;
   color: var(--black-header-color);
@@ -68,9 +70,8 @@ html {
   overflow: hidden;
 }
 
-.loader-category{
+.loader-category {
   display: none;
-
 }
 .loader {
   width: 48px;
@@ -104,7 +105,7 @@ html {
   transform: translate(50%, 100%);
 }
 
-body.dark-theme .loader::before{
+body.dark-theme .loader::before {
   background: var(--white-color);
 }
 
@@ -119,6 +120,10 @@ body.dark-theme .loader::before{
 }
 
 @media screen and (min-width: 768px) {
+  body {
+    padding-top: 74px;
+  }
+
   .container {
     max-width: 768px;
     padding-left: 32px;
