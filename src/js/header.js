@@ -17,7 +17,7 @@
       : 'enableBodyScroll';
     // bodyScrollLock[scrollLockMethod](document.body);
   };
-  
+
   openMenuBtn.addEventListener('click', toggleMenu);
   closeMenuBtn.addEventListener('click', toggleMenu);
   links.forEach(function (link) {
@@ -32,19 +32,41 @@
   });
 })();
 
-
+// Зміна кнопок на мобільному меню
 const openMenuBtn = document.querySelector('.js-open-menu');
 const closeMenuBtn = document.querySelector('.js-close-menu');
-const closeMenuIcon = document.querySelector(
-  '.mobile-button-menu-icon-close-menu'
-);
 
 openMenuBtn.addEventListener('click', () => {
-  // Переключаємо клас іконки меню закриття
-  closeMenuIcon.classList.toggle('mobile-icon-hidden');
+  openMenuBtn.classList.add('is-open');
+  closeMenuBtn.classList.add('is-open');
 });
 
 closeMenuBtn.addEventListener('click', () => {
-  // Переключаємо клас іконки меню закриття
-  closeMenuIcon.classList.toggle('mobile-icon-hidden');
+  openMenuBtn.classList.remove('is-open');
+  closeMenuBtn.classList.remove('is-open');
 });
+
+// Функція, яка встановлює/знімає клас "active" для елементів
+function setActiveClassForCurrentPage() {
+  let currentPagePath = window.location.pathname;
+
+  let desktopPagesWithBackground = {
+    '/shopping.html': 'header-shopping-link',
+    '/index.html': 'header-home-link',
+  };
+
+  for (const page in desktopPagesWithBackground) {
+    if (currentPagePath === page) {
+      document
+        .getElementById(desktopPagesWithBackground[page])
+        .classList.add('header-active');
+    } else {
+      document
+        .getElementById(desktopPagesWithBackground[page])
+        .classList.remove('header-active');
+    }
+  }
+}
+
+window.addEventListener('load', setActiveClassForCurrentPage);
+window.addEventListener('popstate', setActiveClassForCurrentPage);
