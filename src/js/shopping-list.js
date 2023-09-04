@@ -7,27 +7,37 @@ import bookshop1 from '../img/shopping/bookshop1.png'
 import bookshop2 from '../img/shopping/bookshop2.png'
 import emptybook1x from '../img/shopping/books1x.png'
 import emptybook2x from '../img/shopping/books2x.png'
+import { pagination } from './pagination';
 
 
 const cardList = document.querySelector('.card-list');
 
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
 console.log(savedBooks);
+if (!savedBooks) {
+  return
+}
+let booksOnPage = 3;
+let countPage = 1;
+pagination.on('afterMove', (e) => {
+  
+  countPage = e.page;
+  CreateMarkup(savedBooks, e.page);
+  
+});
+CreateMarkup(savedBooks, countPage);
 
-CreateMarkup(savedBooks);
 
-// //Рендеримо розмітку для книг
 
-function CreateMarkup(arr) {
-    let markup;
-
-//     // перевіряємо, чи є щось у localStotrage - рендеримо розмітку
-//     // якщо порожньо - інша розмітка в блоці else
-
+function CreateMarkup(arr, page) {
+  let markup;
+  let newMarkup
+  let start = (countPage - 1) * booksOnPage;
+  let end = start + booksOnPage;
   if (arr.length) {
-      
-        markup = arr.map(({ _id, book_image, title, list_name, description, author, buy_links }) => {
-
+      newMarkup = arr.slice(start, end)
+        markup = newMarkup.map(({ _id, book_image, title, list_name, description, author, buy_links }, index) => {
+        
         return `<li class="shop-card" data-id="${_id}"> 
   <img  class="card-img" src="${book_image}" alt="book cover" />
   <div class="shop-card-details">
@@ -85,7 +95,8 @@ function CreateMarkup(arr) {
     </li>
   </div>
 </li>`})
-     .join('');
+      .join('');
+    
      cardList.innerHTML = markup; 
     }
     else { 
