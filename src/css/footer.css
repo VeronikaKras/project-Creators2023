@@ -1,11 +1,12 @@
 body.dark-theme .footer {
   background-color: var(--black-header-color);
   color: var(--light-theme-color);
+  box-shadow: -2px -2px 4px rgba(255, 255, 255, 0.2);
 }
 
 .footer {
   background-color: var(--white-color);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px 8px 0 0;
 }
 
@@ -28,8 +29,8 @@ body.dark-theme .footer {
 .footer-icon {
   width: 14px;
   height: 14px;
-  align-self: first baseline;
-  margin: 0 5px;
+  align-items: baseline;
+  margin: 0 6px 0 5px;
   animation: heartbeat 1.5s infinite;
 }
 
