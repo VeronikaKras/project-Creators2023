@@ -10,7 +10,7 @@ const input = document.getElementById('theme-switch-toggle');
 const body = document.body;
 input.addEventListener('change', onChange);
 const savedTheme = localStorage.getItem('Theme');
-console.log(savedTheme);
+
 if (savedTheme) {
   body.classList.add(savedTheme);
   if (savedTheme === Theme.DARK) {
