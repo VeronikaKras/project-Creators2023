@@ -1,11 +1,11 @@
 import Pagination from 'tui-pagination'; 
 import 'tui-pagination/dist/tui-pagination.css';
 const tuiContainer = document.querySelector('.tui-pagination');
+const allBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
 
 const options = {
-  totalItems: 18,
+  totalItems: allBooks.length,
   itemsPerPage: 3,
-  visiblePages: 6,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
