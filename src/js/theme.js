@@ -11,6 +11,15 @@ const body = document.body;
 input.addEventListener('change', onChange);
 const savedTheme = localStorage.getItem('Theme');
 
+const date = new Date();
+const hours = date.getHours();
+console.log(hours);
+
+if (hours > 19) {
+  body.classList.add(Theme.DARK);
+  input.checked = true;
+}
+
 if (savedTheme) {
   body.classList.add(savedTheme);
   if (savedTheme === Theme.DARK) {
@@ -19,6 +28,7 @@ if (savedTheme) {
 } else {
   body.classList.add(Theme.LIGHT);
 }
+
 function onChange(e) {
   if (e.currentTarget.checked) {
     body.classList.add(Theme.DARK);
