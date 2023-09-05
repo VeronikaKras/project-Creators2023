@@ -1,3 +1,5 @@
+import '../css/styles.css';
+import '../css/header.css';
 // import bodyScrollLock from 'body-scroll-lock';
 
 // MOBILE MENU
@@ -15,7 +17,7 @@
     const scrollLockMethod = !isMenuOpen
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
-    // bodyScrollLock[scrollLockMethod](document.body);
+    bodyScrollLock[scrollLockMethod](document.body);
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -28,7 +30,7 @@
     if (!e.matches) return;
     mobileMenu.classList.remove('is-open');
     openMenuBtn.setAttribute('aria-expanded', false);
-    // bodyScrollLock.enableBodyScroll(document.body);
+    bodyScrollLock.enableBodyScroll(document.body);
   });
 })();
 
@@ -46,27 +48,73 @@ closeMenuBtn.addEventListener('click', () => {
   closeMenuBtn.classList.remove('is-open');
 });
 
-// Функція, яка встановлює/знімає клас "active" для елементів
-function setActiveClassForCurrentPage() {
-  let currentPagePath = window.location.pathname;
+// // Функція, яка встановлює/знімає клас "active" для елементів
+// function setActiveClassForCurrentPage() {
+//   let currentPagePath = window.location.pathname;
 
-  let desktopPagesWithBackground = {
-    '/shopping.html': 'header-shopping-link',
-    '/index.html': 'header-home-link',
+//   let desktopPagesWithBackground = {
+//     '/shopping.html': 'header-shopping-link',
+//     '/index.html': 'header-home-link',
+//   };
+
+//   for (const page in desktopPagesWithBackground) {
+//     if (currentPagePath === page) {
+//       document
+//         .getElementById(desktopPagesWithBackground[page])
+//         .classList.add('header-active');
+//     } else {
+//       document
+//         .getElementById(desktopPagesWithBackground[page])
+//         .classList.remove('header-active');
+//     }
+//   }
+// }
+
+// window.addEventListener('load', setActiveClassForCurrentPage);
+// window.addEventListener('popstate', setActiveClassForCurrentPage);
+
+// спроба 2
+
+// const homePage = document.getElementById('header-home-link');
+// const shoppingPage = document.getElementById('header-shopping-link');
+
+// homePage.addEventListener('onChange', () => {
+//   homePage.classList.add('header-active');
+//   shoppingPage.classList.remove('header-active');
+// });
+
+// shoppingPage.addEventListener('onChange', () => {
+//   homePage.classList.remove('header-active');
+//   shoppingPage.classList.add('header-active');
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const homePage = document.getElementById('header-home-link');
+  const shoppingPage = document.getElementById('header-shopping-link');
+  const mobileHomePage = document.getElementById('mobile-home-link');
+  const mobileShoppingPage = document.getElementById('mobile-shopping-link');
+
+  const currentURL = window.location.href; // отримуємо поточний URL сторінки
+
+  const setActivePage = () => {
+    if (currentURL.includes('index.html') || currentURL.endsWith('/')) {
+      homePage.classList.add('header-active');
+      shoppingPage.classList.remove('header-active');
+      mobileHomePage.classList.add('header-active');
+      mobileShoppingPage.classList.remove('header-active');
+    } else if (currentURL.includes('shopping')) {
+      shoppingPage.classList.add('header-active');
+      homePage.classList.remove('header-active');
+      mobileShoppingPage.classList.add('header-active');
+      mobileHomePage.classList.remove('header-active');
+    } else {
+      homePage.classList.remove('header-active');
+      shoppingPage.classList.remove('header-active');
+      mobileHomePage.classList.remove('header-active');
+      mobileShoppingPage.classList.remove('header-active');
+    }
   };
 
-  for (const page in desktopPagesWithBackground) {
-    if (currentPagePath === page) {
-      document
-        .getElementById(desktopPagesWithBackground[page])
-        .classList.add('header-active');
-    } else {
-      document
-        .getElementById(desktopPagesWithBackground[page])
-        .classList.remove('header-active');
-    }
-  }
-}
-
-window.addEventListener('load', setActiveClassForCurrentPage);
-window.addEventListener('popstate', setActiveClassForCurrentPage);
+  // Викликаємо функцію при завантаженні сторінки та при поточному URL
+  setActivePage();
+});
