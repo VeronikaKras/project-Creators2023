@@ -1,10 +1,12 @@
 import Pagination from 'tui-pagination'; 
 
 const tuiContainer = document.querySelector('.tui-pagination');
-const allBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
-
+let allBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+if (!allBooks) {
+  allBooks = 1;
+}
 const options = {
-  totalItems: allBooks.length,
+  totalItems: allBooks.length  ,
   itemsPerPage: 3,
   page: 1,
   centerAlign: false,
