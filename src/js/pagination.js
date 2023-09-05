@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination'; 
-import 'tui-pagination/dist/tui-pagination.css';
+
 const tuiContainer = document.querySelector('.tui-pagination');
 const allBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
 
