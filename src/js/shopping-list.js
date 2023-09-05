@@ -1,4 +1,4 @@
-import svgIconTrash from '../img/icons.svg#icon-trash';
+import basketIcon from '../img/shopping/trash.png';
 import amazon1 from '../img/shopping/amazon1.png'
 import amazon2 from '../img/shopping/amazon2.png'
 import apple1 from '../img/shopping/apple1.png'
@@ -92,10 +92,9 @@ function CreateMarkup(arr, countPage) {
           </a>
         </li>
         </ul>
-       <button type="button" class="basket-btn" id="${_id}">
-          <svg width="18" height="18" class="basket" id="${_id}">
-            <use href="${svgIconTrash}"></use>
-          </svg>
+     <button type="button" class="basket-btn">
+  <img class="basket" id="${_id}" src="${basketIcon}" alt="basket-illustration" width="18" height="18">
+</button>
     </li>
   </div>
 </li>`})
@@ -108,7 +107,10 @@ function CreateMarkup(arr, countPage) {
   }
 }
 
-
+  // <button type="button" class="basket-btn" id="${_id}">
+  //         <svg width="18" height="18" class="basket" id="${_id}">
+  //           <use href="${svgIconTrash}"></use>
+  //         </svg>
 
 
 // //перевіряємо чи є опис книги. Якщо не має, виводимо повідомлення
