@@ -15,8 +15,12 @@
 }
 
 .tui-pagination {
-  height: 28px;
-  margin: 14px 0 12px;
+  display: none;
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* justify-content: center; */
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -208,4 +212,7 @@
 .tui-pagination .tui-is-disabled,
 .tui-pagination .tui-is-disabled {
   background-color: var(--black-header-color);
+}
+
+@media screen and (min-width: 768px) {
 }
