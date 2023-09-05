@@ -11,31 +11,35 @@ import { pagination } from './pagination';
 
 
 const cardList = document.querySelector('.card-list');
-
+const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
-console.log(savedBooks);
-if (!savedBooks) {
-  return
+
+if (savedBooks.length === 0) {
+  tuiPagDiv.style.display = "none";
 }
+
+tuiPagDiv.style.display = "flex";
 let booksOnPage = 3;
 let countPage = 1;
-pagination.on('afterMove', (e) => {
-  
-  countPage = e.page;
-  CreateMarkup(savedBooks, e.page);
-  
-});
 CreateMarkup(savedBooks, countPage);
+pagination.setTotalItems(savedBooks.length)
+pagination.on('afterMove', (e) => {
+    countPage = e.page;
+  CreateMarkup(savedBooks, countPage);
+  });
 
 
 
-function CreateMarkup(arr, page) {
+
+function CreateMarkup(arr, countPage) {
   let markup;
-  let newMarkup
+  //  pagination.setTotalItems(currentSavedBooks.length)
   let start = (countPage - 1) * booksOnPage;
   let end = start + booksOnPage;
+  
+  
   if (arr.length) {
-      newMarkup = arr.slice(start, end)
+      let newMarkup = arr.slice(start, end)
         markup = newMarkup.map(({ _id, book_image, title, list_name, description, author, buy_links }, index) => {
         
         return `<li class="shop-card" data-id="${_id}"> 
@@ -178,6 +182,7 @@ function emptyLocaleMarkup() {
 cardList.addEventListener('click', deleteBook)
 
 function deleteBook(e) {
+  e.preventDefault()
      if (!e.target.classList.contains('basket')) {
     return;
   }
@@ -190,5 +195,8 @@ function deleteBook(e) {
     }
   })
   localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
-CreateMarkup(localBooks);
-  }
+  pagination.setTotalItems(localBooks.length)
+  pagination.reset(localBooks.length)
+  pagination.movePageTo(Math.ceil(localBooks.length / 3))
+  CreateMarkup(localBooks, pagination.getCurrentPage());
+   }
