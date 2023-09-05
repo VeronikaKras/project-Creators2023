@@ -36,16 +36,37 @@ body.show-modal .modal {
   transform: scale(1, 1);
   transition: transform 200ms ease-in-out;
 }
+
+.js-added-text {
+  margin: 8px auto 0;
+  display: block;
+  color: rgba(17, 17, 17, 0.5);
+  width: 242px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.no-display {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .modal {
     padding: 40px;
     max-width: 579px;
-    height: 465px;
+    min-height: 465px;
   }
   .modal-text {
     margin-left: 24px;
     display: flex;
     flex-direction: column;
+  }
+
+  .js-added-text {
+    width: 324px;
+    font-size: 12px;
+    line-height: 1.17;
   }
 
   .js-removeButton {
@@ -298,4 +319,8 @@ body.show-modal .modal {
 
 .modal.dark-theme {
   background-color: black;
+}
+
+.modal.dark-theme .js-added-text {
+  color: rgba(255, 255, 255, 0.5);
 }
