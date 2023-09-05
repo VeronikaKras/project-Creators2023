@@ -15,6 +15,7 @@ axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
     modal: document.querySelector('.modal'),
     modalContainer: document.querySelector('.modal-container'),
     closeModalBtn: document.querySelector('.js-closeModal'),
+    input: document.getElementById('theme-switch-toggle'),
     };
 async function fetchBooksById(id) {
     const { data } = await axios.get(`/${id}`);
@@ -31,6 +32,13 @@ refs.addRemoveBtn.addEventListener('click', onAddRemoveClick)
 
 function onOpenModal(e) {
   e.preventDefault();
+  if (refs.input.checked === true) {
+     refs.modal.classList.add('dark-theme');
+  }
+ else {
+  refs.modal.classList.remove('dark-theme');
+}
+  
   const myTargetClassList = e.target.parentNode.classList;
   if ((!myTargetClassList.contains('gallery-item-thumb') && !myTargetClassList.contains('gallery-item'))
     && (!myTargetClassList.contains('one-category-item') && !myTargetClassList.contains('one-category-item-card'))) {
@@ -44,7 +52,6 @@ function onOpenModal(e) {
   
   refs.addRemoveBtn.textContent = 'Add to shopping list'
 
-  console.log(localBooks)
   if (localBooks && localBooks.length === 0) {
         return refs.addRemoveBtn.textContent = 'Add to shopping list';
      }
