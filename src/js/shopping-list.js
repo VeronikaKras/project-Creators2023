@@ -13,12 +13,18 @@ import { pagination } from './pagination';
 const cardList = document.querySelector('.card-list');
 const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
+console.log(savedBooks)
 
 if (savedBooks.length === 0) {
   tuiPagDiv.style.display = "none";
-}
-
+} else {
 tuiPagDiv.style.display = "flex";
+}
+  
+
+
+
+
 let booksOnPage = 3;
 let countPage = 1;
 CreateMarkup(savedBooks, countPage);
@@ -84,7 +90,7 @@ function CreateMarkup(arr, countPage) {
           </a>
         </li>
         </ul>
-     <button type="button" class="basket-btn">
+     <button type="button" class="basket-btn" id="${_id}">
   <img class="basket" id="${_id}" src="${basketIcon}" alt="basket-illustration" width="18" height="18">
 </button>
     </li>
@@ -131,11 +137,13 @@ function emptyLocaleMarkup() {
 cardList.addEventListener('click', deleteBook)
 
 function deleteBook(e) {
-     if (!e.target.classList.contains('basket')) {
+  
+     if (!e.target.classList.contains('basket') && !e.target.classList.contains('basket-btn')) {
     return;
   }
-  const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
-  console.log(localBooks)
+  const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'));
+  console.log(localBooks);
+  
   localBooks.map((t, index) => {
     if (t._id === e.target.id) {
       console.log(t.id)
@@ -147,4 +155,7 @@ function deleteBook(e) {
   pagination.reset(localBooks.length)
   pagination.movePageTo(Math.ceil(localBooks.length / 3))
   CreateMarkup(localBooks, pagination.getCurrentPage());
+  if (localBooks.length === 0) {
+  tuiPagDiv.style.display = "none";
+  };
    }
