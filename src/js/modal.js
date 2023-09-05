@@ -10,31 +10,24 @@ axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
     gallery: document.querySelector('.gallery'),
     galleryContainer: document.querySelector('.category-gallery'),
     oneCategoryGallery: document.querySelector('.one-category-container'),
-    removeBtn: document.querySelector('.js-removeButton'),
-    addBtn: document.querySelector('.js-addButton'),
+    addRemoveBtn: document.querySelector('.js-removeButton'),
     backdrop: document.querySelector('.js-backdrop'),
-      modal: document.querySelector('.modal'),
+    modal: document.querySelector('.modal'),
     modalContainer: document.querySelector('.modal-container'),
-      closeModalBtn: document.querySelector('.js-closeModal'),
+    closeModalBtn: document.querySelector('.js-closeModal'),
     };
 async function fetchBooksById(id) {
     const { data } = await axios.get(`/${id}`);
     const markup = modalRender(data);
     refs.modalContainer.innerHTML = markup ;
-   
-}
+   }
     
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
 refs.oneCategoryGallery.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
-refs.addBtn.addEventListener('click', onAddClick)
-refs.removeBtn.addEventListener('click', onRemoveClick)
-
-
-let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
-let itemIds = JSON.parse(localStorage.getItem('saved-ids')) || [];
+refs.addRemoveBtn.addEventListener('click', onAddRemoveClick)
 
 function onOpenModal(e) {
   e.preventDefault();
@@ -48,20 +41,17 @@ function onOpenModal(e) {
   window.addEventListener('keydown', onEscKey);
   document.body.classList.add('show-modal');
   fetchBooksById(e.target.closest('li').id)
-  refs.addBtn.disabled = false;
-  refs.removeBtn.disabled = true;
+  
+  refs.addRemoveBtn.textContent = 'Add to shopping list'
 
   console.log(localBooks)
-  if (localBooks.length === 0) {
-    refs.addBtn.disabled = false;
-    refs.removeBtn.disabled = true;
-    return
-  }
+  if (localBooks && localBooks.length === 0) {
+        return refs.addRemoveBtn.textContent = 'Add to shopping list';
+     }
   if (localBooks) {
     localBooks.find(t => {
-      if (t._id === e.target.parentNode.id) {
-        refs.addBtn.disabled = true;
-        refs.removeBtn.disabled = false;
+       if (t._id === e.target.parentNode.id) {
+       refs.addRemoveBtn.textContent = 'Remove';
       }
     })
   }
@@ -153,45 +143,25 @@ function modalRender(data) {
     )
    }
 
-function onAddClick(e) {
-    if (!e.target.classList.contains('js-addButton')) {
-    return
-    }
-    const newBook = JSON.parse(localStorage.getItem('new-book'));
-    
-   itemIds.push(newBook._id)
-    itemBooks.push(newBook);
-    localStorage.setItem("saved-ids", JSON.stringify(itemIds));
-    localStorage.setItem("saved-books-in-modal", JSON.stringify(itemBooks));
-    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
-    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
-    if (localBooks && localIds.find(t => t === newBook._id)) {
-        refs.addBtn.disabled = true;
-        refs.removeBtn.disabled = false;
-        return
-    }
-    refs.addBtn.disabled = false;
-    refs.removeBtn.disabled = true;
-}
-
-function onRemoveClick() {
-    const newBook = JSON.parse(localStorage.getItem('new-book'));
-    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+function onAddRemoveClick(e) {
+      const newBook = JSON.parse(localStorage.getItem('new-book'));
+  let localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
   console.log(localBooks)
-    if (localBooks && localBooks.map((t, index, array) => {
-        console.log(t._id)
-        console.log(newBook._id)
+  if (refs.addRemoveBtn.textContent === 'Remove' && localBooks.find( t => t._id === newBook._id)) {
+    console.log(localBooks)
+    localBooks.map((t, index, array) => {
         if (t._id === newBook._id) {
-            console.log(index)
-            console.log('є збіг ')
-            refs.addBtn.disabled = false;
-            refs.removeBtn.disabled = true;
-            return localBooks.splice(index, 1)
-                   }
-        })) {
-                localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
-        
-        return
+            return localBooks.splice(index, 1);
+                }  })
+    localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
+    if (!localBooks.find(t => t._id === newBook._id))
+      return refs.addRemoveBtn.textContent = 'Add to shopping list';
+  }
+    else {
+    let newBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
+    newBooks.push(newBook)
+    localStorage.setItem("saved-books-in-modal", JSON.stringify(newBooks));
+    refs.addRemoveBtn.textContent = 'Remove';
     }
 }
 
