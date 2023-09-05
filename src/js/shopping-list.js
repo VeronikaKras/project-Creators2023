@@ -1,4 +1,4 @@
-import svgIconTrash from '../img/icons.svg#icon-trash';
+import basketIcon from '../img/shopping/trash.png';
 import amazon1 from '../img/shopping/amazon1.png'
 import amazon2 from '../img/shopping/amazon2.png'
 import apple1 from '../img/shopping/apple1.png'
@@ -7,28 +7,42 @@ import bookshop1 from '../img/shopping/bookshop1.png'
 import bookshop2 from '../img/shopping/bookshop2.png'
 import emptybook1x from '../img/shopping/books1x.png'
 import emptybook2x from '../img/shopping/books2x.png'
+import { pagination } from './pagination';
 
 
 const cardList = document.querySelector('.card-list');
-
+const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
-console.log(savedBooks);
 
-CreateMarkup(savedBooks);
+if (savedBooks.length === 0) {
+  tuiPagDiv.style.display = "none";
+}
 
-// //Рендеримо розмітку для книг
+tuiPagDiv.style.display = "flex";
+let booksOnPage = 3;
+let countPage = 1;
+CreateMarkup(savedBooks, countPage);
+pagination.setTotalItems(savedBooks.length)
+pagination.on('afterMove', (e) => {
+    countPage = e.page;
+  CreateMarkup(savedBooks, countPage);
+  });
 
-function CreateMarkup(arr) {
-    let markup;
 
-//     // перевіряємо, чи є щось у localStotrage - рендеримо розмітку
-//     // якщо порожньо - інша розмітка в блоці else
 
+
+function CreateMarkup(arr, countPage) {
+  let markup;
+  //  pagination.setTotalItems(currentSavedBooks.length)
+  let start = (countPage - 1) * booksOnPage;
+  let end = start + booksOnPage;
+  
+  
   if (arr.length) {
-      
-        markup = arr.map(({ id, book_image, title, list_name, description, author, buy_links }) => {
-
-        return `<li class="shop-card" data-id="${id}"> 
+      let newMarkup = arr.slice(start, end)
+        markup = newMarkup.map(({ _id, book_image, title, list_name, description, author, buy_links }, index) => {
+        
+        return `<li class="shop-card" data-id="${_id}"> 
   <img  class="card-img" src="${book_image}" alt="book cover" />
   <div class="shop-card-details">
     <h2 class="shop-card-title">${title}</h2>
@@ -78,15 +92,14 @@ function CreateMarkup(arr) {
           </a>
         </li>
         </ul>
-        <button class="basket-btn">
-          <svg class="basket" width="18" height="18">
-        <use href="${svgIconTrash}"></use>
-      </svg>
-      </button>
+     <button type="button" class="basket-btn">
+  <img class="basket" id="${_id}" src="${basketIcon}" alt="basket-illustration" width="18" height="18">
+</button>
     </li>
   </div>
 </li>`})
-     .join('');
+      .join('');
+    
      cardList.innerHTML = markup; 
     }
     else { 
@@ -94,6 +107,10 @@ function CreateMarkup(arr) {
   }
 }
 
+  // <button type="button" class="basket-btn" id="${_id}">
+  //         <svg width="18" height="18" class="basket" id="${_id}">
+  //           <use href="${svgIconTrash}"></use>
+  //         </svg>
 
 
 // //перевіряємо чи є опис книги. Якщо не має, виводимо повідомлення
@@ -122,43 +139,26 @@ function emptyLocaleMarkup() {
   
 }
 
+// Функція видалення карточки 
 
-// логіка видалення книги при натисканні на корзину
+cardList.addEventListener('click', deleteBook)
 
-//  Слухач на батьківському елементі (делегування)
-  // cardList.addEventListener("click", (event) => {
-  //   if (event.target.classList.contains("basket-btn")) {
-  //     // Видалення батьківського елемента (карточки) при кліку на "корзинку"
-  //     event.target.parentNode.remove();
-  //   }
-  // });
-
-
-//   cardList.addEventListener("click", (event) => {
-//   if (event.target.classList.contains("basket-btn")) {
-//     // Найдем родительский элемент (карточку) для определения, какую книгу удалять
-//     const cardElement = event.target.closest(".shop-card");
-//     if (cardElement) {
-//       // Получаем идентификатор книги из атрибута data-id
-//       const bookId = cardElement.dataset.id;
-
-//       // Удаляем книгу из локального хранилища по идентификатору
-//       removeBookFromLocalStorage(bookId);
-
-//       // Удаляем саму карточку книги из разметки
-//       cardElement.remove();
-//     }
-//   }
-// });
-
-// // Функция для удаления книги из локального хранилища
-// function removeBookFromLocalStorage(bookId) {
-//   // Получаем текущий список книг из локального хранилища
-//   const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) || [];
-
-//   // Фильтруем список, исключая книгу с заданным идентификатором
-//   const updatedBooks = savedBooks.filter((book) => book.id !== bookId);
-
-//   // Сохраняем обновленный список в локальное хранилище
-//   localStorage.setItem("saved-books-in-modal", JSON.stringify(updatedBooks));
-// }
+function deleteBook(e) {
+  e.preventDefault()
+     if (!e.target.classList.contains('basket')) {
+    return;
+  }
+  const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+  console.log(localBooks)
+  localBooks.map((t, index) => {
+    if (t._id === e.target.id) {
+      console.log(t.id)
+      return localBooks.splice(index, 1)
+    }
+  })
+  localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
+  pagination.setTotalItems(localBooks.length)
+  pagination.reset(localBooks.length)
+  pagination.movePageTo(Math.ceil(localBooks.length / 3))
+  CreateMarkup(localBooks, pagination.getCurrentPage());
+   }

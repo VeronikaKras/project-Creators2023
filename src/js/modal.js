@@ -10,75 +10,63 @@ axios.defaults.baseURL = 'https://books-backend.p.goit.global/books';
     gallery: document.querySelector('.gallery'),
     galleryContainer: document.querySelector('.category-gallery'),
     oneCategoryGallery: document.querySelector('.one-category-container'),
-    removeBtn: document.querySelector('.js-removeButton'),
-    addBtn: document.querySelector('.js-addButton'),
+    addRemoveBtn: document.querySelector('.js-removeButton'),
     backdrop: document.querySelector('.js-backdrop'),
-      modal: document.querySelector('.modal'),
-      modalContainer: document.querySelector('.modal-container')
+    modal: document.querySelector('.modal'),
+    modalContainer: document.querySelector('.modal-container'),
+    closeModalBtn: document.querySelector('.js-closeModal'),
     };
 async function fetchBooksById(id) {
     const { data } = await axios.get(`/${id}`);
     const markup = modalRender(data);
     refs.modalContainer.innerHTML = markup ;
-   
-}
+   }
     
 refs.gallery.addEventListener('click', onOpenModal);
 refs.galleryContainer.addEventListener('click', onOpenModal);
 refs.oneCategoryGallery.addEventListener('click', onOpenModal);
-// refs.closeModalBtn.addEventListener('click', onCloseModal);
+refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
-refs.addBtn.addEventListener('click', onAddClick)
-refs.removeBtn.addEventListener('click', onRemoveClick)
-
-
-let itemBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
-let itemIds = JSON.parse(localStorage.getItem('saved-ids')) || [];
+refs.addRemoveBtn.addEventListener('click', onAddRemoveClick)
 
 function onOpenModal(e) {
-    e.preventDefault();
-    const myTargetClassList = e.target.parentNode.classList;
-    if ((!myTargetClassList.contains('gallery-item-thumb') && !myTargetClassList.contains('gallery-item'))
+  e.preventDefault();
+  const myTargetClassList = e.target.parentNode.classList;
+  if ((!myTargetClassList.contains('gallery-item-thumb') && !myTargetClassList.contains('gallery-item'))
     && (!myTargetClassList.contains('one-category-item') && !myTargetClassList.contains('one-category-item-card'))) {
-        return
-    }
-    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
-    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
-    window.addEventListener('keydown', onEscKey);
-    document.body.classList.add('show-modal');
-    fetchBooksById(e.target.closest('li').id)
-    refs.addBtn.disabled = false;
-        refs.removeBtn.disabled = true;
-
-    console.log(localBooks)
-    if (localBooks.length === 0) {
-        refs.addBtn.disabled = false;
-        refs.removeBtn.disabled = true;
-        return
-    }
-   
-    if (localBooks && localBooks.find(t => {
-        
-
+    return
+  }
     
-        if (t._id === e.target.parentNode.id)
-        {refs.addBtn.disabled = true;
-        refs.removeBtn.disabled = false;}        
-         })) {
-        console.log('є збіг ')
-   
-            }
+  const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+  window.addEventListener('keydown', onEscKey);
+  document.body.classList.add('show-modal');
+  fetchBooksById(e.target.closest('li').id)
   
+  refs.addRemoveBtn.textContent = 'Add to shopping list'
+
+  console.log(localBooks)
+  if (localBooks && localBooks.length === 0) {
+        return refs.addRemoveBtn.textContent = 'Add to shopping list';
+     }
+  if (localBooks) {
+    localBooks.find(t => {
+       if (t._id === e.target.parentNode.id) {
+       refs.addRemoveBtn.textContent = 'Remove';
+      }
+    })
+  }
 }
 function onCloseModal(e) {
     window.removeEventListener('keydown', onEscKey);
     document.body.classList.remove('show-modal');
 //   e.target.classList.contains('close-modal') 
+  
 };
 function onBackdropClick(event) {
-if(event.currentTarget === event.target){
-    onCloseModal();
-};
+if(event.currentTarget !== event.target){
+    return
+  };
+  onCloseModal();
 }
 function onEscKey(event) {
     const ESC_KEY_CODE = 'Escape';
@@ -87,28 +75,30 @@ function onEscKey(event) {
     }
 }
 function modalRender(data) {
-    const { book_image, author, publisher, list_name, title, _id, buy_links, description } = data;
+    const { book_image, title, author, description, _id, buy_links,  } = data;
     const book = {
         book_image,
-        author,
-        publisher,
-        list_name,
         title,
+        author,
+        description,
         _id,
-        buy_links,
-        description
+        buy_links
+        
     }
     localStorage.setItem('new-book', JSON.stringify(book))
    
     return (
-        `
+        `<div class="book-image">
         <img class="modal-img" src="${book_image}"/>
-        <h2>${author}</h2>
-         <h3>${publisher}</h3>
-         <p>${list_name}</p>
-         <p>${title}</p>
-          <ul class="buy-links">
-    <li class="buy-links">
+        <div class="modal-text">
+        <h2 class="title">${title}</h2>
+         <p class="author">${author}</p>
+         <p class="description">${description}</p>
+          </div>
+          </div>
+
+          <ul class="buy-link">
+    <li class="buy-link-icon">
       <a
              href="${buy_links[0].url}"
             class="shop-card-link"
@@ -121,7 +111,7 @@ function modalRender(data) {
             />
           </a>
       </li>
-      <li class="shop-card-buy-links">
+      <li class="buy-link-icon">
          <a
             href="${buy_links[1].url}"
             class="shop-card-link"
@@ -135,7 +125,7 @@ function modalRender(data) {
             />
           </a>
         </li>
-     <li class="shop-card-buy-links">
+     <li class="buy-link-icon">
           <a
             href="${buy_links[4].url}"
             class="shop-card-link"
@@ -144,69 +134,36 @@ function modalRender(data) {
             <img
               class="buy-links-icon bookstore"
              src="${bookshop2}" srcset="${bookshop1} 1x, ${bookshop2} 2x"  
-             
-              alt="bookstore-icon"
+                           alt="bookstore-icon"
             />
           </a>
         </li>
         </ul>
-       
-        `
+               `
     )
-   
-}
+   }
 
-function onAddClick(e) {
-    if (!e.target.classList.contains('js-addButton')) {
-    return
-    }
-
-    const newBook = JSON.parse(localStorage.getItem('new-book'));
-    
-   itemIds.push(newBook._id)
-    itemBooks.push(newBook);
-    localStorage.setItem("saved-ids", JSON.stringify(itemIds));
-    localStorage.setItem("saved-books-in-modal", JSON.stringify(itemBooks));
-    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
-    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
-    if (localBooks && localIds.find(t => t === newBook._id)) {
-        console.log('є збіг ')
-         refs.addBtn.disabled = true;
-        refs.removeBtn.disabled = false;
-        return
-    }
-    refs.addBtn.disabled = false;
-    refs.removeBtn.disabled = true;
-}
-
-function onRemoveClick() {
-    const newBook = JSON.parse(localStorage.getItem('new-book'));
-    const localIds = JSON.parse(localStorage.getItem('saved-ids'))
-    const localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal'))
+function onAddRemoveClick(e) {
+      const newBook = JSON.parse(localStorage.getItem('new-book'));
+  let localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
   console.log(localBooks)
-    if (localBooks && localBooks.map((t, index, array) => {
-        console.log(t._id)
-        console.log(newBook._id)
+  if (refs.addRemoveBtn.textContent === 'Remove' && localBooks.find( t => t._id === newBook._id)) {
+    console.log(localBooks)
+    localBooks.map((t, index, array) => {
         if (t._id === newBook._id) {
-            console.log(index)
-            console.log('є збіг ')
-            refs.addBtn.disabled = false;
-            refs.removeBtn.disabled = true;
-            return localBooks.splice(index, 1)
-           
-        }
-    //    return true
-    })) {
-        
-        console.log(localBooks)
-        localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
-        
-        //  refs.addBtn.disabled = false;
-        // refs.removeBtn.disabled = true;
-        return
+            return localBooks.splice(index, 1);
+                }  })
+    localStorage.setItem("saved-books-in-modal", JSON.stringify(localBooks));
+    if (!localBooks.find(t => t._id === newBook._id))
+      return refs.addRemoveBtn.textContent = 'Add to shopping list';
+  }
+    else {
+    let newBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
+    newBooks.push(newBook)
+    localStorage.setItem("saved-books-in-modal", JSON.stringify(newBooks));
+    refs.addRemoveBtn.textContent = 'Remove';
     }
 }
-
 
 
 
