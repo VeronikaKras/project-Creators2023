@@ -15,7 +15,7 @@ const date = new Date();
 const hours = date.getHours();
 console.log(hours);
 
-if (hours > 19) {
+if (hours > 19 && !savedTheme) {
   body.classList.add(Theme.DARK);
   input.checked = true;
 }
