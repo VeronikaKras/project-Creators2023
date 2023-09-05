@@ -75,15 +75,15 @@ function onEscKey(event) {
     }
 }
 function modalRender(data) {
-    const { book_image, title, author, description, _id, buy_links,  } = data;
+    const { book_image, title, author, description, _id, buy_links, list_name } = data;
     const book = {
         book_image,
         title,
         author,
         description,
         _id,
-        buy_links
-        
+      buy_links,
+        list_name,
     }
     localStorage.setItem('new-book', JSON.stringify(book))
    
@@ -93,7 +93,7 @@ function modalRender(data) {
         <div class="modal-text">
         <h2 class="title">${title}</h2>
          <p class="author">${author}</p>
-         <p class="description">${description}</p>
+         <p class="description">${isAvaliableDescription(description)}</p>
           </div>
           </div>
 
@@ -141,13 +141,20 @@ function modalRender(data) {
         </ul>
                `
     )
-   }
+}
+   
+function isAvaliableDescription(description) { 
+    if (description === '') { 
+        return "Sorry, we couldn't find description"
+    }
+    return description;
+}
 
 function onAddRemoveClick(e) {
       const newBook = JSON.parse(localStorage.getItem('new-book'));
   let localBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
   console.log(localBooks)
-  if (refs.addRemoveBtn.textContent === 'Remove' && localBooks.find( t => t._id === newBook._id)) {
+  if (refs.addRemoveBtn.textContent === 'remove from the shopping list' && localBooks.find( t => t._id === newBook._id)) {
     console.log(localBooks)
     localBooks.map((t, index, array) => {
         if (t._id === newBook._id) {
@@ -161,7 +168,7 @@ function onAddRemoveClick(e) {
     let newBooks = JSON.parse(localStorage.getItem('saved-books-in-modal')) || [];
     newBooks.push(newBook)
     localStorage.setItem("saved-books-in-modal", JSON.stringify(newBooks));
-    refs.addRemoveBtn.textContent = 'Remove';
+    refs.addRemoveBtn.textContent = 'remove from the shopping list';
     }
 }
 
