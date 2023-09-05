@@ -41,7 +41,7 @@ function CreateMarkup(arr, countPage) {
   if (arr.length) {
       let newMarkup = arr.slice(start, end)
         markup = newMarkup.map(({ _id, book_image, title, list_name, description, author, buy_links }, index) => {
-        
+        console.log(buy_links[0].url);
         return `<li class="shop-card" data-id="${_id}"> 
   <img  class="card-img" src="${book_image}" alt="book cover" />
   <div class="shop-card-details">
@@ -51,17 +51,9 @@ function CreateMarkup(arr, countPage) {
     <p class="shop-card-author">${author}</p>
     <ul class="buy-links-list">
     <li class="shop-card-buy-links">
-      <a
-             href="${buy_links[0].url}"
-            class="shop-card-link"
-            target="blank"
-          >
-            <img
-              class="buy-links-icon icon-amazon"
-              src="${amazon2}" srcset="${amazon1} 1x, ${amazon2} 2x"
-              alt="amazon-icon"
-            />
-          </a>
+      <a href="${buy_links[0].url}" class="shop-card-link" target="blank">
+           <img class="buy-links-icon icon-amazon" src="${amazon2}" srcset="${amazon1} 1x, ${amazon2} 2x" alt="amazon-icon"/>
+      </a>
       </li>
       <li class="shop-card-buy-links">
          <a
@@ -107,11 +99,6 @@ function CreateMarkup(arr, countPage) {
   }
 }
 
-  // <button type="button" class="basket-btn" id="${_id}">
-  //         <svg width="18" height="18" class="basket" id="${_id}">
-  //           <use href="${svgIconTrash}"></use>
-  //         </svg>
-
 
 // //перевіряємо чи є опис книги. Якщо не має, виводимо повідомлення
 
@@ -144,7 +131,6 @@ function emptyLocaleMarkup() {
 cardList.addEventListener('click', deleteBook)
 
 function deleteBook(e) {
-  e.preventDefault()
      if (!e.target.classList.contains('basket')) {
     return;
   }
