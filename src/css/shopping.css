@@ -1,13 +1,3 @@
-/* .container {
-  min-width: 320px;
-  max-width: 375px;
-} */
-
-/* .shopping-list {
-  display: flex;
-  flex-direction: column;
-} */
-
 h1 {
   font-size: 48px;
   font-style: normal;
@@ -26,7 +16,6 @@ h1 {
   padding: 14px;
   margin-bottom: 20px;
 
-  /* min-width: 330px; */
   max-width: 1440px;
   height: 170px;
 
@@ -64,7 +53,51 @@ h1 {
 
 .basket-btn:hover,
 .basket-btn:focus {
-  transform: scale(1.1);
+  -webkit-animation: rotate-scale-up 0.65s linear both;
+  animation: rotate-scale-up 0.65s linear both;
+}
+
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(1.5) rotateZ(180deg);
+    transform: scale(1.5) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-scale-up {
+  0% {
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    transform: scale(1.5) rotateZ(180deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+
+.shop-card-buy-links:hover,
+.shop-card-buy-links:focus {
+  filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
+  transform: scale(1.2);
+}
+
+.shop-card-buy-links {
+  transition: transform 0.3s ease;
+}
+
+.shop-card-buy-links:hover,
+.shop-card-buy-links:focus {
+  filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
+  transform: scale(1.2);
 }
 
 .buy-links-list {
@@ -302,5 +335,3 @@ body.dark-theme .icon-amazon:focus {
     display: block;
   }
 }
-
-/*     filter: grayscale()invert(); */

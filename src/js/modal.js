@@ -75,28 +75,30 @@ function onEscKey(event) {
     }
 }
 function modalRender(data) {
-    const { book_image, author, publisher, list_name, title, _id, buy_links, description } = data;
+    const { book_image, title, author, description, _id, buy_links,  } = data;
     const book = {
         book_image,
-        author,
-        publisher,
-        list_name,
         title,
+        author,
+        description,
         _id,
-        buy_links,
-        description
+        buy_links
+        
     }
     localStorage.setItem('new-book', JSON.stringify(book))
    
     return (
-        `
+        `<div class="book-image">
         <img class="modal-img" src="${book_image}"/>
-        <h2>${author}</h2>
-         <h3>${publisher}</h3>
-         <p>${list_name}</p>
-         <p>${title}</p>
-          <ul class="buy-links">
-    <li class="buy-links">
+        <div class="modal-text">
+        <h2 class="title">${title}</h2>
+         <p class="author">${author}</p>
+         <p class="description">${description}</p>
+          </div>
+          </div>
+
+          <ul class="buy-link">
+    <li class="buy-link-icon">
       <a
              href="${buy_links[0].url}"
             class="shop-card-link"
@@ -109,7 +111,7 @@ function modalRender(data) {
             />
           </a>
       </li>
-      <li class="shop-card-buy-links">
+      <li class="buy-link-icon">
          <a
             href="${buy_links[1].url}"
             class="shop-card-link"
@@ -123,7 +125,7 @@ function modalRender(data) {
             />
           </a>
         </li>
-     <li class="shop-card-buy-links">
+     <li class="buy-link-icon">
           <a
             href="${buy_links[4].url}"
             class="shop-card-link"
@@ -162,5 +164,7 @@ function onAddRemoveClick(e) {
     refs.addRemoveBtn.textContent = 'Remove';
     }
 }
+
+
 
 
