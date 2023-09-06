@@ -51,7 +51,7 @@ body.show-modal .modal {
   overflow-y: auto;
   max-height: 100vh;
   /* Устанавливаем максимальную высоту на весь экран */
-  overflow-y: scroll;
+  overflow-y: hidden;
   /* Включаем вертикальную прокрутку, если контент не помещается */
   overflow-x: hidden;
 }
