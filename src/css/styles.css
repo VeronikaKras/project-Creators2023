@@ -59,6 +59,8 @@ body {
 
 .main-container {
   margin-top: 40px;
+
+  overflow: visible;
 }
 
 html {
