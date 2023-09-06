@@ -84,14 +84,15 @@ h1 {
   }
 }
 
+.shop-card-buy-links {
+  filter: grayscale();
+  transition: transform 0.3s ease;
+}
+
 .shop-card-buy-links:hover,
 .shop-card-buy-links:focus {
   filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
   transform: scale(1.2);
-}
-
-.shop-card-buy-links {
-  transition: transform 0.3s ease;
 }
 
 .buy-links-list {
@@ -113,10 +114,6 @@ h1 {
 .icon-bookstore {
   width: 16px;
   height: 16px;
-}
-
-.shop-card-buy-links {
-  filter: grayscale();
 }
 
 .shop-card-title {

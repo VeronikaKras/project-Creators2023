@@ -74,7 +74,7 @@ body.show-modal .modal {
   align-items: center;
   gap: 10px;
   border-radius: 40px;
-  border: 2px solid #4F2EE8;
+  border: 2px solid #4f2ee8;
   color: #111;
   font-family: DM Sans;
   font-size: 14px;
@@ -99,7 +99,7 @@ body.show-modal .modal {
 
   .js-removeButton:hover,
   .js-removeButton:focus {
-    background-color: #4F2EE8;
+    background-color: #4f2ee8;
     color: var(--white-color);
   }
 }
@@ -179,7 +179,7 @@ body.dark-theme .icon-close-modal {
 
 .author {
   margin-top: 4px;
-  color: #B4AFAF;
+  color: #b4afaf;
   font-family: DM Sans;
   font-size: 12px;
   font-style: italic;
@@ -200,13 +200,9 @@ body.dark-theme .icon-close-modal {
 
 .description {
   padding: 5px;
-  overflow: scroll;
+
   margin-top: 18px;
-  color: #111;
-  font-family: DM Sans;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  overflow: scroll;
   line-height: 1.3;
   letter-spacing: -0.56px;
   height: 70px;
@@ -241,7 +237,6 @@ body.dark-theme .icon-close-modal {
   top: 190px;
   gap: 20px;
   display: flex;
-  filter: grayscale();
   align-items: flex-end;
   align-items: center;
 }
@@ -268,17 +263,9 @@ body.dark-theme .icon-close-modal {
   height: 36px;
 }
 
-.buy-link-icone {
+.buy-link-icon {
   filter: grayscale();
-}
-
-.buy-link-icon:hover,
-.buy-link-icon:focus {
-  filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
-}
-
-.buy-link-icone {
-  filter: grayscale();
+  transition: transform 0.3s ease;
 }
 
 .buy-link-icon:hover,
@@ -311,14 +298,4 @@ body.dark-theme .icon-close-modal {
 
 .modal.dark-theme .js-removeButton {
   color: #fff;
-}
-
-.shop-card-link:hover,
-.shop-card-link:focus {
-  filter: grayscale(0) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
-  transform: scale(1.2);
-}
-
-.shop-card-link {
-  transition: transform 0.3s ease;
 }
