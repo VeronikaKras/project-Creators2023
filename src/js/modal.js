@@ -49,7 +49,7 @@ if (window.matchMedia('(max-width: 767px)').matches) {
   if (e.matches) {
     refs.backdrop.style.overflowY = "scroll";
   }else {
-   refs.backdrop.style.display = "hidden";
+   refs.backdrop.style.overflow = "hidden";
     }
     })
   const myTargetClassList = e.target.parentNode.classList;
