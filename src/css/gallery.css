@@ -244,6 +244,39 @@
   transition: transform var(--transition-dur-and-func);
 }
 
+.pagination{
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 40px;
+  gap: 18px;
+}
+
+.pagination-button{
+  width: 130px;
+  padding: 14px 28px;
+    cursor: pointer;
+    border-radius: 40px;
+    border: 2px solid var(--violet-color);
+    color: var(--black-header-color);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+    transition: var(--transition-dur-and-func);
+    background-color: transparent;
+}
+.pagination-button:hover,
+.pagination-button:focus{
+  background: var(--violet-color);
+    color: var(--white-color);
+}
+.pagination-button:disabled {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
 @media screen and (min-width: 768px) {
   .gallery-item:hover .gallery-item-hover,
   .gallery-item:focus .gallery-item-hover {
@@ -264,15 +297,24 @@ body.dark-theme .gallery-item-title {
   color: var(----white-color);
 }
 
-body.dark-theme .gallery-button {
+body.dark-theme .gallery-button,
+body.dark-theme .pagination-button {
   color: var(----white-color);
   background-color: transparent;
 }
 body.dark-theme .gallery-button:hover,
-body.dark-theme .gallery-button:focus {
+body.dark-theme .gallery-button:focus,
+body.dark-theme .pagination-button:hover,
+body.dark-theme .pagination-button:focus{
   background-color: var(--white-color);
   color: var(--black-header-color);
 }
+body.dark-theme .pagination-button:disabled {
+  background-color: #cccccc90;
+  color: #b6b3b3;
+  cursor: not-allowed;
+}
+
 
 #btntotop {
   display: none;
