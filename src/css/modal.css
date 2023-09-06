@@ -49,6 +49,7 @@ body.show-modal .modal {
   /* Устанавливаем максимальную высоту на весь экран */
   overflow-y: scroll;
   /* Включаем вертикальную прокрутку, если контент не помещается */
+  overflow-x: hidden;
 }
 
 .js-added-text {
