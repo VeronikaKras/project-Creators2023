@@ -14,10 +14,10 @@ const cardList = document.querySelector('.card-list');
 const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
 
-if (savedBooks.length === 0) {
+if (savedBooks.length === 0 || window.matchMedia('(max-width: 767px)').matches) {
   tuiPagDiv.style.display = "none";
 } 
-
+console.log(window.matchMedia('(max-width: 767px)').matches)
 window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   if (e.matches) {
     tuiPagDiv.style.display = "flex";
