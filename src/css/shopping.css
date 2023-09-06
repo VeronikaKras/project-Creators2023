@@ -144,8 +144,9 @@ h1 {
 
   width: 140px;
   height: 68px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  overflow: scroll;
 }
 
 .shop-card-author {
