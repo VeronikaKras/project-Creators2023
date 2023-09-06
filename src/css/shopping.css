@@ -1,5 +1,5 @@
 h1 {
-  font-size: 48px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 700;
 
@@ -198,6 +198,9 @@ h1 {
 }
 
 @media screen and (min-width: 768px) {
+  h1 {
+    font-size: ;
+  }
   .card-img {
     width: 116px;
     height: 165px;
@@ -279,7 +282,7 @@ h1 {
     width: 808px;
   }
   .shopping-list {
-    margin-left: 40px;
+    padding: 0 40px;
   }
   .empty-shop-list {
     margin-top: 140px;
@@ -314,11 +317,10 @@ body.dark-theme .icon-amazon:focus {
 }
 .shopping-list-container {
   display: flex;
-  padding-top: 40px;
 }
 @media screen and (min-width: 1440px) {
-  .shopping-list-container .donate-shopping-container {
-    display: block;
+  .donate-shopping-container {
+    display: flex;
   }
 }
 
