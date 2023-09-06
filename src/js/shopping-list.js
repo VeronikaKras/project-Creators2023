@@ -19,7 +19,7 @@ if (savedBooks.length === 0 || window.matchMedia('(max-width: 767px)').matches) 
 } 
 console.log(window.matchMedia('(max-width: 767px)').matches)
 window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-  if (e.matches) {
+  if (e.matches && savedBooks.length > 0){
     tuiPagDiv.style.display = "flex";
   }else {
    tuiPagDiv.style.display = "none";
