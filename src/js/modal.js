@@ -17,6 +17,7 @@ const refs = {
   closeModalBtn: document.querySelector('.js-closeModal'),
   input: document.getElementById('theme-switch-toggle'),
   addedText: document.querySelector('.js-added-text'),
+  body: document.querySelector('body')
 };
 
 async function fetchBooksById(id) {
@@ -39,7 +40,7 @@ function onOpenModal(e) {
   } else {
     refs.modal.classList.remove('dark-theme');
   }
-
+  refs.body.style.overflow = 'hidden';
   const myTargetClassList = e.target.parentNode.classList;
   if (
     !myTargetClassList.contains('gallery-item-thumb') &&
@@ -78,6 +79,7 @@ function onOpenModal(e) {
 function onCloseModal(e) {
   window.removeEventListener('keydown', onEscKey);
   document.body.classList.remove('show-modal');
+  refs.body.style.overflow = 'scroll';
   //   e.target.classList.contains('close-modal')
 }
 function onBackdropClick(event) {
