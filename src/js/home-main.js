@@ -14,6 +14,12 @@ const mainTitle = document.querySelector('.home-main-span');
 const mainTitleLastWtord = document.querySelector('.home-main-span-lastword');
 const loader = document.querySelector('.loader-container');
 const loaderCategory = document.querySelector('.category-loader');
+const paginationDiv = document.querySelector('.pagination');
+const prevButton = document.querySelector('.pagination-prev');
+const nextButton = document.querySelector('.pagination-next');
+
+const itemsPerPage = 6; // Кількість категорій на одній сторінці
+let currentPage = 1;
 
 categoriesList.addEventListener('click', onChooseCategory);
 
@@ -120,18 +126,55 @@ function renderCategoriesList(data) {
   categoriesList.insertAdjacentHTML('beforeend', createCategoriesMarkup(data));
 }
 
+prevButton.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderCategoriesPerPage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+nextButton.addEventListener('click', () => {
+  const totalPages = Math.ceil(categoriesList.children.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderCategoriesPerPage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+function renderCategoriesPerPage() {
+  const categories = Array.from(booksSection.children);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  categories.forEach((category, index) => {
+    if (index >= startIndex && index < endIndex) {
+      category.style.display = 'block';
+    } else {
+      category.style.display = 'none';
+    }
+  });
+
+  prevButton.disabled = currentPage === 1;
+  nextButton.disabled = currentPage === Math.ceil(categories.length / itemsPerPage);
+}
+
 async function fetchBooks() {
   mainTitle.textContent = 'Best Sellers';
   mainTitleLastWtord.textContent = ' Books';
   try {
+    paginationDiv.style.display = 'none';
     const { data } = await axios.get('/top-books');
     const markup = renderList(data);
     booksSection.innerHTML = markup;
     loader.style.display = 'none';
+    paginationDiv.style.display = 'flex';
   } catch (error) {
     Notiflix.Notify.failure('Something went wrong');
     loader.style.display = 'none';
   }
+  renderCategoriesPerPage();
 }
 
 function renderList(data) {
@@ -162,7 +205,8 @@ async function fetchByCategory(category) {
     const markup = renderOneCategory(data);
     booksSection.style.display = 'none';
     categorySection.innerHTML = markup;
-  loader.style.display = 'none';
+    loader.style.display = 'none';
+    paginationDiv.style.display = 'none';
     
   } catch (error) {
     Notiflix.Notify.failure('Помилка: ', error.message);
@@ -224,3 +268,4 @@ function onSeeMoreClick(e) {
   }
   fetchByCategory(categoryQuery);
 }
+
