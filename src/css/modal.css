@@ -188,6 +188,10 @@ body.dark-theme .icon-close-modal {
   letter-spacing: -0.48px;
 }
 
+.modal.dark-theme .js-removeButton {
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) {
   .author {
     margin-top: 8px;
