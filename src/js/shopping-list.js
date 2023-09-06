@@ -13,17 +13,18 @@ import { pagination } from './pagination';
 const cardList = document.querySelector('.card-list');
 const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
-console.log(savedBooks)
 
 if (savedBooks.length === 0) {
   tuiPagDiv.style.display = "none";
-} else {
-tuiPagDiv.style.display = "flex";
-}
-  
+} 
 
-
-
+window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+  if (e.matches) {
+    tuiPagDiv.style.display = "flex";
+  }else {
+   tuiPagDiv.style.display = "none";
+   }
+})
 
 let booksOnPage = 3;
 let countPage = 1;

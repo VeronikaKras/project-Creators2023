@@ -15,7 +15,7 @@
 }
 
 .tui-pagination {
-  display: none;
+  display: flex;
   position: absolute;
   bottom: 25px;
   left: 50%;
