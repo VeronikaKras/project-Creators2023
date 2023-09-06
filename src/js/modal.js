@@ -63,9 +63,16 @@ function onOpenModal(e) {
   if (localBooks) {
     localBooks.find(t => {
       if (t._id === e.target.parentNode.id) {
+         console.log('mu123')
         refs.addRemoveBtn.textContent = 'remove from the shopping list';
-      }
-    });
+        }
+   });
+  }
+  
+  if (refs.addRemoveBtn.textContent === 'Add to shopping list') {
+    refs.addedText.classList.add('no-display');
+  } else {
+    refs.addedText.classList.remove('no-display');
   }
 }
 function onCloseModal(e) {
