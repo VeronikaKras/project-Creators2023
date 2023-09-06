@@ -199,7 +199,7 @@ h1 {
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: ;
+    font-size: 48px;
   }
   .card-img {
     width: 116px;
@@ -320,7 +320,7 @@ body.dark-theme .icon-amazon:focus {
 }
 @media screen and (min-width: 1440px) {
   .donate-shopping-container {
-    display: flex;
+    display: block;
   }
 }
 
