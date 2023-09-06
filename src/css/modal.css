@@ -37,11 +37,24 @@ body.show-modal .modal {
   transition: transform 200ms ease-in-out;
 }
 
+.js-added-text {
+  margin: 8px auto 0;
+  display: block;
+  color: rgba(17, 17, 17, 0.5);
+  width: 242px;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+}
+.no-display {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .modal {
     padding: 40px;
     max-width: 579px;
-    height: 465px;
+    min-height: 465px;
   }
 
   .modal-text {
@@ -49,7 +62,11 @@ body.show-modal .modal {
     display: flex;
     flex-direction: column;
   }
-
+  .js-added-text {
+    width: 324px;
+    font-size: 12px;
+    line-height: 1.17;
+  }
   /* .modal-img {
   width: 192px;
   height: 281px;
@@ -197,7 +214,6 @@ body.dark-theme .icon-close-modal {
   }
 }
 
-
 .description {
   padding: 5px;
 
@@ -296,6 +312,6 @@ body.dark-theme .icon-close-modal {
   background-color: black;
 }
 
-.modal.dark-theme .js-removeButton {
-  color: #fff;
+.modal.dark-theme .js-added-text {
+  color: rgba(255, 255, 255, 0.5);
 }
