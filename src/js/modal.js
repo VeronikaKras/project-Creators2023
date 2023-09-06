@@ -32,7 +32,8 @@ refs.oneCategoryGallery.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 refs.addRemoveBtn.addEventListener('click', onAddRemoveClick);
-
+ 
+ 
 function onOpenModal(e) {
   e.preventDefault();
   if (refs.input.checked === true) {
@@ -41,6 +42,16 @@ function onOpenModal(e) {
     refs.modal.classList.remove('dark-theme');
   }
   refs.body.style.overflow = 'hidden';
+if (window.matchMedia('(max-width: 767px)').matches) {
+ refs.backdrop.style.overflowY = "scroll";
+} 
+  window.matchMedia('(max-width: 767px)').addEventListener('change', e => {
+  if (e.matches) {
+    refs.backdrop.style.overflowY = "scroll";
+  }else {
+   refs.backdrop.style.display = "hidden";
+    }
+    })
   const myTargetClassList = e.target.parentNode.classList;
   if (
     !myTargetClassList.contains('gallery-item-thumb') &&
