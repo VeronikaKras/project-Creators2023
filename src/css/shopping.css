@@ -330,3 +330,15 @@ body.dark-theme .icon-amazon:focus {
     height: 860px;
   }
 }
+@media screen and (max-width: 767px) {
+  body {
+    margin: 0;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-page-shopping-list {
+    flex-grow: 1;
+  }
+}
