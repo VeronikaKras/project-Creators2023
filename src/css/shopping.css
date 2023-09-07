@@ -310,6 +310,9 @@ body.dark-theme .icon-amazon:hover,
 body.dark-theme .icon-amazon:focus {
   filter: invert(0) grayscale(0) drop-shadow(2px 0 6px #fff);
 }
+body.dark-theme .shop-card {
+  background-color: var(--black-header-color);
+}
 
 /* MAIN shopping list */
 .donate-shopping-container {
