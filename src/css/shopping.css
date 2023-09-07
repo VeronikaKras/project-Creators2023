@@ -330,10 +330,13 @@ body.dark-theme .shop-card {
     display: block;
   }
 }
+.shopping-list {
+  position: relative;
+  height: 720px;
+}
 
 @media screen and (min-width: 768px) {
   .shopping-list {
-    position: relative;
     height: 860px;
   }
 }

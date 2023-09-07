@@ -217,6 +217,3 @@
 .tui-pagination .tui-is-disabled {
   background-color: var(--black-header-color);
 }
-
-@media screen and (min-width: 768px) {
-}

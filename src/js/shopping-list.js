@@ -14,18 +14,20 @@ const cardList = document.querySelector('.card-list');
 const tuiPagDiv = document.querySelector('.tui-pagination');
 const savedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
 
-if (savedBooks.length === 0 || window.matchMedia('(max-width: 767px)').matches) {
+if (savedBooks.length === 0) {
   tuiPagDiv.style.display = "none";
-} 
-console.log(window.matchMedia('(max-width: 767px)').matches)
-window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-  const newSavedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
-  if (e.matches && newSavedBooks.length > 0) {
-        tuiPagDiv.style.display = "flex";
-  }else {
-   tuiPagDiv.style.display = "none";
+} else {
+   tuiPagDiv.style.display = "flex";
    }
-})
+// console.log(window.matchMedia('(max-width: 767px)').matches)
+// window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
+//   const newSavedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
+//   if (e.matches && newSavedBooks.length > 0) {
+//         tuiPagDiv.style.display = "flex";
+//   }else {
+//    tuiPagDiv.style.display = "none";
+//    }
+// })
 
 let booksOnPage = 3;
 let countPage = 1;
