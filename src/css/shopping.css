@@ -331,13 +331,13 @@ body.dark-theme .icon-amazon:focus {
   }
 }
 
-  body {
-    margin: 0;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .main-page-shopping-list {
-    flex-grow: 1;
-  }
+body {
+  margin: 0;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-page-shopping-list {
+  flex-grow: 1;
+}

@@ -81,46 +81,45 @@
       </button>
     </div>
   </div>
-</header>
+  <!-- Mobile menu -->
+  <div class="menu-container js-menu-container" id="mobile-menu">
+    <div class="menu-user-login">
+      <img
+        srcset="
+          ./img/header/user-photo@1x.png 1x,
+          ./img/header/user-photo@2x.png 2x
+        "
+        src="./img/header/user-photo@1x.png"
+        alt="User photo"
+        width="37"
+        height="37"
+      />
+      <p class="menu-user-login-name">Hello</p>
+    </div>
+    <ul class="mobile-menu-nav-list list">
+      <li class="mobile-menu-nav-item header-item" id="mobile-home-link">
+        <a href="./index.html" class="mobile-menu-link link">Home</a>
+      </li>
 
-<!-- Mobile menu -->
-<div class="menu-container js-menu-container" id="mobile-menu">
-  <div class="menu-user-login">
-    <img
-      srcset="
-        ./img/header/user-photo@1x.png 1x,
-        ./img/header/user-photo@2x.png 2x
-      "
-      src="./img/header/user-photo@1x.png"
-      alt="User photo"
-      width="37"
-      height="37"
-    />
-    <p class="menu-user-login-name">Hello</p>
-  </div>
-  <ul class="mobile-menu-nav-list list">
-    <li class="mobile-menu-nav-item header-item" id="mobile-home-link">
-      <a href="./index.html" class="mobile-menu-link link">Home</a>
-    </li>
-
-    <li class="mobile-menu-nav-item header-item" id="mobile-shopping-link">
-      <a href="./shopping.html" class="mobile-menu-link link">
-        <p>Shopping List</p>
-        <svg
-          class="mobile-icon-shoping-list icon-shoping-list"
-          width="20"
-          height="20"
-        >
-          <use href="./img/icons.svg#icon-shopping-list"></use></svg
+      <li class="mobile-menu-nav-item header-item" id="mobile-shopping-link">
+        <a href="./shopping.html" class="mobile-menu-link link">
+          <p>Shopping List</p>
+          <svg
+            class="mobile-icon-shoping-list icon-shoping-list"
+            width="20"
+            height="20"
+          >
+            <use href="./img/icons.svg#icon-shopping-list"></use></svg
+        ></a>
+      </li>
+    </ul>
+    <!-- <button class="mobile-menu-btn-down"> -->
+      <a class="mobile-menu-btn-down-link link" href="./index.html">
+        <p class="mobile-menu-btn-down-title">Bookshelf</p>
+        <svg class="mobile-menu-btn-down-icon" width="20" height="20">
+          <use href="./img/icons.svg#icon-arrow-narrow-right"></use></svg
       ></a>
-    </li>
-  </ul>
-  <button class="mobile-menu-btn-down">
-    <a class="mobile-menu-btn-down-link link" href="./index.html">
-      <p class="mobile-menu-btn-down-title">Bookshelf</p>
-      <svg class="mobile-menu-btn-down-icon" width="20" height="20">
-        <use href="./img/icons.svg#icon-arrow-narrow-right"></use></svg
-    ></a>
-  </button>
-  <div class="header-menu-img"></div>
-</div>
+    <!-- </button> -->
+    <div class="header-menu-img"></div>
+  </div>
+</header>

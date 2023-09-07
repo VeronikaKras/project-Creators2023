@@ -1,3 +1,18 @@
+/* Home main style: start */
+.home-container {
+  padding-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .home-container {
+    padding-top: 98px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .home-container {
+    padding-top: 0;
+  }
+}
+/* Home main style: end */
 .home-main-title {
   margin-bottom: 40px;
 }
@@ -139,9 +154,9 @@
   .category-gallery .gallery-item:not(:last-child) {
     margin-bottom: 0;
   }
-  .home-main-title {
+  /* .home-main-title {
     margin-top: 98px;
-  }
+  } */
   .home-main-span,
   .home-main-span-lastword {
     font-size: 48px;
@@ -244,7 +259,7 @@
   transition: transform var(--transition-dur-and-func);
 }
 
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
 
@@ -252,24 +267,24 @@
   gap: 18px;
 }
 
-.pagination-button{
+.pagination-button {
   width: 130px;
   padding: 14px 28px;
-    cursor: pointer;
-    border-radius: 40px;
-    border: 2px solid var(--violet-color);
-    color: var(--black-header-color);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.29;
-    letter-spacing: -0.14px;
-    transition: var(--transition-dur-and-func);
-    background-color: transparent;
+  cursor: pointer;
+  border-radius: 40px;
+  border: 2px solid var(--violet-color);
+  color: var(--black-header-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.29;
+  letter-spacing: -0.14px;
+  transition: var(--transition-dur-and-func);
+  background-color: transparent;
 }
 .pagination-button:hover,
-.pagination-button:focus{
+.pagination-button:focus {
   background: var(--violet-color);
-    color: var(--white-color);
+  color: var(--white-color);
 }
 .pagination-button:disabled {
   background-color: #ccc;
@@ -305,7 +320,7 @@ body.dark-theme .pagination-button {
 body.dark-theme .gallery-button:hover,
 body.dark-theme .gallery-button:focus,
 body.dark-theme .pagination-button:hover,
-body.dark-theme .pagination-button:focus{
+body.dark-theme .pagination-button:focus {
   background-color: var(--white-color);
   color: var(--black-header-color);
 }
@@ -314,7 +329,6 @@ body.dark-theme .pagination-button:disabled {
   color: #b6b3b3;
   cursor: not-allowed;
 }
-
 
 #btntotop {
   display: none;
