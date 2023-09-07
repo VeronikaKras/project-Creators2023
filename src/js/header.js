@@ -48,46 +48,6 @@ closeMenuBtn.addEventListener('click', () => {
   closeMenuBtn.classList.remove('is-open');
 });
 
-// // Функція, яка встановлює/знімає клас "active" для елементів
-// function setActiveClassForCurrentPage() {
-//   let currentPagePath = window.location.pathname;
-
-//   let desktopPagesWithBackground = {
-//     '/shopping.html': 'header-shopping-link',
-//     '/index.html': 'header-home-link',
-//   };
-
-//   for (const page in desktopPagesWithBackground) {
-//     if (currentPagePath === page) {
-//       document
-//         .getElementById(desktopPagesWithBackground[page])
-//         .classList.add('header-active');
-//     } else {
-//       document
-//         .getElementById(desktopPagesWithBackground[page])
-//         .classList.remove('header-active');
-//     }
-//   }
-// }
-
-// window.addEventListener('load', setActiveClassForCurrentPage);
-// window.addEventListener('popstate', setActiveClassForCurrentPage);
-
-// спроба 2
-
-// const homePage = document.getElementById('header-home-link');
-// const shoppingPage = document.getElementById('header-shopping-link');
-
-// homePage.addEventListener('onChange', () => {
-//   homePage.classList.add('header-active');
-//   shoppingPage.classList.remove('header-active');
-// });
-
-// shoppingPage.addEventListener('onChange', () => {
-//   homePage.classList.remove('header-active');
-//   shoppingPage.classList.add('header-active');
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   const homePage = document.getElementById('header-home-link');
   const shoppingPage = document.getElementById('header-shopping-link');
