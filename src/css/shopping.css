@@ -19,6 +19,7 @@ h1 {
   max-width: 1440px;
   height: 170px;
 
+  background-color: var(--white-color);
   border-radius: 16px;
   border: 2px solid rgba(79, 46, 232, 0.4);
 }
