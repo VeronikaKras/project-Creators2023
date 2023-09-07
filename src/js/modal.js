@@ -41,7 +41,7 @@ function onOpenModal(e) {
   } else {
     refs.modal.classList.remove('dark-theme');
   }
-  refs.body.style.overflow = 'hidden';
+  // refs.body.style.overflow = 'hidden';
 if (window.matchMedia('(max-width: 767px)').matches) {
  refs.backdrop.style.overflowY = "scroll";
 } 
@@ -90,7 +90,7 @@ if (window.matchMedia('(max-width: 767px)').matches) {
 function onCloseModal(e) {
   window.removeEventListener('keydown', onEscKey);
   document.body.classList.remove('show-modal');
-  refs.body.style.overflow = 'scroll';
+  // refs.body.style.overflow = 'scroll';
   //   e.target.classList.contains('close-modal')
 }
 function onBackdropClick(event) {
