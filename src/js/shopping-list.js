@@ -19,8 +19,9 @@ if (savedBooks.length === 0 || window.matchMedia('(max-width: 767px)').matches) 
 } 
 console.log(window.matchMedia('(max-width: 767px)').matches)
 window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-  if (e.matches && savedBooks.length > 0){
-    tuiPagDiv.style.display = "flex";
+  const newSavedBooks = JSON.parse(localStorage.getItem("saved-books-in-modal")) ?? [];
+  if (e.matches && newSavedBooks.length > 0) {
+        tuiPagDiv.style.display = "flex";
   }else {
    tuiPagDiv.style.display = "none";
    }
