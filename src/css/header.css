@@ -1,25 +1,27 @@
 .header-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-container {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   z-index: 1000;
 
-  border-radius: 0px 0px 8px 8px;
-  border: 1.5px solid var(--black-body-color);
-  background-color: var(--white-color);
-}
-.header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-  min-width: 320px;
   height: 64px;
+
+  border-radius: 0px 0px 8px 8px;
+  border: 1.5px solid var(--black-body-color);
+  background-color: var(--white-color);
 }
 
 /* Logo Bookshelf */
@@ -220,10 +222,21 @@
   align-items: center;
   gap: 4px;
 }
-.mobile-menu-btn-down {
+
+.mobile-menu-btn-down-icon {
+  stroke: var(--yellow-color);
+}
+.mobile-menu-btn-down-icon:focus,
+.mobile-menu-btn-down-icon:hover {
+  stroke: var(--black-body-color);
+}
+.mobile-menu-btn-down-link {
   position: fixed;
   left: 20px;
   bottom: 20px;
+
+  display: flex;
+  align-items: center;
 
   padding: 15px 20px;
   border-radius: 18px;
@@ -231,22 +244,18 @@
   background: var(--white-color);
   z-index: 990;
 }
-.mobile-menu-btn-down-icon {
-  stroke: var(--yellow-color);
-}
-.mobile-menu-btn-down-link {
-  display: flex;
-  align-items: center;
-}
 .mobile-menu-btn-down-title {
   margin-right: 4px;
+
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28;
   letter-spacing: -0.56px;
+
+  color: var(--black-header-color);
 }
-.mobile-menu-btn-down:hover,
-.mobile-menu-btn-down:focus {
+.mobile-menu-btn-down-link:hover,
+.mobile-menu-btn-down-link:focus {
   background: var(--yellow-color);
 }
 .header-menu-img {
@@ -296,6 +305,8 @@
 /* Desktop */
 @media screen and (min-width: 1440px) {
   .header-container {
+    max-width: 1440px;
+    
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -305,7 +316,7 @@
 }
 
 /*  dark-theme  */
-body.dark-theme .header-page {
+body.dark-theme .header-container {
   background-color: var(--black-header-color);
   border: 1.5px solid var(--white-color);
 }
