@@ -186,5 +186,5 @@
 
 body.dark-theme .category-title,
 body.dark-theme .one-category-item-title {
-  color: var(----white-color);
+  color: var(--white-color);
 }

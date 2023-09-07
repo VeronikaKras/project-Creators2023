@@ -309,12 +309,12 @@
 
 body.dark-theme .home-main-span,
 body.dark-theme .gallery-item-title {
-  color: var(----white-color);
+  color: var(--white-color);
 }
 
 body.dark-theme .gallery-button,
 body.dark-theme .pagination-button {
-  color: var(----white-color);
+  color: var(--white-color);
   background-color: transparent;
 }
 body.dark-theme .gallery-button:hover,
