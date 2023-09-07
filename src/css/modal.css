@@ -1,9 +1,9 @@
-body.show-modal {
+.show-modal {
   overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
-  body.show-modal .modal {
+.modal {
     overflow-y: scroll;
   }
 }
